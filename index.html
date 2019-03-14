@@ -1,64 +1,17 @@
-<!DOCTYPE html>
-<style>
-body {
-  background-color: lightblue;
-}
+<canvas id = "c"></canvas>
 
-h1 {
-  color: white;
-  text-align: center;
-}
-
-p {
-  font-family: verdana;
-  font-size: 20px;
-}
-.center {
-  margin: auto;
-  width: 60%;
-  border: 3px solid #73AD21;
-  padding: 10px;
-}
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-</style>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Calculator</title>
-    <h1>Calculator</h1>
-</head>
-<body>
-	
-	<div class="center">
-    <form action="/submit-ans" method="post">
-        Value one: <input name="valueone" type="text" /> <br />
-		Enter operator: <input name="operator" type="text" /> <br />
-        Value two: <input name="valuetwo" type="text" /> <br />
-		
-      <input type="submit" />
-    </form>
+<div id="info">
+  <div id="top">
+  <a id="close" href="">close</a>
+  </div>
+  <p>
+    - Left click to drag points (corners, joints etc).<br>
+    - Right click to delete a point.<br>
+    - Hold ctrl to enter edit mode, release to exit.<br><br>
+      &nbsp;&nbsp;<strong>When in edit mode:</strong><br>
+    - Click to add points, hold alt to make fixed points.<br>
+    - New points will join to the last point by default.<br>
+    - Press shift to unselect a point.<br>
+    - Select any two points to join them.<br>
+  </p>
 </div>
-</body>
-</html>
