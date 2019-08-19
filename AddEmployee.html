@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>Adding new employee</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+ 
+ 
+
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">IPA</a>
+              </div>
+            </header>
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                  	<h2>Add New Plumber</h2>
+                  	<br>
+					<p><strong>Note:</strong> Plumber's details can be copy-pasted below from the CV else you can manually type it out </p>
+					    <textarea id="comment" rows="10" cols="100"></textarea>
+					    <p><button type="button" onclick = send()>Auto fill</button></p>
+					</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+	
+            <section class="forms">
+              	<div class="container-fluid">
+                	<div class="row">
+                  		<div class="col-md-12">
+            				<div class="row">
+                    	<div class="col-md-6">
+							<label>Name</label>
+						    <input  type="text" class="form-control" name="textbox3" id="textbox3" required/>
+				 		</div>
+				 		<div class="col-md-6">  
+							<label>ID number</label>
+				   			 <input type="text" 
+				    		class="form-control" name="textbox6" id="textbox6" required/>
+				 		</div>
+					</div>
+					<div class="row">
+				 		<div class="col-md-6">   
+							<label>Cell Number</label>
+				    			<input type="text" class="form-control"
+				    			name="textbox7" id="textbox7" required/>
+						</div>	
+						<div class="col-md-6"> 
+							<label>Address</label>
+				   			 <input type="text" class="form-control" name="textbox8" id="textbox8" required/>
+				  		 </div>
+					</div>
+
+					<div class="row">
+						 <div class="col-md-6">  	
+					
+							<label>Plumber ID</label>
+				    			<input type="text" class="form-control" name="textbox9" id="textbox9"  required/>
+				   				<p><button type="button" onclick = genPlumberID()>Generate Plumber ID</button></p>
+				   				
+				 		</div> 
+				  		<div class="col-md-6">
+							<label>Plumber Password</label>
+				    		<input type="text" class="form-control"  name="textbox10" id="textbox10" required/>
+				  			 <p><button type="button" class="border-radius-button" onclick = genPlumberPassword()>Generate Plumber Password</button></p>
+				  			 
+						</div>
+					</div>
+				 
+					
+					
+					
+					<div class="row">
+						 <div class="col-md-6">  	
+							<label>Attach CV</label>
+				   			<input type="file" id="fileButton1"/>
+				   		</div>
+				   		<div class="col-md-6"> 
+							<label>Attach ID copy</label>
+							<input type="file" id="fileButton2"/>
+						</div>
+						<div class="col-md-6"> 
+							<label>Attach other supporting documents</label>
+							<input type="file" id="fileButton3"/>
+						</div>
+					</div>
+				<br>
+				<br>
+				<br>
+				<div class="col-md-12">
+					<button type="submit" id="form-submit" class="filled-rounded-button" onclick = "storeData()">Submit</button>
+				</div>
+			</div>
+        </div>
+
+    </div>
+    </div>
+			</div>
+		</div>
+	</section> 
+
+	<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="search.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="closecase.html">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+    </div>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+ 
+  
+<script>
+
+var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+  
+  
+  var fileButton1 = document.getElementById("fileButton1");
+ fileButton1.addEventListener('change', function(e){
+ var file1 = e.target.files[0];
+ 
+ var storageRef1 = firebase.storage().ref("Workers Details");
+ var secondref1 = storageRef1.child(document.getElementById("textbox9").value);
+ var imagesRef1 = secondref1.child(file1.name);
+ imagesRef1.put(file1);
+ }); 
+ 
+ 
+ 
+  var fileButton2 = document.getElementById("fileButton2");
+ fileButton2.addEventListener('change', function(f){
+ var file2 = f.target.files[0];
+ 
+ var storageRef = firebase.storage().ref("Workers Details");
+ var secondref = storageRef.child(document.getElementById("textbox9").value);
+ var imagesRef = secondref.child(file2.name);
+ imagesRef.put(file2);
+ }); 
+ 
+ 
+  var fileButton3 = document.getElementById("fileButton3");
+ fileButton3.addEventListener('change', function(g){
+ var file3 = g.target.files[0];
+ 
+ var storageRef3 = firebase.storage().ref("Workers Details");
+ var secondref3 = storageRef3.child(document.getElementById("textbox9").value);
+ var imagesRef3 = secondref3.child(file3.name);
+ imagesRef3.put(file3);
+ }); 
+  
+  
+function genPlumberID()
+ {
+        var text = "24";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           }
+        document.getElementById("textbox9").value = text;
+          
+ }
+ 
+ 
+ function genPlumberPassword()
+ {
+        var text = " ";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&*";
+          for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+          }
+        document.getElementById("textbox10").value = text;
+          
+ }
+ 
+  // gets the birth date only
+ function idNumber()
+{
+  var id = document.getElementById("textbox6").value;
+  
+  var date = id.slice(0,6);
+  var finalDate = date[0]+date[1]+"/"+date[2]+date[3]+"/"+date[4]+date[5];
+  return finalDate;
+
+} 
+ 
+  function send()
+  {
+            var emptyArray = []; // create an empty array
+           
+            
+            var lines = $('#comment').val().split('\n');
+            for(var i = 0;i < lines.length;i++)
+            {
+                  var str = lines[i]; 
+                  var index = str.search(":");
+                   var res = str.slice(index+1, str.length);
+                  emptyArray[i] = res
+      }
+           
+            document.getElementById("textbox3").value = emptyArray[0];
+      document.getElementById("textbox6").value = emptyArray[1];
+            document.getElementById("textbox7").value = emptyArray[2];
+      document.getElementById("textbox8").value = emptyArray[3];
+      
+  }
+
+  function idGender()
+{
+  
+  var x = document.getElementById("textbox6").value;
+  
+  var str = x.slice(6,10);
+  
+  
+  var gender= "";
+  if(str > 0000 && str < 4999) 
+  {
+      gender = "female";
+  }
+  else
+  {
+    gender = "male";
+  
+  }
+  
+ 
+return gender;
+
+
+}
+  
+ function storeData()
+{
+var name1 = document.getElementById('textbox3').value;
+var DateOfBirth1 = idNumber();
+var gender1 = idGender();
+var idNumber1 = document.getElementById('textbox6').value;
+var cellNumber1 = document.getElementById('textbox7').value;
+var address1 = document.getElementById('textbox8').value;
+var plumberID1 = document.getElementById('textbox9').value;
+
+var plumberPassword = document.getElementById('textbox10').value;
+
+db.collection("employeesDetails").doc(plumberID1).set(
+{
+fullName: name1,
+DateOfBirth :DateOfBirth1,
+gender:gender1,
+idNumber:idNumber1,
+cellNumber:cellNumber1,
+address : address1,
+plumberID : plumberID1
+
+}
+)
+
+db.collection("users").doc(plumberID1).set(
+{
+
+password : plumberPassword,
+userType : "plumber"
+
+}
+)
+alert("Plumber added Successfully");
+//location.reload();
+}
+</script>
+	
+  
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>Sign Up</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+ 
+
+ </head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href=#>IPA</a>
+              </div>
+            </header>
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <br>
+                    <h2>Sign Up New Agent</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <section class="forms">
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6">
+ 
+ 
+                          	<label>Full name </label>
+                              <input type="text" name="textbox4" id="textbox4" />
+                           </div>
+                         </div>
+                         <div class="row">
+                          <div class="col-md-6">
+                           
+                              <label>Agent ID</label>
+                          	<p><strong>Note: please click the generate button to create an ID.</p>
+                              <input type="text" name="textbox1" id="textbox1" />
+                          	<p><button type="button" onclick = genAgentID()>Generate Agent ID</button></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <label>Password</label>
+                          	<p><strong>Note: Generate or type your own password.</p>
+                              <input type="password" name="textbox2" id="textbox2" />
+
+                              <div class="col-md-4 col-sm-4">
+                          <div class="radio-item">
+                            <input name="demo-large" type="checkbox" id="demo-priority-large" onclick="myFunction()" value="Show Password" >
+                            <label for="demo-priority-large">Show Password</label>
+                          </div>
+                        </div>
+                          	<!-- <input type="checkbox" onclick="myFunction()">Show Password -->
+                          	<p><button type="button" onclick = genAgentPassword()>Generate Agent Password</button></p>
+                          	</div>
+                          </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                          	<label>Confirm Password</label>
+                              <input type="password" name="textbox3" id="textbox3" />
+                          	</div>
+                          </div>
+                          	<br>
+                          	<br>
+                          	
+                          	<button type="button" onclick = send()>Signup</button>
+                            <button type="button" onclick = log()>Login</button>
+                          </div>
+                        </div>
+                      </div>
+                      </section>
+
+                      <!-- Sidebar -->
+       <!--  <div id="sidebar">
+
+          <div class="inner"> -->
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <!-- <nav id="menu">
+              <ul>
+                <li><a href="index.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="closecase.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="#">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+              </ul>
+            </nav> -->
+
+            <!-- Footer -->
+            <!-- <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer> -->
+            
+          </div>
+        </div>
+
+    </div>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+	
+ <script>
+ var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+ 
+ 
+ function genAgentID()
+ {
+        var text = "A";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           }
+        document.getElementById("textbox1").value = text;
+          
+ }
+ 
+ 
+ function genAgentPassword()
+ {
+        var text = " ";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&*";
+          for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+          }
+        document.getElementById("textbox2").value = text;
+          
+ }
+ 
+ // this function confirms the password 
+ function send()
+ {
+ var name1 = document.getElementById('textbox4').value;
+   var id1 = document.getElementById('textbox1').value;
+   var pass1 = document.getElementById('textbox2').value;
+	var confirm1 = document.getElementById('textbox3').value;
+ var check=0;
+  if(pass1 == confirm1)
+  { 
+    check++;
+
+				db.collection("agentCredentials").doc(id1).set
+				(
+					{
+						agentName : name1,
+						agentID: id1,
+						agentPass: pass1
+					
+
+
+
+					}
+				)
+
+				db.collection("users").doc(id1).set
+				(
+					{
+					  password : pass1,
+					  userType : "agent"
+
+
+					}
+				)
+	}
+	else
+	{
+			alert("Your password doesn't match. Please enter the password again.");
+	}
+  if(check!=0){
+   
+  }
+ }
+ function log(){
+   window.location.href='index.html';
+ }
+ function myFunction() {
+  var x = document.getElementById("textbox2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+ 
+
+
+
+
+
+
+ 
+
+ 
+ </script>
+</div></div>
+</div>
+
+ </body>
+ 
+ </html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>Search</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">IPA</a>
+              </div>
+            </header>
+			<!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <br>
+                    <h2>Search based on various features</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- =========================================================================================== -->
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                      <label>Cases added by agent: </label>
+                      <input name="search" type="text" class="form-control" id="plumber" placeholder="Agent ID..." required>
+                      <button type="button" onclick = SP()>Search</button>
+                      <!-- <button type="button" onclick = clear()>clear</button> -->
+                      <a href="closecase.html">clear</a>
+
+                    </fieldset>
+           		</div>
+           	</div>
+
+           	<!-- Tables -->
+            <section class="tables">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="section-heading">
+                      <h2>Tables</h2>
+                    </div>
+                    <div class="default-table">
+                      <table id="itemList">
+                        <thead>
+                          <tr>
+                            <th>CaseID</th>
+                            <th>Incident Date</th>
+                            <th>Address</th>
+                            <th>Case Status</th>
+                            <th>Description</th>
+                            <th>Caller ID</th>
+                            <th>Agent O</th>
+                            <th>Agent C</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+         </div>
+	</div>
+</div>
+</div>
+</section>
+<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">  
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="search.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="closecase.html">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+
+
+
+<script >
+	var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.firestore();
+
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+	function SP() {
+// clear();
+var bar=document.getElementById("plumber").value;
+console.log(bar);
+const display=document.querySelector("#display");
+var c=0;
+database.collection("caseDetails").get().then(function(querySnapshot)
+{
+
+  querySnapshot.forEach(function(doc){
+  	console.log(doc.data());
+    if(bar==doc.data().caseOpenedBy){
+	      c++;
+	    console.log("entry foound"
+	      
+	      //can add.details to be specific
+	      );
+	    var rows = "";
+	    // rows += "<tr><td>" +...++"</td></tr>";
+	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
+	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
+	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
+	    $( rows ).appendTo( "#itemList tbody" );
+	  }
+	}
+  );
+
+  
+});
+if(c==0)
+{
+	
+
+}
+}
+
+
+
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+};
+</script>
+
+<!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+    	function clear(){
+	//$("#itemList tr").remove();
+	var elmtTable = document.getElementById('itemList');
+var tableRows = elmtTable.getElementsByTagName('tr');
+var rowCount = tableRows.length;
+
+for (var x=rowCount-1; x>0; x--) {
+   elmtTable.removeChild(tableRows[x]);
+}
+location.reload();
+}
+</script>
+	
+
+  
+
+
+			
+</body>
+</html>

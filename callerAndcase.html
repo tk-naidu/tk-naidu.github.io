@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>New Case</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+ 
+
+  
+<script>
+   function genDate()
+  {
+     var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      document.getElementById("textbox12").value = date; 
+  }
+  
+  function send()
+  {
+            var emptyArray = []; // create an empty array
+           
+            
+            var lines = $('#comment').val().split('\n');
+            for(var i = 0;i < lines.length;i++)
+            {
+                  var str = lines[i]; 
+ 				          var index = str.search("=");
+  				         var res = str.slice(index+1, str.length);
+                  emptyArray[i] = res
+			      }
+            document.getElementById("textbox2").value = emptyArray[0];
+            document.getElementById("textbox3").value = emptyArray[1];
+			document.getElementById("textbox4").value = emptyArray[2];
+            document.getElementById("textbox5").value = emptyArray[3];
+			document.getElementById("textbox6").value = emptyArray[4];
+            document.getElementById("textbox7").value = emptyArray[5];
+			document.getElementById("textbox8").value = emptyArray[6];
+            document.getElementById("textbox9").value = emptyArray[7];
+  }
+  
+  function genCase()
+      {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           }
+        document.getElementById("textbox10").value = text;
+          
+      }
+      
+  function genCallerID()
+      {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           }
+        document.getElementById("textbox11").value = text;
+          
+      }
+</script>
+</head>
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">IPA</a>
+              </div>
+            </header>
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>Caller Identification</h2>
+                    <p><strong>Note:</strong> Paste the client details below </p>
+                    <textarea id="comment" rows="10" cols="55"></textarea>
+                    <p><button type="button" onclick = send()>Auto fill</button></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    
+
+  
+  
+     
+             <section class="forms">
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Name</label>
+                            <input type="text" name="textbox2" id="textbox2" />
+                          </div>
+                          <div class="col-md-6">
+  
+                            <label>Surname</label>
+                            <input type="text" name="textbox3" id="textbox3" />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+  
+                             <label>Address</label>
+                             <input type="text" name="textbox4" id="textbox4" />
+                          </div>
+                          <div class="col-md-6">
+                            <label>Cell Number</label>
+                            <input type="text" name="textbox5" id="textbox5" />
+                           </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Call back number</label>
+                            <input type="text" name="textbox6" id="textbox6" />
+                          </div>
+                          <div class="col-md-6">
+                            <label>Client Type</label>
+                            <input type="text" name="textbox7" id="textbox7" />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Service Type</label>
+                            <input type="text" name="textbox8" id="textbox8" />
+                          </div>
+                          <div class="col-md-6">
+                            <label>Reason</label>
+                            <input type="text" name="textbox9" id="textbox9" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+
+
+    
+    
+ <section class="forms">
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <h2>Generating Case Report </h2>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label >Case ID </label>
+                              <input type="text" name="textbox10" id="textbox10" />
+                              <p><button type="button" onclick = genCase()>Generate Case ID</button></p>
+                            </div>
+                            <div class="col-md-6">
+                               <label>Caller ID</label>
+                                <input type="text" name="textbox11" id="textbox11" />
+                               <p><button type="button" onclick = genCallerID()>Generate Caller ID</button></p>
+                            </div>
+                          </div> 
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label>Incident Date</label>
+                              <input type="text" name="textbox12" id="textbox12" />
+                              <p><button type="button" onclick = genDate()>Get current date</button></p>
+                            </div>
+                            <div class="col-md-6">
+                               <label>Case Description</label>
+                              <input type="text" name="textbox16" id="textbox16" />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+   
+                              <label>Case Status</label>
+                              <input type="text" name="textbox17" id="textbox17" value = "pending" />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+   
+                             <label>Plumber ID</label>
+                              <input type="text" name="textbox18" list="exampleList1" id = "textbox18">
+                          		<datalist id="exampleList1">
+                          			<option value="24DbXsyVhZ">  
+                          			<option value="24DhAjwRbi">
+                          			<option value="24N8gqUbzf">
+                          			<option value="24iYRIBgrd">
+                          			<option value="24jjZdgHIF">
+                          			
+                          	    </datalist>
+                              </div>
+                              <div class="col-md-6">
+                               <label>Case Opened by (Agent ID)</label>
+                            	 <input type="text" name="textbox19" list="exampleList" id = "textbox19">
+                            		<datalist id="exampleList">
+                            			<option value="ARvCV6mlk">  
+                            			<option value="AXJXoxUcT">
+                            			<option value="AmYRVePKB">
+                            			<option value="AqFqK4rxM">
+                            			<option value="Av5cwg13a">
+                            			
+                            	    </datalist>
+                              </div>
+                            </div>
+                          
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+   
+
+ <button type="submit" onclick = "storeData()">Submit</button>
+<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="search.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="closecase.html">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+    </div>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+ 
+ <script>
+ var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+ 
+
+
+
+
+function storeData()
+{
+var name1 = document.getElementById('textbox2').value;
+var surname1 = document.getElementById('textbox3').value;
+var address1 = document.getElementById('textbox4').value;
+var cellNumber1 = document.getElementById('textbox5').value;
+var callBackNumber1 = document.getElementById('textbox6').value;
+var clientType1 = document.getElementById('textbox7').value;
+var serviceType1 = document.getElementById('textbox8').value;
+var reason1= document.getElementById('textbox9').value;
+
+
+//generating report
+var caseID1 = document.getElementById('textbox10').value;
+var callerID1 = document.getElementById('textbox11').value;
+var incidentDate1 = document.getElementById('textbox12').value;
+var caseDescription1 = document.getElementById('textbox16').value;
+var caseStatus1 = document.getElementById('textbox17').value;
+var plumberID1 = document.getElementById('textbox18').value;
+var caseOpenedBy1 = document.getElementById('textbox19').value;
+// var caseClosedBy1 = document.getElementById('textbox20').value;
+// var caseclosedDate1 = document.getElementById('textbox21').value;
+
+
+
+
+
+
+
+
+db.collection("callerDetails").doc(callerID1).set(
+{
+callerID : callerID1,
+name: name1,
+surname:surname1,
+address:address1,
+cellNumber:cellNumber1,
+callBackNumber:callBackNumber1,
+clientType:clientType1,
+serviceType:serviceType1,
+reason:reason1
+
+
+}
+)
+
+db.collection("caseDetails").doc(caseID1).set(
+{
+caseID: caseID1,
+callerID : callerID1,
+incidentDate:incidentDate1,
+addressOfIncident :address1,
+caseDescription : caseDescription1,
+caseStatus : caseStatus1,
+plumberID : plumberID1,
+caseOpenedBy :caseOpenedBy1,
+caseClosedBy : "unknown",
+caseClosedDate : "unknown"
+
+
+}
+)
+
+
+db.collection("users").get().then(function(querySnapshot)
+  {
+    querySnapshot.forEach(function(doc)
+    {
+    
+        //console.log(doc.id[0]);
+      //i++;
+      if(doc.id==plumberID1)
+      {
+         db.collection("users").doc(doc.id).update({caseToWorkOn: caseID1  });
+      }
+      
+      
+     });
+    
+  });
+
+  
+  
+  /*
+  var com = "24";
+  var u = "unknown";
+  db.collection("caseDetails").get().then(function(querySnapshot)
+  {
+    querySnapshot.forEach(function(doc)
+    {
+      if(com==doc.data().caseStatus && u==doc.data().caseClosedBy)
+      {
+        display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseStatus +"</td><td> " + doc.data().caseID+"</td><td> "+doc.data().caseClosedDate+"</td></tr></table><br/>";
+      }
+     });
+    
+  });
+
+
+*/
+alert("added succesfully");
+//location.reload();
+}
+ </script>
+</div>
+</div>
+</div>
+</body>
+</html>                
