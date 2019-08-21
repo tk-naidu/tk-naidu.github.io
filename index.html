@@ -93,53 +93,56 @@
 
 
 
+	<script src ="jquery.min.js"></script>
 	<script >
-		var array = [];
-		var id = [];
-		var i = 0;
-		function yourfunction() {
-			var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.firestore();
-  	// window.location.href='index.html';
-  	database.collection("agentCredentials").get().then(function(querySnapshot)
-	{
+ 	
+
+// 		var array = [];
+// 		var id = [];
+// 		var i = 0;
+// 		function yourfunction() {
+// 			var firebaseConfig = {
+//     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+//     authDomain: "geyser-74ddf.firebaseapp.com",
+//     databaseURL: "https://geyser-74ddf.firebaseio.com",
+//     projectId: "geyser-74ddf",
+//     storageBucket: "geyser-74ddf.appspot.com",
+//     messagingSenderId: "1001903322970",
+//     appId: "1:1001903322970:web:a904b91e99d67b22"
+//   };
+//   firebase.initializeApp(firebaseConfig);
+//   var database = firebase.firestore();
+//   	// window.location.href='index.html';
+//   	database.collection("agentCredentials").get().then(function(querySnapshot)
+// 	{
 	   
-		querySnapshot.forEach(function(doc)
-		{
+// 		querySnapshot.forEach(function(doc)
+// 		{
 		
-			//console.log(doc.data().agentPass);
-			var t = doc.data().agentPass;
-			var y = doc.data().agentID;
-		    array[i] = t;
-			id[i] = y;
-			i++;
+// 			//console.log(doc.data().agentPass);
+// 			var t = doc.data().agentPass;
+// 			var y = doc.data().agentID;
+// 		    array[i] = t;
+// 			id[i] = y;
+// 			i++;
 			
 			
 			
-	   });
-		console.log(array);
-		console.log(id);
+// 	   });
+// 		console.log(array);
+// 		console.log(id);
 	   
 	   
-	   // alert("Invalid Password or UserName");
-	   // location.reload();
+// 	   // alert("Invalid Password or UserName");
+// 	   // location.reload();
 
 		
-	});
-  }
+// 	});
+//   }
 
-window.onload = yourfunction;
+// window.onload = yourfunction;
  
-  // Initialize Firebase
+//   // Initialize Firebase
   function Login() {
   	
   
@@ -148,29 +151,88 @@ window.onload = yourfunction;
   var ps=document.getElementById("pw").value;
   console.log(ps);
 
-  var count=0;
-  for(var j =0; j<i;j++)
-	   {
-		  if(ps == array[j] && use == id[j])
-		  {
-		  	count++;
-		     console.log("hi");
-		     alert("Correct");
-		    location.replace("home.html");
+ /*
+ var  object={
+ 	type:'login',
+ 	userName:use,
+ 	password:ps
+ };
+ var strobj=JSON.stringify(object);
+ console.log(strobj);
+ $.post('localhost:4000',strobj,function(data,status){
+ 	var check=JSON.parse(data);
+ 	console.log(check);
+ 	if(check.hasOwnProperty('Error'))
+ 	{
+ 		console.log("failed log in");
+ 	}
+ 	else
+ 	{
+ 		var id=check.identifier;
+ 		var UT=check.userType;
+ 		console.log(id+UT);
+
+ 	}
+
+ });
+*/
+ $.ajax({
+    url: "http://127.0.0.1:4000/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+        type: "login",
+        userName: use,
+        password: ps
+    }),
+    success:function(res){
+    	console.log("Success: "+res) ;
+    	var convertedObj= JSON.parse(res);
+    	console.log(convertedObj.userType);  
+    	 alert("Correct");
+
+    	 if(convertedObj.userType=="admin"||convertedObj.userType=="agent")
+		location.replace("home.html");
+	else
+	{
+		location.replace("home2.html");
+	}
+
+    },
+    fail:function(data){
+    	console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+    	console.log(jqXHR)
+    	console.log(textStatus)
+    	console.log(errorThrown)
+    }
+}); 
+  // var count=0;
+  // for(var j =0; j<i;j++)
+	 //   {
+		//   if(ps == array[j] && use == id[j])
+		//   {
+		//   	count++;
+		//      console.log("hi");
+		//      alert("Correct");
+		//     location.replace("home.html");
         	
 		   
-		   }
+		//    }
 		   
-	   }
-	   if(count ==0){
-	   alert("Invalid Password or username");
-		location.reload();}
+	 //   }
+	 //   if(count ==0){
+	 //   alert("Invalid Password or username");
+		// location.reload();}
 		
 
 
 
 
 }
+
 
 
 	</script>
