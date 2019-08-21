@@ -180,7 +180,22 @@ async function handle(req)
 		console.log("Case search request");
 		return retrieveCaseSearch(req.body);
 	}
-	
+	if(req.body.type=="retrieveAgentSearch")
+	{
+		console.log("Agent search request");
+		retrun retrieveAgentSearch(req.body);
+	}
+	if(req.body.type=="retrieveCapacitySearch")
+	{
+		console.log("Capacity search request");
+		retrun retrieveCapacitySearch(req.body);
+	}
+	if(req.body.type=="retrieveBrandSearch")
+	{
+		console.log("Manufacturer search request");
+		retrun retrieveBrandSearch(req.body);
+	}
+	retrieveBrandSearch
 }
 
 /*
@@ -1068,6 +1083,117 @@ function retrieveCaseSearch(body)
 					callerID: doc.data().callerID,
 					caseOpenedBy:doc.data().caseOpenedBy,
 					caseClosedBy:doc.data().caseClosedBy
+
+				}
+				returnData.data.push(row);
+			}
+		});
+		return JSON.stringify(returnData);
+	});
+}
+
+function retrieveAgentSearch(body)
+{
+	if(!validateIdentifier(body))
+	{
+		console.log("Invalid user");
+		var returnData={
+			Error: "Invalid User"
+		}
+		return JSON.stringify(returnData);
+	}
+	var id=body.id;
+	var returnData={
+		data:[]
+	};
+	return db.collection("caseDetails").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			console.log(doc.data());
+			if(id == doc.data().caseOpenedBy){
+				console.log("entry found");
+				var row={
+					caseID:doc.data().caseID,
+					incidentDat:doc.data().incidentDate,
+					caseStatus: doc.data().caseStatus,
+					caseDescription:doc.data().caseDescription,
+					addressOfIncident:doc.data().addressOfIncident,
+					callerID: doc.data().callerID,
+					caseOpenedBy:doc.data().caseOpenedBy,
+					caseClosedBy:doc.data().caseClosedBy
+
+				}
+				returnData.data.push(row);
+			}
+		});
+		return JSON.stringify(returnData);
+	});
+}
+
+function retrieveCapacitySearch(body)
+{
+	if(!validateIdentifier(body))
+	{
+		console.log("Invalid user");
+		var returnData={
+			Error: "Invalid User"
+		}
+		return JSON.stringify(returnData);
+	}
+	var id=body.id;
+	var returnData={
+		data:[]
+	};
+	return db.collection("geyser").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			console.log(doc.data());
+			if(id == doc.data().capacity){
+				console.log("entry found");
+				var row={
+					barcode:doc.data().barcode,
+					caseID:doc.data().caseID,
+					insurance: doc.data().insurance,
+					manufacturer:doc.data().manufacturer,
+					model:doc.data().model
+
+				}
+				returnData.data.push(row);
+			}
+		});
+		return JSON.stringify(returnData);
+	});
+}
+
+function retrieveBrandSearch(body)
+{
+	if(!validateIdentifier(body))
+	{
+		console.log("Invalid user");
+		var returnData={
+			Error: "Invalid User"
+		}
+		return JSON.stringify(returnData);
+	}
+	var id=body.id;
+	var returnData={
+		data:[]
+	};
+	return db.collection("geyser").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			console.log(doc.data());
+			if(id == doc.data().manufacturer){
+				console.log("entry found");
+				var row={
+					barcode:doc.data().barcode,
+					caseID:doc.data().caseID,
+					insurance: doc.data().insurance,
+					manufacturer:doc.data().manufacturer,
+					model:doc.data().model
 
 				}
 				returnData.data.push(row);
