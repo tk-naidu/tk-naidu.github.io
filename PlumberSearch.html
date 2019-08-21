@@ -179,35 +179,75 @@ window.onclick = function(event) {
 var bar=document.getElementById("plumber").value;
 console.log(bar);
 const display=document.querySelector("#display");
-var c=0;
-database.collection("caseDetails").get().then(function(querySnapshot)
-{
 
-  querySnapshot.forEach(function(doc){
-  	console.log(doc.data());
-    if(bar==doc.data().plumberID){
-	      c++;
-	    console.log("entry foound"
+$.ajax({
+    url: "http://127.0.0.1:4000/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+        type: "retrieveCaseSearch",
+        id: bar,
+        identifier:"abcdefghij"
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      var convertedObj= JSON.parse(res);
+      console.log(convertedObj.userType);  
+       //alert("Correct");
+       for(var co=0;co<convertedObj.data.length;co++){
+      var rows = "";
+      rows= "<tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[i].incidentDat
+      +"</td><td>"+convertedObj.data[co].addressOfIncident+"</td><td>"+convertedObj.data[co].caseStatus+"</td><td>"+convertedObj.data[co].caseDescription
+      +"</td><td>"+convertedObj.data[co].callerID+"</td><td>"+convertedObj.data[co].caseOpenedBy +"</td><td>"+convertedObj.data[co].caseClosedBy+"</td></tr>";
+      $( rows ).appendTo( "#itemList tbody" );
+    }
+
+    },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+}); 
+
+
+
+
+
+
+
+// database.collection("caseDetails").get().then(function(querySnapshot)
+// {
+
+//   querySnapshot.forEach(function(doc){
+//   	console.log(doc.data());
+//     if(bar==doc.data().plumberID){
+// 	      c++;
+// 	    console.log("entry foound"
 	      
-	      //can add.details to be specific
-	      );
-	    var rows = "";
-	    // rows += "<tr><td>" +...++"</td></tr>";
-	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
-	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
-	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
-	    $( rows ).appendTo( "#itemList tbody" );
-	  }
-	}
-  );
+// 	      //can add.details to be specific
+// 	      );
+// 	    var rows = "";
+// 	    // rows += "<tr><td>" +...++"</td></tr>";
+// 	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
+// 	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
+// 	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
+// 	    $( rows ).appendTo( "#itemList tbody" );
+// 	  }
+// 	}
+//   );
 
   
-});
-if(c==0)
-{
+// });
+// if(c==0)
+// {
 	
 
-}
+// }
 }
 
 
