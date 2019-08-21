@@ -57,7 +57,7 @@
                     <fieldset>
                       <label>Type of Job done: </label>
                       <input name="search" type="text" class="form-control" id="plumber" placeholder="Job Type..." required>
-                      <button type="button" onclick = SP()>Search</button>
+                      <button type="button" onclick = job()>Search</button>
                       <!-- <button type="button" onclick = clear()>clear</button> -->
                       <a href="closecase.html">clear</a>
 
@@ -109,7 +109,7 @@
                   <span class="opener">Cases</span>
                   <ul>
                     <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="search.html">Close case</a></li>
+                    <li><a href="closeCase.html">Close case</a></li>
                 
                   </ul>
                 </li>
@@ -117,7 +117,7 @@
                   <span class="opener">Statistics</span>
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="closecase.html">Search enquiries</a></li>
+                    <li><a href="search.html">Search enquiries</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
@@ -173,7 +173,7 @@ window.onclick = function(event) {
   }
 }
 
-	function SP() {
+	function job() {
 // clear();
 var bar=document.getElementById("plumber").value;
 console.log(bar);

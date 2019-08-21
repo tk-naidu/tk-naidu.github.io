@@ -57,9 +57,9 @@
                     <fieldset>
                       <label>Geyser Capacity search: </label>
                       <input name="search" type="text" class="form-control" id="plumber" placeholder="Capacity..." required>
-                      <button type="button" onclick = SP()>Search</button>
+                      <button type="button" onclick = capacity()>Search</button>
                       <!-- <button type="button" onclick = clear()>clear</button> -->
-                      <a href="closecase.html">clear</a>
+                      <a href="Capacity.html">clear</a>
 
                     </fieldset>
            		</div>
@@ -77,14 +77,11 @@
                       <table id="itemList">
                         <thead>
                           <tr>
+                            <th>Barcode</th>
                             <th>CaseID</th>
-                            <th>Incident Date</th>
-                            <th>Address</th>
-                            <th>Case Status</th>
-                            <th>Description</th>
-                            <th>Caller ID</th>
-                            <th>Agent O</th>
-                            <th>Agent C</th>
+                            <th>Insured</th>
+                            <th>Manufacturer</th>
+                            <th>Model</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -95,6 +92,19 @@
 	</div>
 </div>
 </div>
+<section class="contact-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                   <footer>
+                    <p>Created by: Team highTech</p>
+                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
+                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
 </section>
 <!-- Sidebar -->
         <div id="sidebar">
@@ -109,7 +119,7 @@
                   <span class="opener">Cases</span>
                   <ul>
                     <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="search.html">Close case</a></li>
+                    <li><a href="closeCase.html">Close case</a></li>
                 
                   </ul>
                 </li>
@@ -117,11 +127,12 @@
                   <span class="opener">Statistics</span>
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="closecase.html">Search enquiries</a></li>
+                    <li><a href="search.html">Search enquiries</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
                 <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="signUpUser.html">Add new Agent</a></li>
                 <li><a href="https://www.google.com">External Link</a></li>
                 <li><a href="index.html">Logout</a></li>
               </ul>
@@ -173,10 +184,10 @@ window.onclick = function(event) {
   }
 }
 
-	function SP() {
+	function capacity() {
 // clear();
-var bar=document.getElementById("plumber").value;
-console.log(bar);
+var capacity=document.getElementById("plumber").value;
+console.log(capacity);
 const display=document.querySelector("#display");
 var c=0;
 database.collection("geyser").get().then(function(querySnapshot)
@@ -184,7 +195,7 @@ database.collection("geyser").get().then(function(querySnapshot)
 
   querySnapshot.forEach(function(doc){
   	console.log(doc.data());
-    if(bar==doc.data().capacity){
+    if(capacity==doc.data().capacity){
 	      c++;
 	    console.log("entry foound"
 	      
@@ -192,9 +203,8 @@ database.collection("geyser").get().then(function(querySnapshot)
 	      );
 	    var rows = "";
 	    // rows += "<tr><td>" +...++"</td></tr>";
-	    // rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
-	    // +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
-	    // +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
+	    rows= "<tr><td>"+doc.data().barcode+"</td><td>"+doc.data().caseID
+	    +"</td><td>"+doc.data().insurance+"</td><td>"+doc.data().manufacturer+"</td><td>"+doc.data().model+"</td></tr>";
 	    $( rows ).appendTo( "#itemList tbody" );
 	  }
 	}
@@ -202,11 +212,7 @@ database.collection("geyser").get().then(function(querySnapshot)
 
   
 });
-if(c==0)
-{
-	
 
-}
 }
 
 

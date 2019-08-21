@@ -57,9 +57,9 @@
                     <fieldset>
                       <label>Cases added by agent: </label>
                       <input name="search" type="text" class="form-control" id="plumber" placeholder="Agent ID..." required>
-                      <button type="button" onclick = SP()>Search</button>
+                      <button type="button" onclick = agentSearch()>Search</button>
                       <!-- <button type="button" onclick = clear()>clear</button> -->
-                      <a href="closecase.html">clear</a>
+                      <a href="agentSearch.html">clear</a>
 
                     </fieldset>
            		</div>
@@ -96,6 +96,19 @@
 </div>
 </div>
 </section>
+<section class="contact-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                   <footer>
+                    <p>Created by: Team highTech</p>
+                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
+                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
 <!-- Sidebar -->
         <div id="sidebar">
 
@@ -109,7 +122,7 @@
                   <span class="opener">Cases</span>
                   <ul>
                     <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="search.html">Close case</a></li>
+                    <li><a href="closeCase.html">Close case</a></li>
                 
                   </ul>
                 </li>
@@ -117,11 +130,12 @@
                   <span class="opener">Statistics</span>
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="closecase.html">Search enquiries</a></li>
+                    <li><a href="search.html">Search enquiries</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
                 <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="signUpUser.html">Add new Agent</a></li>
                 <li><a href="https://www.google.com">External Link</a></li>
                 <li><a href="index.html">Logout</a></li>
               </ul>
@@ -173,10 +187,10 @@ window.onclick = function(event) {
   }
 }
 
-	function SP() {
+	function agentSearch() {
 // clear();
-var bar=document.getElementById("plumber").value;
-console.log(bar);
+var agentID=document.getElementById("plumber").value;
+//console.log(bar);
 const display=document.querySelector("#display");
 var c=0;
 database.collection("caseDetails").get().then(function(querySnapshot)
@@ -184,7 +198,7 @@ database.collection("caseDetails").get().then(function(querySnapshot)
 
   querySnapshot.forEach(function(doc){
   	console.log(doc.data());
-    if(bar==doc.data().caseOpenedBy){
+    if(agentID==doc.data().caseOpenedBy){
 	      c++;
 	    console.log("entry foound"
 	      

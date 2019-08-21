@@ -34,7 +34,7 @@
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href=#>IPA</a>
+                <a href="home.html">IPA</a>
               </div>
             </header>
 
@@ -64,10 +64,10 @@
                          <div class="row">
                           <div class="col-md-6">
                            
-                              <label>Agent ID</label>
-                          	<p><strong>Note: please click the generate button to create an ID.</p>
+                              <label>Username</label>
+                          	
                               <input type="text" name="textbox1" id="textbox1" />
-                          	<p><button type="button" onclick = genAgentID()>Generate Agent ID</button></p>
+                          	
                             </div>
                           </div>
                           <div class="row">
@@ -83,7 +83,7 @@
                           </div>
                         </div>
                           	<!-- <input type="checkbox" onclick="myFunction()">Show Password -->
-                          	<p><button type="button" onclick = genAgentPassword()>Generate Agent Password</button></p>
+                          	<p><button type="button" onclick = genAgentPassword()>Generate Password</button></p>
                           	</div>
                           </div>
                           <div class="row">
@@ -103,19 +103,18 @@
                       </section>
 
                       <!-- Sidebar -->
-       <!--  <div id="sidebar">
-
-          <div class="inner"> -->
+        <div id="sidebar">
+          <div class="inner">
 
             <!-- Search Box -->
-            <!-- <section id="search" class="alt">
+            <section id="search" class="alt">
               <form method="get" action="#">
                 <input type="text" name="search" id="search" placeholder="Search..." />
               </form>
-            </section> -->
+            </section>
               
             <!-- Menu -->
-           <!-- <nav id="menu">
+           <nav id="menu">
               <ul>
                 <li><a href="index.html">Homepage</a></li>
             
@@ -134,16 +133,19 @@
                     <li><a href="#">Search enquiries</a></li>
                   </ul>
                 </li>
-                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                li><a href="AddEmployee.html">Add Plumber</a></li>
+                  <li><a href="removePlumber.html">Remove Plumber</a></li>
+                  <li><a href="signUpUser.html">Add new Agent</a></li>
                 <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
               </ul>
-            </nav> -->
+            </nav>
 
             <!-- Footer -->
-            <!-- <footer id="footer">
+            <footer id="footer">
               <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
               <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
-            </footer> -->
+            </footer>
             
           </div>
         </div>
@@ -176,17 +178,7 @@
   var db = firebase.firestore();
  
  
- function genAgentID()
- {
-        var text = "A";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-           for(var i = 0; i < 8; i++) 
-          {
-             text += possible.charAt(Math.floor(Math.random() * possible.length));
-           }
-        document.getElementById("textbox1").value = text;
-          
- }
+ 
  
  
  function genAgentPassword()
@@ -212,29 +204,16 @@
   if(pass1 == confirm1)
   { 
     check++;
-
-				db.collection("agentCredentials").doc(id1).set
+				db.collection("userCredentials").doc(id1).set
 				(
 					{
-						agentName : name1,
-						agentID: id1,
-						agentPass: pass1
+						fullName : name1,
+						username: id1,
+						userPassword: pass1
 					
-
-
-
 					}
 				)
-
-				db.collection("users").doc(id1).set
-				(
-					{
-					  password : pass1,
-					  userType : "agent"
-
-
-					}
-				)
+				
 	}
 	else
 	{
@@ -245,7 +224,7 @@
   }
  }
  function log(){
-   window.location.href='index.html';
+   window.location.href='login.html';
  }
  function myFunction() {
   var x = document.getElementById("textbox2");
@@ -256,14 +235,7 @@
   }
 }
  
-
-
-
-
-
-
  
-
  
  </script>
 </div></div>

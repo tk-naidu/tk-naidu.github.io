@@ -1,0 +1,147 @@
+********************Caller identification*********************************
+
+Name = Janaki 
+surname = Patil 
+address = eruditi, prospect street, Hatfield, Pretoria, 0028
+cell number = 0123456789
+call back number = 0789456123
+client type = home owner
+service type = installation
+reason = require new geyser 
+
+
+Name = Jerry 
+surname = Franco
+address = House No 1456, Legabe street, unit 4, Mogwase, 0314
+cell number = 1478523604
+call back number = 0874596715
+client type = Home Owner
+service type = Installation
+reason = require new geyser 
+
+
+Name = Diviya  
+surname = Patil 
+address = Makwassie, Festival Street, Hatfield, Pretoria, 0028
+cell number = 0789546321
+call back number = 07985236142
+client type = Home Owner
+service type = Repairs
+reason = geyser to be repaired 
+
+
+Name = Garry   
+surname = Nova
+address = Hatfield Studio, Burnett Street, Hatfield, Pretoria, 0028
+cell number = 0896547123
+call back number = 0874592136
+client type = Home Owner
+service type = Installation
+reason = geyser to be installed
+
+
+Name = Pieter  
+surname = Lilly
+address = Studios, Burnett Street, Hatfield, Pretoria, 0028
+cell number = 08452136971
+call back number = 0745213698
+client type = Home Owner
+service type = Installation
+reason = geyser to be installed
+
+Name = Patter
+surname = Soulk
+address = Gables, Prospect Street, Hatfield, Pretoria, 0028
+cell number = 0745896321
+call back number = 08954758954
+client type = Home Owner
+service type = Repairs
+reason = geyser to be repaired
+
+Name = Mark 
+surname = Shuttleworth
+address = The Fields, Burnett Street, Hatfield, Pretoria, 0028
+cell number = 0745896321
+call back number =0847521397
+client type = Home Owner
+service type = Installation
+reason = geyser to be installed
+
+
+***********************CV****************************
+
+Name : Janaki Patil 
+ID Number : 9601201478523
+Cell Number: 0782333696
+Address : Eruditi, Prospect street, Hatfield, Pretoria, 0028
+
+
+Name : Diviya Patil  
+ID Number : 9601207418235
+Cell Number: 0782333787
+Address : Eruditi, Prospect street, Hatfield, Pretoria, 0028
+
+Name : Theo Naidu  
+ID Number : 99705291458763
+Cell Number: 0745963214
+Address : Respublica, Prospect street, Hatfield, Pretoria, 0028
+
+Name : Tim Crook  
+Date Of Birth : 22/03/1985
+Gender : Male
+ID Number : 8503221458961
+Cell Number: 07456321896
+Address : Makwassie, Festival street, Hatfield, Pretoria, 0028
+
+Name : Simran Timmer  
+Date Of Birth : 23/04/1986
+Gender : Male
+ID Number : 8604231236598
+Cell Number: 0896547123
+Address : Studios, Festival street, Hatfield, Pretoria, 0028
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** upon final submission-> update the case status from pending to done.
+** for repairs make sure to add another folder(called repairs) within the same folder (using the case ID as a reference) 
+ eg caseID->Installation folder and repais folder 
+ 
+ ** create a separate repairs folder and have the case form format 
+ 
+ 
+ 
+ Done list
+ 
+ Delete 
+ AddEmployee
+ callerAndcase 
+ 
+ 
+ Pending 
+ 
+ ** upon final submission-> update the case status from pending to done.
+** for repairs make sure to add another folder(called repairs) within the same folder (using the case ID as a reference) 
+ eg caseID->Installation folder and repais folder 
+ 
+ ** create a separate repairs folder and have the case form format 
+ 
+ **stats 
+ 
+ ** to do list for the app 

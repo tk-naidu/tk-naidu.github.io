@@ -56,10 +56,10 @@
                 <div class="col-md-6">
                     <fieldset>
                       <label>Cases done In certain month: </label>
-                      <input name="search" type="text" class="form-control" id="plumber" placeholder="Month in words..." required>
-                      <button type="button" onclick = SP()>Search</button>
+                      <input name="search" type="text" class="form-control" id="plumber" placeholder="plumberID..." required>
+                      <button type="button" onclick = monthSearch()>Search</button>
                       <!-- <button type="button" onclick = clear()>clear</button> -->
-                      <a href="closecase.html">clear</a>
+                      <a href="monthlyJobStats.html">clear</a>
 
                     </fieldset>
            		</div>
@@ -173,18 +173,19 @@ window.onclick = function(event) {
   }
 }
 
-	function SP() {
+	function monthSearch() {
 // clear();
-var bar=document.getElementById("plumber").value;
-console.log(bar);
+var month=document.getElementById("plumber").value;
+///console.log(bar);
 const display=document.querySelector("#display");
 var c=0;
+
+
 database.collection("caseDetails").get().then(function(querySnapshot)
 {
-
   querySnapshot.forEach(function(doc){
   	console.log(doc.data());
-    if(bar==doc.data().plumberID){
+    if(monthr==doc.data().plumberID){
 	      c++;
 	    console.log("entry foound"
 	      

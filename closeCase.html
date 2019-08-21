@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>Close a case</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+ 
+ 
+
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+</head>
+
+<body class="is-preload">
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+          	<!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">IPA</a>
+              </div>
+            </header>
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <br>
+                    <h2>Select case to close</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                  	<h2>Choose an agent</h2>
+                  	<br>
+                  </div>
+                </div>
+              </div>
+            </div>
+	
+	 <section class="forms">
+	 	<div class="container-fluid">
+                  <div class="row">
+                  	<div class="col-md-12">
+						<button onclick= search()>View cases that needs to be closed </button>
+						<p id = "testing"></p>
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="col-md-6">
+						
+				
+						<label>Case Closed by (Agent ID)</label>
+						<input type="text" name="textbox19" list="exampleList" id = "test" required>
+							<datalist id="exampleList">
+								<option value="ARvCV6mlk">  
+								<option value="AXJXoxUcT">
+								<option value="AmYRVePKB">
+								<option value="AqFqK4rxM">
+								<option value="Av5cwg13a">
+								
+						    </datalist>
+					</div>
+				<button onclick= add()>Close the case </button>
+			</div>
+</section>
+				</div>
+        <section class="contact-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                   <footer>
+                    <p>Created by: Team highTech</p>
+                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
+                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
+			</div>
+		</div>
+	</div>
+
+   
+  
+<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="closeCase.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="search.html">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                  <li><a href="removePlumber.html">Remove Plumber</a></li>
+                  <li><a href="signUpUser.html">Add new Agent</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+    </div>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+<script>
+
+var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+  
+/*
+function searchName() {
+//var agentID1 = document.getElementById('textbox1').value;  // get agent ID
+var closed1 = genDate();
+ const display=document.querySelector("#test");
+db.collection("caseDetails").get().then(function(querySnapshot)
+{
+  querySnapshot.forEach(function(doc)
+  {
+            var html = " ";
+			var com = "completed";
+			var check = doc.data().caseStatus;
+			
+			
+			console.log(check);
+			if(com==doc.data().caseStatus)
+			{
+			
+			
+			display.innerHTML +=doc.data().caseStatus + "<br>";
+			//display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseStatus +"</td><td> " + doc.data().caseID+"</td><td> "+doc.data().caseOpenedBy+"</td></tr></table><br/>";
+            var to = doc.data().caseID;
+			
+			// this code below is used to update the field
+			db.collection("caseDetails").doc(to).update(
+				{
+					
+					closeByAgentID : "done",
+				})
+			}		
+		
+});
+	
+	
+});
+
+
+
+
+}
+
+*/
+
+function genDate()
+{
+     var today = new Date();
+     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+       
+	  return date;
+}
+
+function add() 
+{
+  
+	
+	const display=document.querySelector("#display");
+	var date = genDate();
+	var agent = document.getElementById("test").value;
+	alert(agent);
+	var com = "completed";
+  var u="unknown";
+	db.collection("caseDetails").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			if(com==doc.data().caseStatus&& u==doc.data().caseClosedBy )
+			{
+			   
+				db.collection("caseDetails").doc(doc.id).update({caseClosedBy: agent, caseClosedDate :date, caseStatus : "closed"  });
+			}
+	   });
+		
+	});
+
+}
+
+function search()
+{
+
+
+	const display=document.querySelector("#testing");
+	var date = genDate();
+	var u= "unknown";
+	var com = "completed";
+	db.collection("caseDetails").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
+			{
+			  display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
+			}
+	   });
+		
+	});
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</script>
+
+</body>
+
+</html>
