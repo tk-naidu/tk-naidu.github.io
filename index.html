@@ -26,11 +26,6 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 </head>
 <body>
 	
@@ -39,7 +34,7 @@
 			<div class="wrap-login100 p-b-160 p-t-50">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-43">
-						IPA Login
+						Account Login
 					</span>
 					
 					<div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
@@ -60,10 +55,9 @@
 					</div>
 					
 					<div class="text-center w-full p-t-23">
-						<a href="signUpAdmin.html" class="txt1">
+						<a href="#" class="txt1">
 							Sign up
 						</a>
-
 					</div>
 				</form>
 			</div>
@@ -89,60 +83,17 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<!-- \<script src="js/main.js"></script> -->
-
-
-
-	<script src ="jquery.min.js"></script>
-	<script >
+	<script src="js/main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+<!-- <script src ="jquery.min.js"></script>
+ -->	<script >
  	
 
-// 		var array = [];
-// 		var id = [];
-// 		var i = 0;
-// 		function yourfunction() {
-// 			var firebaseConfig = {
-//     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-//     authDomain: "geyser-74ddf.firebaseapp.com",
-//     databaseURL: "https://geyser-74ddf.firebaseio.com",
-//     projectId: "geyser-74ddf",
-//     storageBucket: "geyser-74ddf.appspot.com",
-//     messagingSenderId: "1001903322970",
-//     appId: "1:1001903322970:web:a904b91e99d67b22"
-//   };
-//   firebase.initializeApp(firebaseConfig);
-//   var database = firebase.firestore();
-//   	// window.location.href='index.html';
-//   	database.collection("agentCredentials").get().then(function(querySnapshot)
-// 	{
-	   
-// 		querySnapshot.forEach(function(doc)
-// 		{
-		
-// 			//console.log(doc.data().agentPass);
-// 			var t = doc.data().agentPass;
-// 			var y = doc.data().agentID;
-// 		    array[i] = t;
-// 			id[i] = y;
-// 			i++;
-			
-			
-			
-// 	   });
-// 		console.log(array);
-// 		console.log(id);
-	   
-	   
-// 	   // alert("Invalid Password or UserName");
-// 	   // location.reload();
 
-		
-// 	});
-//   }
-
-// window.onload = yourfunction;
- 
-//   // Initialize Firebase
   function Login() {
   	
   
@@ -151,31 +102,7 @@
   var ps=document.getElementById("pw").value;
   console.log(ps);
 
- /*
- var  object={
- 	type:'login',
- 	userName:use,
- 	password:ps
- };
- var strobj=JSON.stringify(object);
- console.log(strobj);
- $.post('localhost:4000',strobj,function(data,status){
- 	var check=JSON.parse(data);
- 	console.log(check);
- 	if(check.hasOwnProperty('Error'))
- 	{
- 		console.log("failed log in");
- 	}
- 	else
- 	{
- 		var id=check.identifier;
- 		var UT=check.userType;
- 		console.log(id+UT);
-
- 	}
-
- });
-*/
+ 
  $.ajax({
     url: "http://127.0.0.1:4000/",
     type: "POST",
@@ -209,23 +136,7 @@
     	console.log(errorThrown)
     }
 }); 
-  // var count=0;
-  // for(var j =0; j<i;j++)
-	 //   {
-		//   if(ps == array[j] && use == id[j])
-		//   {
-		//   	count++;
-		//      console.log("hi");
-		//      alert("Correct");
-		//     location.replace("home.html");
-        	
-		   
-		//    }
-		   
-	 //   }
-	 //   if(count ==0){
-	 //   alert("Invalid Password or username");
-		// location.reload();}
+  
 		
 
 
