@@ -197,7 +197,7 @@ $.ajax({
        //alert("Correct");
        for(var co=0;co<convertedObj.data.length;co++){
       var rows = "";
-      rows= "<tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[i].incidentDat
+      rows= "<tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].incidentDat
       +"</td><td>"+convertedObj.data[co].addressOfIncident+"</td><td>"+convertedObj.data[co].caseStatus+"</td><td>"+convertedObj.data[co].caseDescription
       +"</td><td>"+convertedObj.data[co].callerID+"</td><td>"+convertedObj.data[co].caseOpenedBy +"</td><td>"+convertedObj.data[co].caseClosedBy+"</td></tr>";
       $( rows ).appendTo( "#itemList tbody" );
