@@ -91,9 +91,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 <!-- <script src ="jquery.min.js"></script>
  -->	<script >
- 	
-
-
+ 	var count =3;
   function Login() {
   	
   
@@ -101,7 +99,6 @@
   console.log(use);
   var ps=document.getElementById("pw").value;
   console.log(ps);
-
  
  $.ajax({
     url: "http://127.0.0.1:4000/",
@@ -117,18 +114,24 @@
     	console.log("Success: "+res) ;
     	var convertedObj= JSON.parse(res);
     	console.log(convertedObj.userType);  
-    	 alert("Correct");
-
+    	 //alert("Correct");
     	 if(convertedObj.userType=="admin"||convertedObj.userType=="agent")
 		location.replace("home.html");
-	else
+	else if(convertedObj.userType=="guest")
 	{
 		location.replace("home2.html");
 	}
-
+	else
+	{
+		count--;
+    	if(count>0){alert("incorrect "+count+" attemps remaining");}
+    	 else
+   		 {location.replace("https://www.google.com");}
+	}
     },
     fail:function(data){
     	console.log("Fail: "+data);
+    	
     },
     error: function (jqXHR, textStatus, errorThrown) { 
     	console.log(jqXHR)
@@ -138,14 +141,7 @@
 }); 
   
 		
-
-
-
-
 }
-
-
-
 	</script>
 
 </body>
