@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
- <title>Close a case</title>
+ <title>Search</title>
 <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,27 +18,10 @@
     <link rel="stylesheet" href="assets/css/owl.css">
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-   
- 
- 
-
-</head>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
-
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
-
-<body class="is-preload">
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
-
 
 <body class="is-preload">
 
@@ -48,95 +31,96 @@
       <!-- Main -->
         <div id="main">
           <div class="inner">
-          	<!-- Header -->
+
+            <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href="home.html">IPA</a>
+                <a href="home.html">WorkFlow-IO</a>
               </div>
             </header>
-            <!-- Page Heading -->
+			<!-- Page Heading -->
             <div class="page-heading">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
                     <br>
-                    <h2>Select case to close</h2>
+                    <h2>Search based on various features</h2>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Page Heading -->
-            <div class="page-heading">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                  	<h2>Choose an agent</h2>
-                  	<br>
-                  </div>
-                </div>
+            <div class="dropdown">
+              <!-- <button onclick="myFunction()" class="dropbtn">Search</button> -->
+              <div id="myDropdown" class="dropdown-content">
+                <a href="AgentSearch.html">Jobs per agent</a>
+                <a href="PlumberSearch.html">Jobs done by plumbers</a>
+                <a href="monthlyJobStats.html">geysers a month</a>
+                <a href="Installed.html">Repairs or installation a month</a>
+                <a href="preferedGeyser.html">Prefered geysers</a>
+                <a href="Capacity.html">Prefered Capacity</a>
               </div>
             </div>
-	
-	 <section class="forms">
-	 	<div class="container-fluid">
-                  <div class="row">
-                  	<div class="col-md-12">
-						<button onclick= search()>View cases that needs to be closed </button>
-						<p id = "testing"></p>
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="col-md-6">
-						
-				
-						<label>Case Closed by (Agent ID)</label>
-						<input type="text" name="textbox19" list="exampleList" id = "test" required>
-							<datalist id="exampleList">
-								<option value="ARvCV6mlk">  
-								<option value="AXJXoxUcT">
-								<option value="AmYRVePKB">
-								<option value="AqFqK4rxM">
-								<option value="Av5cwg13a">
-								
-						    </datalist>
-					</div>
-				<button onclick= add()>Close the case </button>
-			</div>
-</section>
-				</div>
-        <section class="contact-form">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                   <footer>
-                    <p>Created by: Team highTech</p>
-                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
-                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
-                  </footer>
-                </div>
-              </div>
-            </div>
-        </section>
-			</div>
-		</div>
-	</div>
+           <!-- <div class="col-md-12">
+                          <select name="category" id="category">
+                            <option value="categories" selected >Select Category</option>
+                            <option value="Featured" >General</option>
+                            <option value="Newest">Specific</option>
+                            <option value="Low Price">Technical</option>
+                            <option value="High Price">Application</option>
+                          </select>
+                        </div> -->
 
-   
-  
+            <!-- =========================================================================================== -->
+            <!-- <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                      <label>Cases done by plumber: </label>
+                      <input name="search" type="text" class="form-control" id="plumber" placeholder="Plumber ID..." required>
+                      <button type="button" onclick = SP()>Search</button>
+                      <button type="button" onclick = clear()>clear</button>
+                      <a href="closecase.html">clear</a>
+
+                    </fieldset>
+           		</div>
+           	</div> -->
+
+           	<!-- Tables -->
+            <!-- <section class="tables">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="section-heading">
+                      <h2>Tables</h2>
+                    </div>
+                    <div class="default-table">
+                      <table id="itemList">
+                        <thead>
+                          <tr>
+                            <th>CaseID</th>
+                            <th>Incident Date</th>
+                            <th>Address</th>
+                            <th>Case Status</th>
+                            <th>Description</th>
+                            <th>Caller ID</th>
+                            <th>Agent O</th>
+                            <th>Agent C</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+         </div>
+	</div>
+</div>
+</div>
+</section> -->
 <!-- Sidebar -->
         <div id="sidebar">
 
-          <div class="inner">
-
-            <!-- Search Box -->
-            <!-- <section id="search" class="alt">
-              <form method="get" action="#">
-                <input type="text" name="search" id="search" placeholder="Search..." />
-              </form>
-            </section> -->
-              
+          <div class="inner">  
             <!-- Menu -->
-           <nav id="menu">
+            <nav id="menu">
               <ul>
                 <li><a href="home.html">Homepage</a></li>
             
@@ -144,7 +128,7 @@
                   <span class="opener">Cases</span>
                   <ul>
                     <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="closeCase.html">Close case</a></li>
+                    <li><a href="search.html">Close case</a></li>
                 
                   </ul>
                 </li>
@@ -152,16 +136,17 @@
                   <span class="opener">Statistics</span>
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="search.html">Search enquiries</a></li>
+                    <li><a href="closecase.html">Search enquiries</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
-                  <li><a href="removePlumber.html">Remove Plumber</a></li>
-                  <li><a href="signUpUser.html">Add new Agent</a></li>
+                <li><a href="removePlumber.html">Remove Plumber</a></li>
                 <li><a href="https://www.google.com">External Link</a></li>
                 <li><a href="index.html">Logout</a></li>
               </ul>
             </nav>
+
+            
 
             <!-- Footer -->
             <footer id="footer">
@@ -172,21 +157,11 @@
           </div>
         </div>
 
-    </div>
-    <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/transition.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/custom.js"></script>
 
-<script>
 
-var firebaseConfig = {
+<script >
+	var firebaseConfig = {
     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
     authDomain: "geyser-74ddf.firebaseapp.com",
     databaseURL: "https://geyser-74ddf.firebaseio.com",
@@ -197,122 +172,103 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
-  
-/*
-function searchName() {
-//var agentID1 = document.getElementById('textbox1').value;  // get agent ID
-var closed1 = genDate();
- const display=document.querySelector("#test");
-db.collection("caseDetails").get().then(function(querySnapshot)
+  var database = firebase.firestore();
+
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+	function SP() {
+// clear();
+var bar=document.getElementById("plumber").value;
+console.log(bar);
+const display=document.querySelector("#display");
+var c=0;
+database.collection("caseDetails").get().then(function(querySnapshot)
 {
-  querySnapshot.forEach(function(doc)
-  {
-            var html = " ";
-			var com = "completed";
-			var check = doc.data().caseStatus;
-			
-			
-			console.log(check);
-			if(com==doc.data().caseStatus)
-			{
-			
-			
-			display.innerHTML +=doc.data().caseStatus + "<br>";
-			//display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseStatus +"</td><td> " + doc.data().caseID+"</td><td> "+doc.data().caseOpenedBy+"</td></tr></table><br/>";
-            var to = doc.data().caseID;
-			
-			// this code below is used to update the field
-			db.collection("caseDetails").doc(to).update(
-				{
-					
-					closeByAgentID : "done",
-				})
-			}		
-		
+
+  querySnapshot.forEach(function(doc){
+  	console.log(doc.data());
+    if(bar==doc.data().plumberID){
+	      c++;
+	    console.log("entry foound"
+	      
+	      //can add.details to be specific
+	      );
+	    var rows = "";
+	    // rows += "<tr><td>" +...++"</td></tr>";
+	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
+	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
+	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
+	    $( rows ).appendTo( "#itemList tbody" );
+	  }
+	}
+  );
+
+  
 });
-	
-	
-});
-
-
-
-
-}
-
-*/
-
-function genDate()
+if(c==0)
 {
-     var today = new Date();
-     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-       
-	  return date;
-}
-
-function add() 
-{
-  
 	
-	const display=document.querySelector("#display");
-	var date = genDate();
-	var agent = document.getElementById("test").value;
-	alert(agent);
-	var com = "completed";
-  var u="unknown";
-	db.collection("caseDetails").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			if(com==doc.data().caseStatus&& u==doc.data().caseClosedBy )
-			{
-			   
-				db.collection("caseDetails").doc(doc.id).update({caseClosedBy: agent, caseClosedDate :date, caseStatus : "closed"  });
-			}
-	   });
-		
-	});
 
 }
-
-function search()
-{
-
-
-	const display=document.querySelector("#testing");
-	var date = genDate();
-	var u= "unknown";
-	var com = "completed";
-	db.collection("caseDetails").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
-			{
-			  display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
-			}
-	   });
-		
-	});
-
-
 }
 
 
 
 
-
-
-
-
-
-
-
-  
-
-
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+};
 </script>
 
-</body>
+<!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+    	function clear(){
+	//$("#itemList tr").remove();
+	var elmtTable = document.getElementById('itemList');
+var tableRows = elmtTable.getElementsByTagName('tr');
+var rowCount = tableRows.length;
+
+for (var x=rowCount-1; x>0; x--) {
+   elmtTable.removeChild(tableRows[x]);
+}
+location.reload();
+}
+</script>
+	
+
+  
+
+
+			
+</body>
 </html>
