@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>Graph</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+
+<body class="is-preload">
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">IPA</a>
+              </div>
+            </header>
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>Geyser Temperature</h2>
+                    <button onclick= cases()> View geyser temperature  </button>
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+					<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+					<p id = "testing"></p>
+                  </div>
+                </div>
+                <div class="row">
+                	<div clase="col-md-12">
+                		<h2> Feedback</h2>
+                		<button onclick= capacity()> View feedback risk </button>
+                		<div id="chartContainer2" style="height: 300px; width: 300%;"></div>
+					<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+					<p id = "testing"></p>
+                	</div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="closeCase.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="search.html">Search enquiries</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                 <li><a href="removePlumber.html">Remove Plumber</a></li>
+                 <li><a href="signUpUser.html">Add new Agent</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+    </div>
+    <section class="contact-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                   <footer>
+                    <p>Created by: Team highTech</p>
+                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
+                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+  
+function cases()
+{
+	const display=document.querySelector("#testing");
+	var range1 = 55;
+	var range2 = 65;
+	
+	var lowest = 0;
+	var perfect = 0;
+	var highest = 0;
+	
+	
+	db.collection("geyser").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			var m = doc.data().geyserTemp;
+			if(m >range1)
+			{
+				lowest++;
+			}
+			else if(m <range2)
+			{
+				highest++;
+			}
+			else
+			{
+				perfect++;
+			}
+			
+			    
+			
+	   });
+	   var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Geyser Temperature"
+	},
+	axisY: {
+		title: "Number of geysers"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "Temperature in degrees celcius",
+		dataPoints: [      
+			{ y: lowest, label: "below 55 degrees" },
+			{ y: perfect,  label: "Between 55 and 65" },
+			{ y: highest,  label: "above 65" }
+			
+		]
+	}]
+});
+chart.render();
+	   //alert(seven);
+	    
+	});
+	
+	
+}
+function capacity()
+{
+var one = 1;
+var two=2;
+var three=3;
+var four = 4;
+var five = 5;
+
+var bad =0;
+var good = 0;
+
+
+
+db.collection("feedback").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			var m = doc.data().rating;
+			
+			
+			 
+			
+			 if(m == one || m == two)
+			 {
+			     bad++;
+			 }
+			 if(m==three || m == four || m == five)
+			 {
+			    good++;
+			 }
+			 
+			 
+			 
+			    
+			
+	   });
+	   var chart = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "User feedback"
+	},
+	axisY: {
+		title: "Number of response"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "Response",
+		dataPoints: [      
+			{ y: bad, label: "Negative" },
+			{ y: good,  label: "Positive" }
+			
+		]
+	}]
+});
+chart.render();
+	  //alert(good);
+	    
+	});
+}
+</script>
+</body>
+</html>
