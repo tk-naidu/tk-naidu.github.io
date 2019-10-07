@@ -357,20 +357,48 @@ plumberID : plumberID1
 
 }
 )
+	$.ajax({
+    url: "http://127.0.0.1:4000/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+	 identifier:"abcdefghij",
+        type: "addUser",
+	user: plumberID1,
+	pass: plumberPassword,
+	userType:"plumber"
 
-db.collection("users").doc(plumberID1).set(
-{
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+});
 
-password : plumberPassword,
-userType : "plumber",
-caseToWorkOn: "none"
+// db.collection("users").doc(plumberID1).set(
+// {
 
-}
-)
+// password : plumberPassword,
+// userType : "plumber",
+// caseToWorkOn: "none"
+
+// }
+//)
 alert("Plumber added Successfully");
 //location.reload();
 }
 </script>
+
+ 
 
   </div>
 </div>
