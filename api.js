@@ -1,4 +1,5 @@
 var crypto=require("crypto");
+MurmurHash3 = require('./imurmurhash');
 var express=require("express");
 var app=express();
 var server=require("http").createServer(app);
@@ -10,6 +11,8 @@ var fs = require('fs')
 var limit=0;
 var arr = {};
 const PORT=4000;
+
+
 var firebase=require("firebase");
 require("firebase/firestore");
 var firebaseConfig = {
@@ -183,17 +186,17 @@ async function handle(req)
 	if(req.body.type=="retrieveAgentSearch")
 	{
 		console.log("Agent search request");
-		retrun retrieveAgentSearch(req.body);
+		return retrieveAgentSearch(req.body);
 	}
 	if(req.body.type=="retrieveCapacitySearch")
 	{
 		console.log("Capacity search request");
-		retrun retrieveCapacitySearch(req.body);
+		return retrieveCapacitySearch(req.body);
 	}
 	if(req.body.type=="retrieveBrandSearch")
 	{
 		console.log("Manufacturer search request");
-		retrun retrieveBrandSearch(req.body);
+		return retrieveBrandSearch(req.body);
 	}
 	retrieveBrandSearch
 }
@@ -224,12 +227,13 @@ request:
 
 function addUser(body)
 {
-	if(!validateIdentifier(body))
-	{
-		console.log("Invalid user detected "+body.identifier);
-		return "false";
-	}
+	// if(!validateIdentifier(body))
+	// {
+	// 	console.log("Invalid user detected "+body.identifier);
+	// 	return "false";
+	// }
 	var passSalt=genSalt();
+
 	var user=body.user;
 	var pass=body.pass;
 	/*console.log(pass);
@@ -237,8 +241,9 @@ function addUser(body)
 	console.log(salt);*/
 	var type=body.userType;
 	
-	var finalPass=pass+salt;
-	finalPass=toUpperCase(hash(pass));
+	var finalPass=pass+passSalt;
+	console.log(finalPass);
+	finalPass=hash(finalPass);
 	var useIdentifier=generateIdentifier();
 	//console.log(finalPass);
 	if(type=="plumber")
@@ -246,20 +251,23 @@ function addUser(body)
 		var caseToWork=body.case;
 	db.collection("users").doc(user).set(
 	{
-  	identifier:useIdentifier,
-	caseToWorkOn:caseToWork,
-	password:finalPass,
-	salt:passSalt,
-	userType:type
-	}
-	);
+		identifier:useIdentifier,
+		caseToWorkOn:"none",
+		password:finalPass,
+		salt:passSalt,
+		userType:type
+	});
 	}
 	if(type=="admin")
 	{
+		var temp=body.pass+passSalt;
+		var ret=crypto.createHash("sha256");
+		rer.update(temp);
+		passwor= rer.digest('hex');
 		db.collection("users").doc(user).set(
 	{
   	identifier:useIdentifier,
-	password:finalPass,
+	password:passwor,
 	salt:passSalt,
 	userType:type
 	}
@@ -288,17 +296,12 @@ function removeUser(body)
 	db.collection("users").doc(user).delete();
 	return "true";
 }
+
 function genSalt()
 {
-	var result="";
-	var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	var len=chars.length;
-	for(var i=0; i<7;i=i+1)
-	{
-		result=result+chars.charAt(Math.floor(Math.random()*len));
-	}
-	return result;
+	return "thisissalt";
 }
+
 function generateIdentifier()
 {
 		var result="";
@@ -313,9 +316,8 @@ function generateIdentifier()
 }
 function hash(password)
 {
-	var hash=crypto.createHash("sha256");
-	hash.update(password);
-	return hash.digest('hex');
+	var hash = MurmurHash3(password, 1);
+	return hash.result();
 }
 /*
 request:
@@ -819,7 +821,10 @@ function login(body)
 		var data=doc.data();
 		var pass=body.password;
 		pass=pass+data.salt;
-		pass=hash(pass);
+		var hash=crypto.createHash("sha256");
+		hash.update(pass);
+		pass= hash.digest('hex');
+	//for now
 		pass=pass.toUpperCase();
 		if(pass==data.password)
 		{
