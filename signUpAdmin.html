@@ -226,15 +226,32 @@
 					}
 				)
 
-				db.collection("users").doc(id1).set
-				(
-					{
-					  password : pass1,
-					  userType : "agent"
+				$.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+   identifier:"abcdefghij",
+        type: "addUser",
+  user: id1,
+  pass: pass1,
+  userType:"admin"
 
-
-					}
-				)
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+});
 	}
 	else
 	{

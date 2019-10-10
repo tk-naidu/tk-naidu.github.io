@@ -264,6 +264,7 @@ function addUser(body)
 		var ret=crypto.createHash("sha256");
 		rer.update(temp);
 		passwor= rer.digest('hex');
+		console.log(passwor);
 		db.collection("users").doc(user).set(
 	{
   	identifier:useIdentifier,
