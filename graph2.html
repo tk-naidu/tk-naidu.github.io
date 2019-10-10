@@ -56,18 +56,18 @@
                     <h2>Geyser Temperature</h2>
                     <button onclick= cases()> View geyser temperature  </button>
                     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-					<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-					<p id = "testing"></p>
+          <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+          <p id = "testing"></p>
                   </div>
                 </div>
                 <div class="row">
-                	<div clase="col-md-12">
-                		<h2> Feedback</h2>
-                		<button onclick= capacity()> View feedback risk </button>
-                		<div id="chartContainer2" style="height: 300px; width: 300%;"></div>
-					<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-					<p id = "testing"></p>
-                	</div>
+                  <div clase="col-md-12">
+                    <h2> Feedback</h2>
+                    <button onclick= capacity()> View feedback risk </button>
+                    <div id="chartContainer2" style="height: 300px; width: 300%;"></div>
+          <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+          <p id = "testing"></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -166,64 +166,64 @@ var firebaseConfig = {
   
 function cases()
 {
-	const display=document.querySelector("#testing");
-	var range1 = 55;
-	var range2 = 65;
-	
-	var lowest = 0;
-	var perfect = 0;
-	var highest = 0;
-	
-	
-	db.collection("geyser").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			var m = doc.data().geyserTemp;
-			if(m >range1)
-			{
-				lowest++;
-			}
-			else if(m <range2)
-			{
-				highest++;
-			}
-			else
-			{
-				perfect++;
-			}
-			
-			    
-			
-	   });
-	   var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "Geyser Temperature"
-	},
-	axisY: {
-		title: "Number of geysers"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "Temperature in degrees celcius",
-		dataPoints: [      
-			{ y: lowest, label: "below 55 degrees" },
-			{ y: perfect,  label: "Between 55 and 65" },
-			{ y: highest,  label: "above 65" }
-			
-		]
-	}]
+  const display=document.querySelector("#testing");
+  var range1 = 55;
+  var range2 = 65;
+  
+  var lowest = 0;
+  var perfect = 0;
+  var highest = 0;
+  
+  
+  db.collection("geyser").get().then(function(querySnapshot)
+  {
+    querySnapshot.forEach(function(doc)
+    {
+      var m = doc.data().geyserTemp;
+      if(m >range1)
+      {
+        lowest++;
+      }
+      else if(m <range2)
+      {
+        highest++;
+      }
+      else
+      {
+        perfect++;
+      }
+      
+          
+      
+     });
+     var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Geyser Temperature"
+  },
+  axisY: {
+    title: "Number of geysers"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Temperature in degrees celcius",
+    dataPoints: [      
+      { y: lowest, label: "below 55 degrees" },
+      { y: perfect,  label: "Between 55 and 65" },
+      { y: highest,  label: "above 65" }
+      
+    ]
+  }]
 });
 chart.render();
-	   //alert(seven);
-	    
-	});
-	
-	
+     //alert(seven);
+      
+  });
+  
+  
 }
 function capacity()
 {
@@ -232,60 +232,56 @@ var two=2;
 var three=3;
 var four = 4;
 var five = 5;
-
 var bad =0;
 var good = 0;
-
-
-
 db.collection("feedback").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			var m = doc.data().rating;
-			
-			
-			 
-			
-			 if(m == one || m == two)
-			 {
-			     bad++;
-			 }
-			 if(m==three || m == four || m == five)
-			 {
-			    good++;
-			 }
-			 
-			 
-			 
-			    
-			
-	   });
-	   var chart = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "User feedback"
-	},
-	axisY: {
-		title: "Number of response"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "Response",
-		dataPoints: [      
-			{ y: bad, label: "Negative" },
-			{ y: good,  label: "Positive" }
-			
-		]
-	}]
+  {
+    querySnapshot.forEach(function(doc)
+    {
+      var m = doc.data().rating;
+      
+      
+       
+      
+       if(m == one || m == two)
+       {
+           bad++;
+       }
+       if(m==three || m == four || m == five)
+       {
+          good++;
+       }
+       
+       
+       
+          
+      
+     });
+     var chart = new CanvasJS.Chart("chartContainer2", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "User feedback"
+  },
+  axisY: {
+    title: "Number of response"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Response",
+    dataPoints: [      
+      { y: bad, label: "Negative" },
+      { y: good,  label: "Positive" }
+      
+    ]
+  }]
 });
 chart.render();
-	  //alert(good);
-	    
-	});
+    //alert(good);
+      
+  });
 }
 </script>
 </body>

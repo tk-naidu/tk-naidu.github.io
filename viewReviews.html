@@ -209,7 +209,26 @@ else
   querySnapshot.forEach(function(doc){
     console.log(doc.data());
     count++;
-      sum = sum+doc.data().rating;
+    switch(doc.data().rating) {
+  case 1:
+    sum +=1;
+    break;
+  case 2:
+    sum +=2;
+    break;
+  case 3:
+    sum +=3;
+    break;
+  case 4:
+    sum +=4;
+    break;
+  case 5:
+    sum +=5;
+    break;
+  default:
+    sum +=5;
+}
+      
       var rows = "";
       //rows += "<tr><td>" +...++"</td></tr>";
       rows= "<tr><td>"+doc.data().caseNumber+"</td><td>"+doc.data().feedback
@@ -217,13 +236,17 @@ else
       $( rows ).appendTo( "#itemList tbody" );
     
   }
+
+
   );
   total = sum/count;
-    console.log(total.toFixed(0));
-document.getElementById("average").innerHTML="Average: " + total;
+    console.log(total);
+document.getElementById("average").innerHTML="Average: " + total.toFixed(2);
   
 });
+  
 }
+
 }
 
 
