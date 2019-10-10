@@ -262,7 +262,7 @@ function addUser(body)
 	{
 		var temp=body.pass+passSalt;
 		var ret=crypto.createHash("sha256");
-		rer.update(temp);
+		ret.update(temp);
 		passwor= rer.digest('hex');
 		console.log(passwor);
 		db.collection("users").doc(user).set(

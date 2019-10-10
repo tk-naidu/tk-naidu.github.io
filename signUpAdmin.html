@@ -162,6 +162,7 @@
 
 	
  <script>
+
  var firebaseConfig = {
     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
     authDomain: "geyser-74ddf.firebaseapp.com",
@@ -200,7 +201,23 @@
         document.getElementById("textbox2").value = text;
           
  }
- 
+ function genSalt()
+{
+  return "thisissalt";
+}
+
+function generateIdentifier()
+{
+    var result="";
+  var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var len=chars.length;
+  for(var i=0; i<10;i=i+1)
+  {
+    result=result+chars.charAt(Math.floor(Math.random()*len));
+  }
+  return result
+
+}
  // this function confirms the password 
  function send()
  {
@@ -225,33 +242,19 @@
 
 					}
 				)
-
-				$.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-   identifier:"abcdefghij",
-        type: "addUser",
-  user: id1,
-  pass: pass1,
-  userType:"admin"
-
-        
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-});
+        var st=genSalt();
+        var useIdentifier=generateIdentifier();
+        var temp=pass1+st;
+    
+        db.collection("users").doc(id1).set(
+      {
+        identifier:useIdentifier,
+      password:temp,
+      salt:st,
+      userType:"newadmin"
+      }
+      );  
+				
 	}
 	else
 	{
