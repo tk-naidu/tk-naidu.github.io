@@ -26,13 +26,20 @@
 
   
 <script>
+  /*
+        * @author : Janaki Patil
+        *@purpose of [genDate] is to generate the current date to log
+        */
    function genDate()
   {
      var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       document.getElementById("textbox12").value = date; 
   }
-  
+  /*
+        * @author : Janaki Patil
+        *@purpose of [send] is to autofill ll required fields
+        */
   function send()
   {
             var emptyArray = []; // create an empty array
@@ -45,7 +52,7 @@
  				          var index = str.search("=");
   				         var res = str.slice(index+1, str.length);
                   emptyArray[i] = res
-			      }
+			}
             document.getElementById("textbox2").value = emptyArray[0];
             document.getElementById("textbox3").value = emptyArray[1];
 			document.getElementById("textbox4").value = emptyArray[2];
@@ -54,6 +61,35 @@
             document.getElementById("textbox7").value = emptyArray[5];
 			document.getElementById("textbox8").value = emptyArray[6];
             document.getElementById("textbox9").value = emptyArray[7];
+  }
+  
+  function verifyFormat()
+  {
+	
+	var emptyArray = []; // create an empty array
+           
+            
+            var lines = $('#comment').val().split('\n');
+            for(var i = 0;i < lines.length;i++)
+            {
+                  var str = lines[i]; 
+ 				  var index = str.search("=");
+  				  var res = str.slice(0, index-1);
+                  emptyArray[i] = res;
+			}
+            
+			if(emptyArray[0] == "Name"&& emptyArray[1] == "Surname" && emptyArray[2] == "Address" && emptyArray[3] == "Cell number" && emptyArray[4] == "Call back number" && emptyArray[5] == "Client type" && emptyArray[6] == "Service type" && emptyArray[7] == "Reason" )
+			{
+			   document.getElementById("myBtn").disabled = false;
+			}
+			else
+			{
+			   document.getElementById("myBtn").disabled = true;
+			   alert("The format is incorrect." );
+			}
+  
+  
+  
   }
   
   function genCase()
@@ -94,7 +130,7 @@
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href="home.html">WorkFlow-IO</a>
+                <a href="home.html">IPA</a>
               </div>
             </header>
 
@@ -106,7 +142,8 @@
                     <h2>Caller Identification</h2>
                     <p><strong>Note:</strong> Paste the client details below </p>
                     <textarea id="comment" rows="10" cols="55"></textarea>
-                    <p><button type="button" onclick = send()>Auto fill</button></p>
+					<p><button type="button" onclick = verifyFormat()>verify the content</button></p>
+                    <p><button type="button" id="myBtn" onclick = send() disabled>Auto fill</button></p>
                   </div>
                 </div>
               </div>
@@ -213,12 +250,14 @@
                              <label>Plumber ID</label>
                               <input type="text" name="textbox18" list="exampleList1" id = "textbox18">
                           		<datalist id="exampleList1">
-                          			<option value="24DbXsyVhZ">  
-                          			<option value="24DhAjwRbi">
-                          			<option value="24N8gqUbzf">
-                          			<option value="24iYRIBgrd">
-                          			<option value="24jjZdgHIF">
-                          			
+                          			<option value="Janaki Patil-24DbXsyVhZ">  
+                          			<option value="Theo Naidu-24DhAjwRbi">
+                          			<option value="Diviya Patil-24N8gqUbzf">
+									<option value="Alex Patrou-24Tni01xMc">
+									<option value="Tim Lander-24UTyL0EAb">
+                          			<option value="Tim Crook-24iYRIBgrd">
+                          			<option value="Simran Trimmer-24jjZdgHIF">
+                          			<option value="Dairy Sweet-24nKnpdZ7U">
                           	    </datalist>
                               </div>
                               <div class="col-md-6">
@@ -285,7 +324,6 @@
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
                     <li><a href="search.html">Search enquiries</a></li>
-                    <li><a href="graph2.html">Risk Analysis</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
@@ -331,10 +369,6 @@
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
  
-
-
-
-
 function storeData()
 {
 var name1 = document.getElementById('textbox2').value;
@@ -345,26 +379,24 @@ var callBackNumber1 = document.getElementById('textbox6').value;
 var clientType1 = document.getElementById('textbox7').value;
 var serviceType1 = document.getElementById('textbox8').value;
 var reason1= document.getElementById('textbox9').value;
-
-
 //generating report
 var caseID1 = document.getElementById('textbox10').value;
 var callerID1 = document.getElementById('textbox11').value;
 var incidentDate1 = document.getElementById('textbox12').value;
 var caseDescription1 = document.getElementById('textbox16').value;
 var caseStatus1 = document.getElementById('textbox17').value;
-var plumberID1 = document.getElementById('textbox18').value;
+
+var temp = document.getElementById('textbox18').value;
+//spliting the name and id of the plumber 
+var index = temp.search("-");
+var plumberID1 = temp.slice(index+1, temp.length);
+
+
+
+
 var caseOpenedBy1 = document.getElementById('textbox19').value;
 // var caseClosedBy1 = document.getElementById('textbox20').value;
 // var caseclosedDate1 = document.getElementById('textbox21').value;
-
-
-
-
-
-
-
-
 db.collection("callerDetails").doc(callerID1).set(
 {
 callerID : callerID1,
@@ -376,11 +408,8 @@ callBackNumber:callBackNumber1,
 clientType:clientType1,
 serviceType:serviceType1,
 reason:reason1
-
-
 }
 )
-
 db.collection("caseDetails").doc(caseID1).set(
 {
 caseID: caseID1,
@@ -393,12 +422,8 @@ plumberID : plumberID1,
 caseOpenedBy :caseOpenedBy1,
 caseClosedBy : "unknown",
 caseClosedDate : "unknown"
-
-
 }
 )
-
-
 db.collection("users").get().then(function(querySnapshot)
   {
     querySnapshot.forEach(function(doc)
@@ -415,7 +440,6 @@ db.collection("users").get().then(function(querySnapshot)
      });
     
   });
-
   
   
   /*
@@ -432,8 +456,6 @@ db.collection("users").get().then(function(querySnapshot)
      });
     
   });
-
-
 */
 alert("added succesfully");
 //location.reload();
@@ -443,4 +465,4 @@ alert("added succesfully");
 </div>
 </div>
 </body>
-</html>                
+</html> 
