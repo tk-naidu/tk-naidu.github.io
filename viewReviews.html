@@ -77,7 +77,7 @@
                       <table id="itemList">
                         <thead>
                           <tr>
-                            <th>CaseID</th>
+                            <th>Username</th>
                             <th>FeedBack</th>
                             <th>Rating</th>
                           </tr>
@@ -123,7 +123,6 @@
                   <ul>
                     <li><a href="review.html">Submit Review</a></li>
                     <li><a href="viewReviews.html">View Reviews</a></li>
-                    
                 
                   </ul>
                 </li>
@@ -163,41 +162,41 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var database = firebase.firestore();
-
  
-
-
-
-	function searchReview() {
-// clear();
-var rating=document.getElementById("plumber").value;
-console.log(rating);
-const display=document.querySelector("#display");
-var c=0;
-if(rating!="all"){
-database.collection("feedback").get().then(function(querySnapshot)
+        /*
+        * @author : Theo Naidu
+        *@purpose of [searchReview] is to searchg through the db to find all ratings that match
+        */
+function searchReview() 
 {
-
-  querySnapshot.forEach(function(doc){
-  	console.log(doc.data());
-    if(rating==doc.data().rating){
-	     
-	    console.log("entry foound"
-	      
-	      //can add.details to be specific
-	      );
-	    var rows = "";
-	    //rows += "<tr><td>" +...++"</td></tr>";
-	    rows= "<tr><td>"+doc.data().caseNumber+"</td><td>"+doc.data().feedback
-	    +"</td><td>"+doc.data().rating+"</td></tr>";
-	    $( rows ).appendTo( "#itemList tbody" );
-	  }
-	}
-  );
-
+// clear();
+	var rating=document.getElementById("plumber").value;
+	console.log(rating);
+	const display=document.querySelector("#display");
+	var c=0;
+	if(rating!="all"){
+	database.collection("feedback").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			console.log(doc.data());
+			if(rating==doc.data().rating)
+			{
+  	     
+				console.log("entry foound"
+  	      
+			//can add.details to be specific
+			);
+			var rows = "";
+			//rows += "<tr><td>" +...++"</td></tr>";
+			rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
+			+"</td><td>"+doc.data().rating+"</td></tr>";
+			$( rows ).appendTo( "#itemList tbody" );
+  	  }
+  	}
+    );
   
-});
-
+  });
 }
 else
 {
@@ -206,54 +205,25 @@ else
   var total = 0;
   database.collection("feedback").get().then(function(querySnapshot)
 {
-
   querySnapshot.forEach(function(doc){
     console.log(doc.data());
     count++;
-    switch(doc.data().rating) {
-  case 1:
-    sum +=1;
-    break;
-  case 2:
-    sum +=2;
-    break;
-  case 3:
-    sum +=3;
-    break;
-  case 4:
-    sum +=4;
-    break;
-  case 5:
-    sum +=5;
-    break;
-  default:
-    sum +=5;
-}
-      
+      sum = sum+doc.data().rating;
       var rows = "";
       //rows += "<tr><td>" +...++"</td></tr>";
-      rows= "<tr><td>"+doc.data().caseNumber+"</td><td>"+doc.data().feedback
+      rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
       +"</td><td>"+doc.data().rating+"</td></tr>";
       $( rows ).appendTo( "#itemList tbody" );
     
   }
-
-
   );
   total = sum/count;
-    console.log(total);
-document.getElementById("average").innerHTML="Average: " + total.toFixed(2);
+    console.log(total.toFixed(0));
+document.getElementById("average").innerHTML="Average: " + total;
   
 });
-  
 }
-
 }
-
-
-
-
-
 </script>
 
 <!-- Scripts -->
@@ -272,7 +242,6 @@ document.getElementById("average").innerHTML="Average: " + total.toFixed(2);
 	var elmtTable = document.getElementById('itemList');
 var tableRows = elmtTable.getElementsByTagName('tr');
 var rowCount = tableRows.length;
-
 for (var x=rowCount-1; x>0; x--) {
    elmtTable.removeChild(tableRows[x]);
 }
