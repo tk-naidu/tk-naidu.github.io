@@ -193,7 +193,7 @@ function close()
 {
 	const display=document.querySelector("#display");
 	var date1 = genDate();
-	var case = document.getElementById("test").value;
+	var casea = document.getElementById("test").value;
 	var id=getCookie("Identifier");
   $.ajax({
     url: "https://workflow-io.herokuapp.com/",
@@ -203,7 +203,7 @@ function close()
     data: JSON.stringify({
    identifier:id,
         type: "closeCases",
-        case1:case,
+        case1:casea,
         date:date1
 
 
