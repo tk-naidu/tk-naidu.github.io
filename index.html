@@ -120,11 +120,17 @@
 	    /////////////////////
     	console.log(convertedObj.userType);  
     	 //alert("Correct");
-    	 if(convertedObj.userType=="admin"||convertedObj.userType=="agent")
+    	 if(convertedObj.userType=="agent")
+    	 {
 		location.replace("home.html");
+	}
 	else if(convertedObj.userType=="guest")
 	{
 		location.replace("home2.html");
+	}
+	else if(convertedObj.userType=="admin")
+	{
+		location.replace("adminhome.html");
 	}
 	else
 	{
