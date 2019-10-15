@@ -149,19 +149,19 @@
 
 
 <script >
- //  var identifier="abcdefghij";
-	// var firebaseConfig = {
- //    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
- //    authDomain: "geyser-74ddf.firebaseapp.com",
- //    databaseURL: "https://geyser-74ddf.firebaseio.com",
- //    projectId: "geyser-74ddf",
- //    storageBucket: "geyser-74ddf.appspot.com",
- //    messagingSenderId: "1001903322970",
- //    appId: "1:1001903322970:web:a904b91e99d67b22"
- //  };
- //  // Initialize Firebase
- //  firebase.initializeApp(firebaseConfig);
- //  var database = firebase.firestore();
+  var identifier="abcdefghij";
+	var firebaseConfig = {
+    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+    authDomain: "geyser-74ddf.firebaseapp.com",
+    databaseURL: "https://geyser-74ddf.firebaseio.com",
+    projectId: "geyser-74ddf",
+    storageBucket: "geyser-74ddf.appspot.com",
+    messagingSenderId: "1001903322970",
+    appId: "1:1001903322970:web:a904b91e99d67b22"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.firestore();
  
         /*
         * @author : Theo Naidu
@@ -170,113 +170,113 @@
 function searchReview() 
 {
 // clear();
-// 	var rating=document.getElementById("plumber").value;
-// 	console.log(rating);
-// 	const display=document.querySelector("#display");
-// 	var c=0;
+	var rating=document.getElementById("plumber").value;
+	console.log(rating);
+	const display=document.querySelector("#display");
+	var c=0;
 
 // /////////////////////////////////////////////
-// 	if(rating!="all"){
-// 	database.collection("feedback").get().then(function(querySnapshot)
-// 	{
-// 		querySnapshot.forEach(function(doc)
-// 		{
-// 			console.log(doc.data());
-// 			if(rating==doc.data().rating)
-// 			{
+	if(rating!="all"){
+	database.collection("feedback").get().then(function(querySnapshot)
+	{
+		querySnapshot.forEach(function(doc)
+		{
+			console.log(doc.data());
+			if(rating==doc.data().rating)
+			{
   	     
-// 				console.log("entry foound"
+				console.log("entry foound"
   	      
-// 			//can add.details to be specific
-// 			);
-// 			var rows = "";
-// 			//rows += "<tr><td>" +...++"</td></tr>";
-// 			rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
-// 			+"</td><td>"+doc.data().rating+"</td></tr>";
-// 			$( rows ).appendTo( "#itemList tbody" );
-//   	  }
-//   	}
-//     );
+			//can add.details to be specific
+			);
+			var rows = "";
+			//rows += "<tr><td>" +...++"</td></tr>";
+			rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
+			+"</td><td>"+doc.data().rating+"</td></tr>";
+			$( rows ).appendTo( "#itemList tbody" );
+  	  }
+  	}
+    );
   
-//   });
-// }
-// else
-// {
-//    var count =0;
-//   var sum = 0;
-//   var total = 0;
-//   database.collection("feedback").get().then(function(querySnapshot)
-// {
-//   querySnapshot.forEach(function(doc){
-//     console.log(doc.data());
-//     count++;
-//       sum = sum+doc.data().rating;
-//       var rows = "";
-//       //rows += "<tr><td>" +...++"</td></tr>";
-//       rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
-//       +"</td><td>"+doc.data().rating+"</td></tr>";
-//       $( rows ).appendTo( "#itemList tbody" );
-    
-//   }
-//   );
-//   total = sum/count;
-//     console.log(total.toFixed(0));
-// document.getElementById("average").innerHTML="Average: " + total;
-  
-// });
-// }
+  });
+}
+else
+{
+       var count =0;
+      var sum = 0;
+      var total = 0;
+      database.collection("feedback").get().then(function(querySnapshot)
+    {
+      querySnapshot.forEach(function(doc){
+        console.log(doc.data());
+        count++;
+          sum = sum+doc.data().rating;
+          var rows = "";
+          //rows += "<tr><td>" +...++"</td></tr>";
+          rows= "<tr><td>"+doc.data().userName+"</td><td>"+doc.data().feedback
+          +"</td><td>"+doc.data().rating+"</td></tr>";
+          $( rows ).appendTo( "#itemList tbody" );
+        
+      }
+      );
+      total = sum/count;
+        console.log(total.toFixed(0));
+    document.getElementById("average").innerHTML="Average: " + total;
+      
+    });
+}
 ///////////////////////////////
 
-  var rating=document.getElementById("plumber").value;
-  console.log(rating);
-  const display=document.querySelector("#display");
-  var ids=getCookie("Identifier");
-  var c=0;
-  $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "searchReview",
-        id: rating,
-        identifier:ids
-    }),
-    success:function(res)
-  {
-      console.log("Success: "+res) ;
-      var convertedObj= JSON.parse(res);
-      console.log(convertedObj.userType);  
-       //alert("Correct");
-       var count =0;
-  var sum = 0;
-  var total = 0;
-       for(var co=0;co<convertedObj.data.length;co++){
-        count++;
-      sum = sum+doc.data().rating;
-      var rows = "";
-      rows= "<tr><td>"+convertedObj.data[co].userName+"</td><td>"+convertedObj.data[co].feedback
-      +"</td><td>"+convertedObj.data[co].rating+"</td></tr>";
-      $( rows ).appendTo( "#itemList tbody" );
+//   var rating=document.getElementById("plumber").value;
+//   console.log(rating);
+//   const display=document.querySelector("#display");
+//   var ids=getCookie("Identifier");
+//   var c=0;
+//   $.ajax({
+//     url: "https://workflow-io.herokuapp.com/",
+//     type: "POST",
+//     contentType: "application/json; charset=utf-8",
+//     dataType: "json",
+//     data: JSON.stringify({
+//         type: "searchReview",
+//         id: rating,
+//         identifier:ids
+//     }),
+//     success:function(res)
+//   {
+//       console.log("Success: "+res) ;
+//       var convertedObj= JSON.parse(res);
+//       console.log(convertedObj.userType);  
+//        //alert("Correct");
+//        var count =0;
+//   var sum = 0;
+//   var total = 0;
+//        for(var co=0;co<convertedObj.data.length;co++){
+//         count++;
+//       sum = sum+doc.data().rating;
+//       var rows = "";
+//       rows= "<tr><td>"+convertedObj.data[co].userName+"</td><td>"+convertedObj.data[co].feedback
+//       +"</td><td>"+convertedObj.data[co].rating+"</td></tr>";
+//       $( rows ).appendTo( "#itemList tbody" );
     
-    //to calculate the average, plz double check 
+//     //to calculate the average, plz double check 
    
     
-    }
-    var total = sum/count;
-    console.log(total.toFixed(0));
-    document.getElementById("average").innerHTML="Average: " + total;
+//     }
+//     var total = sum/count;
+//     console.log(total.toFixed(0));
+//     document.getElementById("average").innerHTML="Average: " + total;
 
-    },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-    }
-}); 
+//     },
+//     fail:function(data){
+//       console.log("Fail: "+data);
+//     },
+//     error: function (jqXHR, textStatus, errorThrown) { 
+//       console.log(jqXHR);
+//       console.log(textStatus);
+//       console.log(errorThrown);
+//     }
+// }); 
 }
 
 

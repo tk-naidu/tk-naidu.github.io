@@ -197,11 +197,11 @@ $.ajax({
     success:function(res){
       console.log("Success: "+res) ;
       var convertedObj= JSON.parse(res);
-      console.log(convertedObj.userType);  
+      //console.log(convertedObj.userType);  
        //alert("Correct");
        for(var co=0;co<convertedObj.data.length;co++){
       var rows = "";
-      rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[i].caseID
+      rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[co].caseID
       +"</td><td>"+convertedObj.data[co].insurance+"</td><td>"+convertedObj.data[co].manufacturer+"</td><td>"+convertedObj.data[co].model+"</td></tr>";
       $( rows ).appendTo( "#itemList tbody" );
     }

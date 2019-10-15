@@ -34,7 +34,7 @@
             <!-- Header -->
             <header id="header">
               <div class="logo">
-                <a href="home.html">WorkFlow-IO</a>
+                <a href=#>WorkFlow-IO</a>
               </div>
             </header>
 
@@ -64,10 +64,10 @@
                          <div class="row">
                           <div class="col-md-6">
                            
-                              <label>Username</label>
-                          	
+                              <label>Agent ID</label>
+                          	<p><strong>Note: please click the generate button to create an ID.</p>
                               <input type="text" name="textbox1" id="textbox1" />
-                          	
+                          	<p><button type="button" onclick = genAgentID()>Generate Agent ID</button></p>
                             </div>
                           </div>
                           <div class="row">
@@ -83,7 +83,7 @@
                           </div>
                         </div>
                           	<!-- <input type="checkbox" onclick="myFunction()">Show Password -->
-                          	<p><button type="button" onclick = genAgentPassword()>Generate Password</button></p>
+                          	<p><button type="button" onclick = genAgentPassword()>Generate Agent Password</button></p>
                           	</div>
                           </div>
                           <div class="row">
@@ -96,58 +96,13 @@
                           	<br>
                           	
                           	<button type="button" onclick = send()>Signup</button>
-                           
+                            <button type="button" onclick = log()>Login</button>
                           </div>
                         </div>
                       </div>
                       </section>
 
-                      <!-- Sidebar -->
-        <div id="sidebar">
-          <div class="inner">
-
-            <!-- Search Box -->
-            <section id="search" class="alt">
-              <form method="get" action="#">
-                <input type="text" name="search" id="search" placeholder="Search..." />
-              </form>
-            </section>
-              
-            <!-- Menu -->
-           <nav id="menu">
-              <ul>
-                <li><a href="index.html">Homepage</a></li>
-            
-                <li>
-                  <span class="opener">Cases</span>
-                  <ul>
-                    <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="closecase.html">Close case</a></li>
-                
-                  </ul>
-                </li>
-                <li>
-                  <span class="opener">Statistics</span>
-                  <ul>
-                    <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="search.html">Search enquiries</a></li>
-                    <li><a href="graph2.html">Risk Analysis</a></li>
-                
-                  </ul>
-                </li>
-                li><a href="AddEmployee.html">Add Plumber</a></li>
-                  <li><a href="removePlumber.html">Remove Plumber</a></li>
-                  <li><a href="signUpUser.html">Add new Agent</a></li>
-                <li><a href="https://www.google.com">External Link</a></li>
-                <li><a href="index.html">Logout</a></li>
-              </ul>
-            </nav>
-
-            <!-- Footer -->
-            <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
-              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
-            </footer>
+                      
             
           </div>
         </div>
@@ -163,9 +118,10 @@
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
-<script src="functions.js"></script>
-	
+
+	<script src="functions.js"></script>
  <script>
+
  // var firebaseConfig = {
  //    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
  //    authDomain: "geyser-74ddf.firebaseapp.com",
@@ -180,7 +136,17 @@
  //  var db = firebase.firestore();
  
  
- 
+ function genAgentID()
+ {
+        var text = "A";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+           for(var i = 0; i < 8; i++) 
+          {
+             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           }
+        document.getElementById("textbox1").value = text;
+          
+ }
  
  
  function genAgentPassword()
@@ -194,7 +160,8 @@
         document.getElementById("textbox2").value = text;
           
  }
- 
+
+
  // this function confirms the password 
  function send()
  {
@@ -206,8 +173,9 @@
  var ids=getCookie("Identifier");
   if(pass1 == confirm1)
   { 
-    check++;
-    $.ajax({
+    
+
+  $.ajax({
     url: "https://workflow-io.herokuapp.com/",
     type: "POST",
     contentType: "application/json; charset=utf-8",
@@ -222,7 +190,7 @@
     }),
     success:function(res){
       console.log("Success: "+res) ;
-      alert("Agent added Successfully");
+      alert("Admin added Successfully");
       },
     fail:function(data){
       console.log("Fail: "+data);
@@ -233,18 +201,21 @@
       console.log(errorThrown)
     }
   });
-				// db.collection("userCredentials").doc(id1).set
+				// db.collection("agentCredentials").doc(id1).set
 				// (
 				// 	{
-				// 		fullName : name1,
-				// 		username: id1,
-				// 		userPassword: pass1
+				// 		agentName : name1,
+				// 		agentID: id1,
+	
 					
+
+
+
 				// 	}
 				// )
-				
+        
 
-        $.ajax({
+$.ajax({
     url: "https://workflow-io.herokuapp.com/",
     type: "POST",
     contentType: "application/json; charset=utf-8",
@@ -254,14 +225,14 @@
          identifier:ids,
           user:id1,
             pass:pass1,
-          userType:"admin"
+          userType:"agent"
             
         
     }),
     success:function(res){
       console.log("Success: "+res) ;
-      alert("User added Successfully");
-      window.location.href='signUpUser.html';
+      alert("user added Successfully");
+      window.location.href='signUpAdmin.html';
       },
     fail:function(data){
       console.log("Fail: "+data);
@@ -272,17 +243,24 @@
       console.log(errorThrown)
     }
 });
+      //   db.collection("users").doc(id1).set(
+      // {
+      //   identifier:useIdentifier,
+      // password:temp,
+      // salt:st,
+      // userType:"admin"
+      // }
+      // );  
+				
 	}
 	else
 	{
 			alert("Your password doesn't match. Please enter the password again.");
 	}
-  if(check!=0){
-   
-  }
+
  }
  function log(){
-   window.location.href='login.html';
+   window.location.href='index.html';
  }
  function myFunction() {
   var x = document.getElementById("textbox2");
@@ -293,7 +271,14 @@
   }
 }
  
+
+
+
+
+
+
  
+
  
  </script>
 </div></div>

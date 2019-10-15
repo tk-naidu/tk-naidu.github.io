@@ -24,6 +24,7 @@
     <div class="justified">
 <label>Enter your case number given to you</label>
 <br>
+</div>
 <div class="justified">
  <label>Enter username of your choice</label>
 <br>  
@@ -203,7 +204,7 @@ $.ajax({
               type: "addReview",
               rating : stars,
               feedback : comments,
-              caseNumber : caseID
+              caseNumber : caseID,
               userName : uname,
               identifier:ids
           }),

@@ -21,13 +21,13 @@ reason = require new geyser
 
 
 Name = Diviya  
-surname = Patil 
-address = Makwassie, Festival Street, Hatfield, Pretoria, 0028
-cell number = 0789546321
-call back number = 07985236142
-client type = Home Owner
-service type = Repairs
-reason = geyser to be repaired 
+Surname = Patil 
+Address = Makwassie, Festival Street, Hatfield, Pretoria, 0028
+Cell number = 0789546321
+Call back number = 07985236142
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
 
 
 Name = Garry   
