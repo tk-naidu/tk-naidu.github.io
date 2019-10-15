@@ -66,14 +66,55 @@
          </div>
 	</div>
 </div>
+<section class="contact-form">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                   <footer>
+                    <p>Created by: Team highTech</p>
+                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
+                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
+<script src="functions.js"></script>
 <script>
 	function remove()
 	{
+    var ids=getCookie("Identifier");
 		var user = document.getElementById("plumberID").value;
 		confirm("Are you sure you want to remove the Plumber?");
-		database.collection("employeesDetails").doc(user).delete();
-		database.collection("users").doc(user).delete();
-    alert("Plumber removed");
+    $.ajax({
+          url: "https://workflow-io.herokuapp.com/",
+          type: "POST",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify({
+              type: "removeEmployee",
+              id: user,
+              identifier:ids
+          }),
+          success:function(res){
+            console.log("Success: "+res) ;
+            alert("Plumber removed");
+
+          },
+          fail:function(data){
+            console.log("Fail: "+data);
+          },
+          error: function (jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR)
+            console.log(textStatus)
+            console.log(errorThrown)
+          }
+    }); 
+
+
+		// database.collection("employeesDetails").doc(user).delete();
+		// database.collection("users").doc(user).delete();
+   
 	}
 	
 </script>
@@ -129,67 +170,10 @@
 
 
 <script >
-	var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.firestore();
-
-
-	function SP() {
-// clear();
-var bar=document.getElementById("plumber").value;
-console.log(bar);
-const display=document.querySelector("#display");
-var c=0;
-database.collection("caseDetails").get().then(function(querySnapshot)
-{
-
-  querySnapshot.forEach(function(doc){
-  	console.log(doc.data());
-    if(bar==doc.data().plumberID){
-	      c++;
-	    console.log("entry foound"
-	      
-	      //can add.details to be specific
-	      );
-	    var rows = "";
-	    // rows += "<tr><td>" +...++"</td></tr>";
-	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
-	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
-	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
-	    $( rows ).appendTo( "#itemList tbody" );
-	  }
-	}
-  );
-
-  
-});
-if(c==0)
-{
 	
 
-}
-}
 
 
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-};
 </script>
 
 <!-- Scripts -->
@@ -203,33 +187,11 @@ function sleep(milliseconds) {
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script>
-    	function clear(){
-	//$("#itemList tr").remove();
-	var elmtTable = document.getElementById('itemList');
-var tableRows = elmtTable.getElementsByTagName('tr');
-var rowCount = tableRows.length;
-
-for (var x=rowCount-1; x>0; x--) {
-   elmtTable.removeChild(tableRows[x]);
-}
-location.reload();
-}
+    	
 </script>
 	
 
-  <section class="contact-form">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                   <footer>
-                    <p>Created by: Team highTech</p>
-                    <p> Copyright &copy; 2019 COS 301 HighTech</p>
-                    <p>Contact information: <a href="tuksHightech1@gmail.com">tuksHightech@gmail</a>.</p>
-                  </footer>
-                </div>
-              </div>
-            </div>
-        </section>
+  
 
 
 			

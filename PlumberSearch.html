@@ -143,45 +143,32 @@
 
 
 
-
+<script src="functions.js"></script>
 <script >
-	var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.firestore();
+	// var firebaseConfig = {
+ //    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+ //    authDomain: "geyser-74ddf.firebaseapp.com",
+ //    databaseURL: "https://geyser-74ddf.firebaseio.com",
+ //    projectId: "geyser-74ddf",
+ //    storageBucket: "geyser-74ddf.appspot.com",
+ //    messagingSenderId: "1001903322970",
+ //    appId: "1:1001903322970:web:a904b91e99d67b22"
+ //  };
+ //  // Initialize Firebase
+ //  firebase.initializeApp(firebaseConfig);
+ //  var database = firebase.firestore();
 
-  function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+  
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+
 
 	function searchPlumber() {
 // clear();
 var bar=document.getElementById("plumber").value;
 console.log(bar);
 const display=document.querySelector("#display");
-
+var ids=getCookie("Identifier");
 $.ajax({
     url: "https://workflow-io.herokuapp.com/",
     type: "POST",
@@ -190,7 +177,7 @@ $.ajax({
     data: JSON.stringify({
         type: "retrieveCaseSearch",
         id: bar,
-        identifier:"abcdefghij"
+        identifier:ids
     }),
     success:function(res){
       console.log("Success: "+res) ;
@@ -199,7 +186,7 @@ $.ajax({
        //alert("Correct");
        for(var co=0;co<convertedObj.data.length;co++){
       var rows = "";
-      rows= "<tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].incidentDat
+      rows= "<tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].incidentDate
       +"</td><td>"+convertedObj.data[co].addressOfIncident+"</td><td>"+convertedObj.data[co].caseStatus+"</td><td>"+convertedObj.data[co].caseDescription
       +"</td><td>"+convertedObj.data[co].callerID+"</td><td>"+convertedObj.data[co].caseOpenedBy +"</td><td>"+convertedObj.data[co].caseClosedBy+"</td></tr>";
       $( rows ).appendTo( "#itemList tbody" );
@@ -251,14 +238,7 @@ $.ajax({
 
 
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-};
+
 </script>
 
 <!-- Scripts -->
@@ -272,17 +252,7 @@ function sleep(milliseconds) {
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script>
-    	function clear(){
-	//$("#itemList tr").remove();
-	var elmtTable = document.getElementById('itemList');
-var tableRows = elmtTable.getElementsByTagName('tr');
-var rowCount = tableRows.length;
-
-for (var x=rowCount-1; x>0; x--) {
-   elmtTable.removeChild(tableRows[x]);
-}
-location.reload();
-}
+    	
 </script>
 	
 <section class="contact-form">

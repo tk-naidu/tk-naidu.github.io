@@ -49,70 +49,39 @@
                 </div>
               </div>
             </div>
-            <div class="dropdown">
-              <!-- <button onclick="myFunction()" class="dropbtn">Search</button> -->
-              <div id="myDropdown" class="dropdown-content">
-                <a href="AgentSearch.html">Jobs per agent</a>
-                <a href="PlumberSearch.html">Jobs done by plumbers</a>
-                <a href="preferedGeysers.html">Prefered geysers</a>
-                <a href="Capacity.html">Prefered Capacity</a>
+            <div class="row">
+                  <div class="col-md-12">
+                <button type="button" onclick="location.href='AgentSearch.html';" value="Jobs per agent" >Jobs per agent</button>
+                <button type="button" onclick="location.href='PlumberSearch.html';" value="Jobs done by plumbers" >Jobs done by plumbers</button>
               </div>
             </div>
-           <!-- <div class="col-md-12">
-                          <select name="category" id="category">
-                            <option value="categories" selected >Select Category</option>
-                            <option value="Featured" >General</option>
-                            <option value="Newest">Specific</option>
-                            <option value="Low Price">Technical</option>
-                            <option value="High Price">Application</option>
-                          </select>
-                        </div> -->
-
-            <!-- =========================================================================================== -->
-            <!-- <div class="row">
-                <div class="col-md-6">
-                    <fieldset>
-                      <label>Cases done by plumber: </label>
-                      <input name="search" type="text" class="form-control" id="plumber" placeholder="Plumber ID..." required>
-                      <button type="button" onclick = SP()>Search</button>
-                      <button type="button" onclick = clear()>clear</button>
-                      <a href="closecase.html">clear</a>
-
-                    </fieldset>
-           		</div>
-           	</div> -->
-
-           	<!-- Tables -->
-            <!-- <section class="tables">
-              <div class="container-fluid">
-                <div class="row">
+            <div class="row">
                   <div class="col-md-12">
-                    <div class="section-heading">
-                      <h2>Tables</h2>
-                    </div>
-                    <div class="default-table">
-                      <table id="itemList">
-                        <thead>
-                          <tr>
-                            <th>CaseID</th>
-                            <th>Incident Date</th>
-                            <th>Address</th>
-                            <th>Case Status</th>
-                            <th>Description</th>
-                            <th>Caller ID</th>
-                            <th>Agent O</th>
-                            <th>Agent C</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          
-                        </tbody>
-                      </table>
-         </div>
-	</div>
-</div>
-</div>
-</section> -->
+                    <p>
+                      Case Searches
+                    </p>
+            </div>
+          </div>
+            <div class="row">
+                  <div class="col-md-12">
+                <button type="button" onclick="location.href='preferedGeysers.html';" value="Prefered geysers" >Prefered geysers</button>
+                <button type="button" onclick="location.href='Capacity.html';" value="Prefered Capacity" >Prefered Capacity</button>
+              </div>
+            </div>
+             <div class="row">
+                  <div class="col-md-12">
+                    <p>
+                      Geyser Features searches
+                    </p>
+            </div>
+          </div>
+                
+
+            
+
+
+
+</section> 
 <section class="contact-form">
               <div class="container-fluid">
                 <div class="row">
@@ -175,36 +144,6 @@
 
 
 <script >
-	var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.firestore();
-
-  function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
 
 	
 

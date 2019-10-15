@@ -102,48 +102,7 @@
                       </div>
                       </section>
 
-                      <!-- Sidebar -->
-       <!--  <div id="sidebar">
-
-          <div class="inner"> -->
-
-            <!-- Search Box -->
-            <!-- <section id="search" class="alt">
-              <form method="get" action="#">
-                <input type="text" name="search" id="search" placeholder="Search..." />
-              </form>
-            </section> -->
-              
-            <!-- Menu -->
-           <!-- <nav id="menu">
-              <ul>
-                <li><a href="index.html">Homepage</a></li>
-            
-                <li>
-                  <span class="opener">Cases</span>
-                  <ul>
-                    <li><a href="callerAndcase.html">New Case</a></li>
-                    <li><a href="closecase.html">Close case</a></li>
-                
-                  </ul>
-                </li>
-                <li>
-                  <span class="opener">Statistics</span>
-                  <ul>
-                    <li><a href="graph.html">Graph stats</a></li>
-                    <li><a href="#">Search enquiries</a></li>
-                  </ul>
-                </li>
-                <li><a href="AddEmployee.html">Add Plumber</a></li>
-                <li><a href="https://www.google.com">External Link</a></li>
-              </ul>
-            </nav> -->
-
-            <!-- Footer -->
-            <!-- <footer id="footer">
-              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
-              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
-            </footer> -->
+                      
             
           </div>
         </div>
@@ -160,21 +119,21 @@
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
 
-	
+	<script src="functions.js"></script>
  <script>
 
- var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
+ // var firebaseConfig = {
+ //    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+ //    authDomain: "geyser-74ddf.firebaseapp.com",
+ //    databaseURL: "https://geyser-74ddf.firebaseio.com",
+ //    projectId: "geyser-74ddf",
+ //    storageBucket: "geyser-74ddf.appspot.com",
+ //    messagingSenderId: "1001903322970",
+ //    appId: "1:1001903322970:web:a904b91e99d67b22"
+ //  };
+ //  // Initialize Firebase
+ //  firebase.initializeApp(firebaseConfig);
+ //  var db = firebase.firestore();
  
  
  function genAgentID()
@@ -201,23 +160,8 @@
         document.getElementById("textbox2").value = text;
           
  }
- function genSalt()
-{
-  return "thisissalt";
-}
 
-function generateIdentifier()
-{
-    var result="";
-  var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var len=chars.length;
-  for(var i=0; i<10;i=i+1)
-  {
-    result=result+chars.charAt(Math.floor(Math.random()*len));
-  }
-  return result
 
-}
  // this function confirms the password 
  function send()
  {
@@ -226,43 +170,94 @@ function generateIdentifier()
    var pass1 = document.getElementById('textbox2').value;
 	var confirm1 = document.getElementById('textbox3').value;
  var check=0;
+ var ids=getCookie("Identifier");
   if(pass1 == confirm1)
   { 
-    check++;
+    
 
-				db.collection("agentCredentials").doc(id1).set
-				(
-					{
-						agentName : name1,
-						agentID: id1,
-						agentPass: pass1
+  $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+      type: "addAgent",
+         identifier:ids,
+            agentName : name1,
+            agentID: id1
+            
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      alert("Admin added Successfully");
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+  });
+				// db.collection("agentCredentials").doc(id1).set
+				// (
+				// 	{
+				// 		agentName : name1,
+				// 		agentID: id1,
+	
 					
 
 
 
-					}
-				)
-        var st=genSalt();
-        var useIdentifier=generateIdentifier();
-        var temp=pass1+st;
-    
-        db.collection("users").doc(id1).set(
-      {
-        identifier:useIdentifier,
-      password:temp,
-      salt:st,
-      userType:"newadmin"
-      }
-      );  
+				// 	}
+				// )
+        
+
+$.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+      type: "addUser",
+         identifier:ids,
+          user:id1,
+            pass:pass1,
+          userType:"admin"
+            
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      alert("user added Successfully");
+      window.location.href='signUpAdmin.html';
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+});
+      //   db.collection("users").doc(id1).set(
+      // {
+      //   identifier:useIdentifier,
+      // password:temp,
+      // salt:st,
+      // userType:"admin"
+      // }
+      // );  
 				
 	}
 	else
 	{
 			alert("Your password doesn't match. Please enter the password again.");
 	}
-  if(check!=0){
-   
-  }
+
  }
  function log(){
    window.location.href='index.html';

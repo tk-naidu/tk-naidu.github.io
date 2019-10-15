@@ -141,7 +141,7 @@
 
 
 
-
+<script src="functions.js"></script>
 <script >
 	var firebaseConfig = {
     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
@@ -187,10 +187,7 @@ database.collection("caseDetails").get().then(function(querySnapshot)
   	console.log(doc.data());
     if(bar==doc.data().plumberID){
 	      c++;
-	    console.log("entry foound"
-	      
-	      //can add.details to be specific
-	      );
+
 	    var rows = "";
 	    // rows += "<tr><td>" +...++"</td></tr>";
 	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
@@ -203,24 +200,10 @@ database.collection("caseDetails").get().then(function(querySnapshot)
 
   
 });
-if(c==0)
-{
-	
 
 }
-}
 
 
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-};
 </script>
 
 <!-- Scripts -->
@@ -234,17 +217,7 @@ function sleep(milliseconds) {
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script>
-    	function clear(){
-	//$("#itemList tr").remove();
-	var elmtTable = document.getElementById('itemList');
-var tableRows = elmtTable.getElementsByTagName('tr');
-var rowCount = tableRows.length;
 
-for (var x=rowCount-1; x>0; x--) {
-   elmtTable.removeChild(tableRows[x]);
-}
-location.reload();
-}
 </script>
 	
 

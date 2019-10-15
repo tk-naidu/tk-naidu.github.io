@@ -24,7 +24,7 @@
    
  
 
-  
+  <script src="functions.js"></script>
 <script>
   /*
         * @author : Janaki Patil
@@ -358,21 +358,22 @@
     <script src="assets/js/custom.js"></script>
  
  <script>
- var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
+ // var firebaseConfig = {
+ //    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
+ //    authDomain: "geyser-74ddf.firebaseapp.com",
+ //    databaseURL: "https://geyser-74ddf.firebaseio.com",
+ //    projectId: "geyser-74ddf",
+ //    storageBucket: "geyser-74ddf.appspot.com",
+ //    messagingSenderId: "1001903322970",
+ //    appId: "1:1001903322970:web:a904b91e99d67b22"
+ //  };
+ //  // Initialize Firebase
+ //  firebase.initializeApp(firebaseConfig);
+ //  var db = firebase.firestore();
  
 function storeData()
 {
+  var id = getCookie("Identifier");
 var name1 = document.getElementById('textbox2').value;
 var surname1 = document.getElementById('textbox3').value;
 var address1 = document.getElementById('textbox4').value;
@@ -392,75 +393,156 @@ var temp = document.getElementById('textbox18').value;
 //spliting the name and id of the plumber 
 var index = temp.search("-");
 var plumberID1 = temp.slice(index+1, temp.length);
-
-
-
-
 var caseOpenedBy1 = document.getElementById('textbox19').value;
+
+
+
+ $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+        type: "addCaller",
+        callerID : callerID1,
+        name: name1,
+        surname:surname1,
+        address:address1,
+        cellNumber:cellNumber1,
+        callBackNumber:callBackNumber1,
+        clientType:clientType1,
+        serviceType:serviceType1,
+        reason:reason1,
+        identifier:id
+    }),
+    success:function(res)
+  {
+      console.log("success");
+      
+    },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+}); 
 // var caseClosedBy1 = document.getElementById('textbox20').value;
 // var caseclosedDate1 = document.getElementById('textbox21').value;
-db.collection("callerDetails").doc(callerID1).set(
-{
-callerID : callerID1,
-name: name1,
-surname:surname1,
-address:address1,
-cellNumber:cellNumber1,
-callBackNumber:callBackNumber1,
-clientType:clientType1,
-serviceType:serviceType1,
-reason:reason1
-}
-)
-db.collection("caseDetails").doc(caseID1).set(
-{
-caseID: caseID1,
-callerID : callerID1,
-incidentDate:incidentDate1,
-addressOfIncident :address1,
-caseDescription : caseDescription1,
-caseStatus : caseStatus1,
-plumberID : plumberID1,
-caseOpenedBy :caseOpenedBy1,
-caseClosedBy : "unknown",
-caseClosedDate : "unknown"
-}
-)
-db.collection("users").get().then(function(querySnapshot)
+//////////////////////////////
+                                      // db.collection("callerDetails").doc(callerID1).set(
+                                      // {
+                                      // callerID : callerID1,
+                                      // name: name1,
+                                      // surname:surname1,
+                                      // address:address1,
+                                      // cellNumber:cellNumber1,
+                                      // callBackNumber:callBackNumber1,
+                                      // clientType:clientType1,
+                                      // serviceType:serviceType1,
+                                      // reason:reason1
+                                      // }
+                                      // )
+/////////////////////////////
+
+ $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+        type: "addCase",
+        caseID: caseID1,
+        callerID : callerID1,
+        incidentDate:incidentDate1,
+        addressOfIncident :address1,
+        caseDescription : caseDescription1,
+        caseStatus : caseStatus1,
+        plumberID : plumberID1,
+        caseOpenedBy :caseOpenedBy1,
+        caseClosedBy : "unknown",
+        caseClosedDate : "unknown",
+        identifier:id
+    }),
+    success:function(res)
   {
-    querySnapshot.forEach(function(doc)
-    {
-    
-        //console.log(doc.id[0]);
-      //i++;
-      if(doc.id==plumberID1)
-      {
-         db.collection("users").doc(doc.id).update({caseToWorkOn: caseID1  });
-      }
+      console.log("success");
       
+    },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+}); 
+ ////////////////////////
+                              // db.collection("caseDetails").doc(caseID1).set(
+                              // {
+                              // caseID: caseID1,
+                              // callerID : callerID1,
+                              // incidentDate:incidentDate1,
+                              // addressOfIncident :address1,
+                              // caseDescription : caseDescription1,
+                              // caseStatus : caseStatus1,
+                              // plumberID : plumberID1,
+                              // caseOpenedBy :caseOpenedBy1,
+                              // caseClosedBy : "unknown",
+                              // caseClosedDate : "unknown"
+                              // }
+                              // )
+////////////////////////////////
+
+
+ $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+        type: "updatePlumberCase",
+        plumberID : plumberID1,
+        caseID: caseID1,
+        identifier:id
+    }),
+    success:function(res)
+  {
+      console.log("success");
       
-     });
-    
-  });
+    },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+}); 
+
+                        // db.collection("users").get().then(function(querySnapshot)
+                        //   {
+                        //     querySnapshot.forEach(function(doc)
+                        //     {
+                            
+                        //         //console.log(doc.id[0]);
+                        //       //i++;
+                        //       if(doc.id==plumberID1)
+                        //       {
+                        //          db.collection("users").doc(doc.id).update({caseToWorkOn: caseID1  });
+                        //       }
+                              
+                              
+                        //      });
+                            
+                        //   });
   
   
-  /*
-  var com = "24";
-  var u = "unknown";
-  db.collection("caseDetails").get().then(function(querySnapshot)
-  {
-    querySnapshot.forEach(function(doc)
-    {
-      if(com==doc.data().caseStatus && u==doc.data().caseClosedBy)
-      {
-        display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseStatus +"</td><td> " + doc.data().caseID+"</td><td> "+doc.data().caseClosedDate+"</td></tr></table><br/>";
-      }
-     });
-    
-  });
-*/
-alert("added succesfully");
-//location.reload();
+
 }
  </script>
 </div>

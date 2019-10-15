@@ -89,18 +89,11 @@
 					<div class="col-md-6">
 						
 				
-						<label>Case Closed by (Agent ID)</label>
+						<label>Enter Case ID to Close</label>
 						<input type="text" name="textbox19" list="exampleList" id = "test" required>
-							<datalist id="exampleList">
-								<option value="ARvCV6mlk">  
-								<option value="AXJXoxUcT">
-								<option value="AmYRVePKB">
-								<option value="AqFqK4rxM">
-								<option value="Av5cwg13a">
-								
-						    </datalist>
+							
 					</div>
-				<button onclick= add()>Close the case </button>
+				<button onclick= close()>Close the case </button>
 			</div>
 </section>
 				</div>
@@ -170,7 +163,7 @@
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
-
+<script src="functions.js"></script>
 <script>
 
 var firebaseConfig = {
@@ -186,48 +179,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
   
-/*
-function searchName() {
-//var agentID1 = document.getElementById('textbox1').value;  // get agent ID
-var closed1 = genDate();
- const display=document.querySelector("#test");
-db.collection("caseDetails").get().then(function(querySnapshot)
-{
-  querySnapshot.forEach(function(doc)
-  {
-            var html = " ";
-			var com = "completed";
-			var check = doc.data().caseStatus;
-			
-			
-			console.log(check);
-			if(com==doc.data().caseStatus)
-			{
-			
-			
-			display.innerHTML +=doc.data().caseStatus + "<br>";
-			//display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseStatus +"</td><td> " + doc.data().caseID+"</td><td> "+doc.data().caseOpenedBy+"</td></tr></table><br/>";
-            var to = doc.data().caseID;
-			
-			// this code below is used to update the field
-			db.collection("caseDetails").doc(to).update(
-				{
-					
-					closeByAgentID : "done",
-				})
-			}		
-		
-});
-	
-	
-});
 
-
-
-
-}
-
-*/
 
 function genDate()
 {
@@ -237,28 +189,55 @@ function genDate()
 	  return date;
 }
 
-function add() 
+function close() 
 {
-  
-	
 	const display=document.querySelector("#display");
-	var date = genDate();
-	var agent = document.getElementById("test").value;
-	alert(agent);
-	var com = "completed";
-  var u="unknown";
-	db.collection("caseDetails").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			if(com==doc.data().caseStatus&& u==doc.data().caseClosedBy )
-			{
+	var date1 = genDate();
+	var case = document.getElementById("test").value;
+	var id=getCookie("Identifier");
+  $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+   identifier:id,
+        type: "closeCases",
+        case1:case,
+        date:date1
+
+
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      //alert("Plumber added Successfully");
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+});
+
+
+	// var com = "completed";
+ //  var u="unknown";
+	// db.collection("caseDetails").get().then(function(querySnapshot)
+	// {
+	// 	querySnapshot.forEach(function(doc)
+	// 	{
+	// 		if(com==doc.data().caseStatus&& u==doc.data().caseClosedBy )
+	// 		{
 			   
-				db.collection("caseDetails").doc(doc.id).update({caseClosedBy: agent, caseClosedDate :date, caseStatus : "closed"  });
-			}
-	   });
+	// 			db.collection("caseDetails").doc(doc.id).update({caseClosedBy: agent, caseClosedDate :date, caseStatus : "closed"  });
+	// 		}
+	//    });
 		
-	});
+	// });
 
 }
 
