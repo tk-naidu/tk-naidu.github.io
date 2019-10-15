@@ -59,7 +59,7 @@
                       <input name="search" type="text" class="form-control" id="plumber" placeholder="Capacity..." required>
                       <button type="button" onclick = capacity()>Search</button>
                       <!-- <button type="button" onclick = clear()>clear</button> -->
-                      <a href="Capacity.html">clear</a>
+                      <button type="button" onclick="location.href='Capacity.html';" value="Prefered Capacity" >Clear</button>
 
                     </fieldset>
            		</div>
@@ -155,18 +155,7 @@
 
 <script src="functions.js"></script>
 <script >
-	var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.firestore();
+
 
   function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
