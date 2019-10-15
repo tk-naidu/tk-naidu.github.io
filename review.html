@@ -152,7 +152,7 @@
   
   
  <script src="functions.js"></script>
-<script language="JavaScript" type="text/javascript">
+<script language="JavaScript" type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js">
 function refresh()
 {
   
@@ -195,6 +195,8 @@ function send()
     }
 console.log(comments);
 console.log(stars);
+
+
 var ids=getCookie("Identifier");
 
   $.ajax({
