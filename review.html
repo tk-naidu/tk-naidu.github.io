@@ -160,60 +160,56 @@ function refresh()
 }
 function send()
 {
-
  
-  
-  
-  
-  var comments = document.getElementById("comment").value;
-  var radios = document.getElementsByName('rating');
-  var stars;
-  var caseID =  document.getElementById("textbox18").value;
-  var uname =  document.getElementById("textbox19").value;
-    for (var i = 0, length = radios.length; i < length; i++)
-    {
-     if (radios[i].checked)
-     {
-      
-      stars = radios[i].value;
+	  var comments = document.getElementById("comment").value;
+	  var radios = document.getElementsByName('rating');
+	  var stars;
+	  var caseID =  document.getElementById("textbox18").value;
+	  var uname =  document.getElementById("textbox19").value;
+	   for (var i = 0, length = radios.length; i < length; i++)
+	   {
+	     	if (radios[i].checked)
+	     	{
 
-      
-      break;
-     }
-    }
-console.log(comments);
-console.log(stars);
+	     		 stars = radios[i].value;
+			 break;
+	     	}
+	   }
+	console.log(comments);
+	console.log(stars);
 
 
-var ids=getCookie("Identifier");
+	var ids=getCookie("Identifier");
 
-  $.ajax({
-          url: "https://workflow-io.herokuapp.com/",
-          type: "POST",
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          data: JSON.stringify({
-              type: "addReview",
-              rating : stars,
-              feedback : comments,
-              caseNumber : caseID,
-              userName : uname,
-              identifier:'admin'
-          }),
-          success:function(res){
-            console.log("Success: "+res) ;
-            window.location.href='home2.html';
-            //alert("Plumber removed");
-
-          },
-          fail:function(data){
-            console.log("Fail: "+data);
-          },
-          error: function (jqXHR, textStatus, errorThrown) { 
-            console.log(jqXHR)
-            console.log(textStatus)
-            console.log(errorThrown)
-          }
+ 	 $.ajax({
+		  url: "https://workflow-io.herokuapp.com/",
+		  type: "POST",
+		  contentType: "application/json; charset=utf-8",
+		  dataType: "json",
+		  data: JSON.stringify
+		 ({
+		      type: "addReview",
+		      rating : stars,
+		      feedback : comments,
+		      caseNumber : caseID,
+		      userName : uname,
+		      identifier:'admin'
+          	  }),
+		  success:function(res)
+		 {
+		    console.log("Success: "+res) ;
+		    window.location.href='home2.html';
+		 },
+		 fail:function(data)
+		 {
+		    console.log("Fail: "+data);
+		 },
+		 error: function (jqXHR, textStatus, errorThrown) 
+		 { 
+		    console.log(jqXHR)
+		    console.log(textStatus)
+		    console.log(errorThrown)
+		  }
     }); 
 
 
