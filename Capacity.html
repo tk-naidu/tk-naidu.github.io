@@ -156,71 +156,76 @@
 <script src="functions.js"></script>
 <script >
 
-
-  function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function myFunction()
+{
+  	document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+window.onclick = function(event) 
+{
+  	if (!event.target.matches('.dropbtn'))
+	{
+    		var dropdowns = document.getElementsByClassName("dropdown-content");
+    		var i;
+    		for (i = 0; i < dropdowns.length; i++) 
+		{
+      			var openDropdown = dropdowns[i];
+      			if (openDropdown.classList.contains('show')) 
+			{
+       				 openDropdown.classList.remove('show');
+      			}
+    		}
+  	}
+}
+
+function capacity() 
+{
+
+	var capacity=document.getElementById("plumber").value;
+	console.log(capacity);
+	const display=document.querySelector("#display");
+	var c=0;
+	var ids=getCookie("Identifier");
+
+
+	$.ajax
+	({
+    		url: "https://workflow-io.herokuapp.com/",
+    		type: "POST",
+    		contentType: "application/json; charset=utf-8",
+    		dataType: "json",
+    		data: JSON.stringify({
+		type: "retrieveCapacitySearch",
+       		id: capacity,
+        	identifier:ids
+       }),
+       success:function(res)
+       {
+      		console.log("Success: "+res) ;
+      		var convertedObj= JSON.parse(res);
+      		console.log(convertedObj.userType);  
+      		for(var co=0;co<convertedObj.data.length;co++)
+		{
+     			 var rows = "";
+      			 rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[co].caseID
+      			+"</td><td>"+convertedObj.data[co].insurance+"</td><td>"+convertedObj.data[co].manufacturer+"</td><td>"+convertedObj.data[co].model+"</td></tr>";
+     			 $( rows ).appendTo( "#itemList tbody" );
+    		}
+    
+    
+
+      },
+     fail:function(data)
+     {
+          	console.log("Fail: "+data);
+     },
+     error: function (jqXHR, textStatus, errorThrown) 
+     { 
+     		 console.log(jqXHR)
+     		 console.log(textStatus)
+     		 console.log(errorThrown)
       }
-    }
-  }
-}
-
-	function capacity() {
-// clear();
-var capacity=document.getElementById("plumber").value;
-console.log(capacity);
-const display=document.querySelector("#display");
-var c=0;
-var ids=getCookie("Identifier");
-
-
-$.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "retrieveCapacitySearch",
-        id: capacity,
-        identifier:ids
-    }),
-    success:function(res)
-  {
-      console.log("Success: "+res) ;
-      var convertedObj= JSON.parse(res);
-      console.log(convertedObj.userType);  
-       //alert("Correct");
-        for(var co=0;co<convertedObj.data.length;co++){
-     
-      var rows = "";
-      // rows += "<tr><td>" +...++"</td></tr>";
-      rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[co].caseID
-      +"</td><td>"+convertedObj.data[co].insurance+"</td><td>"+convertedObj.data[co].manufacturer+"</td><td>"+convertedObj.data[co].model+"</td></tr>";
-      $( rows ).appendTo( "#itemList tbody" );
-    }
-    
-    
-
-    },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-}); 
+    }); 
 
 // database.collection("geyser").get().then(function(querySnapshot)
 // {
@@ -249,14 +254,18 @@ $.ajax({
 
 
 
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
+function sleep(milliseconds) 
+{
+ 	var start = new Date().getTime();
+  	for (var i = 0; i < 1e7; i++) 
+	{
+   		if ((new Date().getTime() - start) > milliseconds)
+		{
+      			break;
+    		}
+	}
+	
+	
 };
 </script>
 
