@@ -1,23 +1,23 @@
 ********************Caller identification*********************************
 
 Name = Janaki 
-surname = Patil 
-address = eruditi, prospect street, Hatfield, Pretoria, 0028
-cell number = 0123456789
-call back number = 0789456123
-client type = home owner
-service type = installation
-reason = require new geyser 
+Surname = Patil 
+Address = eruditi, prospect street, Hatfield, Pretoria, 0028
+Cell number = 0123456789
+Call back number = 0789456123
+Client type = home owner
+Service type = installation
+Reason = require new geyser 
 
 
 Name = Jerry 
-surname = Franco
-address = House No 1456, Legabe street, unit 4, Mogwase, 0314
-cell number = 1478523604
-call back number = 0874596715
-client type = Home Owner
-service type = Installation
-reason = require new geyser 
+Surname = Franco
+Address = House No 1456, Legabe street, unit 4, Mogwase, 0314
+Cell number = 1478523604
+Call back number = 0874596715
+Client type = Home Owner
+Service type = Installation
+Reason = require new geyser 
 
 
 Name = Diviya  
@@ -27,48 +27,262 @@ Cell number = 0789546321
 Call back number = 07985236142
 Client type = Home Owner
 Service type = Repairs
-Reason = geyser to be repaired
+Reason = geyser to be repaired 
 
 
 Name = Garry   
-surname = Nova
-address = Hatfield Studio, Burnett Street, Hatfield, Pretoria, 0028
-cell number = 0896547123
-call back number = 0874592136
-client type = Home Owner
-service type = Installation
-reason = geyser to be installed
+Surname = Nova
+Address = Hatfield Studio, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0896547123
+Call back number = 0874592136
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
 
 
 Name = Pieter  
-surname = Lilly
-address = Studios, Burnett Street, Hatfield, Pretoria, 0028
-cell number = 08452136971
-call back number = 0745213698
-client type = Home Owner
-service type = Installation
-reason = geyser to be installed
+Surname = Lilly
+Address = Studios, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 08452136971
+Call back number = 0745213698
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
 
 Name = Patter
-surname = Soulk
-address = Gables, Prospect Street, Hatfield, Pretoria, 0028
-cell number = 0745896321
-call back number = 08954758954
-client type = Home Owner
-service type = Repairs
-reason = geyser to be repaired
+Surname = Soulk
+Address = Gables, Prospect Street, Hatfield, Pretoria, 0028
+Cell number = 0745896321
+Call back number = 08954758954
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
 
 Name = Mark 
-surname = Shuttleworth
-address = The Fields, Burnett Street, Hatfield, Pretoria, 0028
-cell number = 0745896321
-call back number =0847521397
-client type = Home Owner
-service type = Installation
-reason = geyser to be installed
+Surname = Shuttleworth
+Address = The Fields, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0745896321
+Call back number =0847521397
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Priy
+Surname = Shuttl
+Address = The Fields, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0123456856
+Call back number =0254786395
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
 
 
-***********************CV****************************
+Name = Sema
+Surname = Shaoun
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0452136985
+Call back number =0425789631
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+
+
+
+
+
+Name = Tina 
+Surname = Gobin
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0845213695
+Call back number =0785412369
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+
+Name = Suit 
+Surname = Tiller 
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0145236521
+Call back number =0748965213
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Souther 
+Surname = Builder
+Address = Makwassie, Festival Street, Hatfield, Pretoria, 0028
+Cell number = 0785412369
+Call back number =0874521369
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Hitler
+Surname = Timberland
+Address = South Street, Centurion, Pretoria, 0035
+Cell number = 0785412369
+Call back number =0874563215
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+Name = Rotter
+Surname = Shaoun
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0745896325
+Call back number = 07854123695
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Yash
+Surname = Sitter
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0458712369
+Call back number =0541236985
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+Name = Goat 
+Surname = Sweger
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0748965236
+Call back number =0421256312
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Divi
+Surname = Shutterworth
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0451459632
+Call back number =04247856932
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Retha
+Surname = Gunny
+Address = South Street, Centurion, Pretoria, 0035
+Cell number = 0415236952
+Call back number =0985412367
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Chick
+Surname = Smoother
+Address = Gables, Burnett Street, Hatfield, Pretoria, 0028
+Cell number = 0741258963
+Call back number =0874523691
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+//////////////////////////////////////////////////////////////////////////////
+Name = Ratter
+Surname = Author
+Address = South Street, Centurion, Pretoria, 0035
+Cell number = 0731458720
+Call back number =0147856932
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Etheran
+Surname = Watter
+Address = South Street, Centurion, Pretoria, 0035
+Cell number = 0147856932
+Call back number =0748965321
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Asther
+Surname = Waiter
+Address = North Street, Midrand, Johannesburg, 0315
+Cell number = 0142365897
+Call back number =0874523695
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Queryy
+Surname = Ather
+Address = North Street, Midrand, Johannesburg, 0315
+Cell number = 0874523695
+Call back number =0748965321
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Vik
+Surname = Ramer
+Address = East Street, Midrand, Johannesburg, 0315
+Cell number = 0741256930
+Call back number = 0123654789
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+Name = Willer
+Surname = Southerpher
+Address = East Street, Midrand, Johannesburg, 0315
+Cell number = 0874523695
+Call back number = 0123745693
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+/////////////////////////////////////////////////////////////////////////////////////////////
+Name = Cother
+Surname = Wriller
+Address = West Street, Midrand, Johannesburg, 0315
+Cell number = 0854693257
+Call back number = 0325698745
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+Name = Zether
+Surname = Potterer
+Address = East Street, Midrand, Johannesburg, 0315
+Cell number = 0325698745
+Call back number = 0854693257
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+Name = Southeram
+Surname = Bandiwl
+Address = East Street, Midrand, Johannesburg, 0315
+Cell number = 0147852365
+Call back number = 0214587963
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Vikrammer
+Surname = Ramererik
+Address = East Street, Rosebank, Johannesburg, 0315
+Cell number = 0214587963
+Call back number = 0174125698
+Client type = Home Owner
+Service type = Installation
+Reason = geyser to be installed
+
+Name = Nammer
+Surname = Loutherim
+Address = Eastrand Street, Rosbank, Johannesburg, 0318
+Cell number = 0174125698
+Call back number = 0214587963
+Client type = Home Owner
+Service type = Repairs
+Reason = geyser to be repaired
+
+*****************************************************
+*********************** Employee Details to add ****************************
 
 Name : Janaki Patil 
 ID Number : 9601201478523
@@ -87,18 +301,75 @@ Cell Number: 0745963214
 Address : Respublica, Prospect street, Hatfield, Pretoria, 0028
 
 Name : Tim Crook  
-Date Of Birth : 22/03/1985
-Gender : Male
 ID Number : 8503221458961
 Cell Number: 07456321896
 Address : Makwassie, Festival street, Hatfield, Pretoria, 0028
 
 Name : Simran Timmer  
-Date Of Birth : 23/04/1986
-Gender : Male
 ID Number : 8604231236598
 Cell Number: 0896547123
 Address : Studios, Festival street, Hatfield, Pretoria, 0028
+
+
+
+Name : Leo Groover 
+ID Number : 8901201365478
+Cell Number: 0874512369
+Address : Studios @ Burnett, Prospect Street, Centurion, Pretoria, 0031
+
+Name : Seal Fitter 
+ID Number : 8801231456781
+Cell Number: 0874145236
+Address : Studios @ Burnett, Prospect Street, Centurion, Pretoria, 0031
+
+Name : Goal Opper 
+ID Number : 7911254569812
+Cell Number: 0847152369
+Address : Studios @ Burnett, Burnett, Centurion, Pretoria, 0031
+
+Name : Fish Market 
+ID Number : 7911261452369
+Cell Number: 0792546391
+Address : Studios @ Burnett, Burnett, Midrand, Pretoria, 0024
+
+Name : Trim Miller 
+ID Number : 7911261478542
+Cell Number: 0792546391
+Address : Studios @ Burnett, Burnett, Sandton, Pretoria, 0024
+
+
+Name : Trishan Chug 
+ID Number : 7911264785123
+Cell Number: 0774123658
+Address : Cum Laude, Burnett, Sandton, Johannesburg, 0024
+
+Name : Tist Suther
+ID Number : 7911261478542
+Cell Number: 0777485963
+Address : Cum Laude, Burnett, Sandton, Johannesburg, 0024
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
