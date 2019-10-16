@@ -161,19 +161,7 @@ function refresh()
 function send()
 {
 
-//lima
-var firebaseConfig = {
-    apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-    authDomain: "geyser-74ddf.firebaseapp.com",
-    databaseURL: "https://geyser-74ddf.firebaseio.com",
-    projectId: "geyser-74ddf",
-    storageBucket: "geyser-74ddf.appspot.com",
-    messagingSenderId: "1001903322970",
-    appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();   
+ 
   
   
   
@@ -199,44 +187,36 @@ console.log(stars);
 
 var ids=getCookie("Identifier");
 
-  // $.ajax({
-  //         url: "https://workflow-io.herokuapp.com/",
-  //         type: "POST",
-  //         contentType: "application/json; charset=utf-8",
-  //         dataType: "json",
-  //         data: JSON.stringify({
-  //             type: "addReview",
-  //             rating : stars,
-  //             feedback : comments,
-  //             caseNumber : caseID,
-  //             userName : uname,
-  //             identifier:ids
-  //         }),
-  //         success:function(res){
-  //           console.log("Success: "+res) ;
-  //           window.location.href='home2.html';
-  //           //alert("Plumber removed");
+  $.ajax({
+          url: "https://workflow-io.herokuapp.com/",
+          type: "POST",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify({
+              type: "addReview",
+              rating : stars,
+              feedback : comments,
+              caseNumber : caseID,
+              userName : uname,
+              identifier:'admin'
+          }),
+          success:function(res){
+            console.log("Success: "+res) ;
+            window.location.href='home2.html';
+            //alert("Plumber removed");
 
-  //         },
-  //         fail:function(data){
-  //           console.log("Fail: "+data);
-  //         },
-  //         error: function (jqXHR, textStatus, errorThrown) { 
-  //           console.log(jqXHR)
-  //           console.log(textStatus)
-  //           console.log(errorThrown)
-  //         }
-  //   }); 
+          },
+          fail:function(data){
+            console.log("Fail: "+data);
+          },
+          error: function (jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR)
+            console.log(textStatus)
+            console.log(errorThrown)
+          }
+    }); 
 
-db.collection("feedback").doc(caseID).set(
-{
-rating : stars,
-feedback : comments,
-caseNumber : caseID,
-userName : uname
 
-}
-);
  }
  
  
