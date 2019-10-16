@@ -26,7 +26,7 @@
 </head>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
@@ -203,7 +203,8 @@
   
 <script>
 
-var firebaseConfig = {
+var firebaseConfig = 
+{
     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
     authDomain: "geyser-74ddf.firebaseapp.com",
     databaseURL: "https://geyser-74ddf.firebaseio.com",
@@ -211,53 +212,53 @@ var firebaseConfig = {
     storageBucket: "geyser-74ddf.appspot.com",
     messagingSenderId: "1001903322970",
     appId: "1:1001903322970:web:a904b91e99d67b22"
-  };
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
   
   
-  var fileButton1 = document.getElementById("fileButton1");
- fileButton1.addEventListener('change', function(e){
- var file1 = e.target.files[0];
- 
- var storageRef1 = firebase.storage().ref("Workers Details");
- var secondref1 = storageRef1.child(document.getElementById("textbox9").value);
- var imagesRef1 = secondref1.child(file1.name);
- imagesRef1.put(file1);
+var fileButton1 = document.getElementById("fileButton1");
+fileButton1.addEventListener('change', function(e)
+{
+ 	var file1 = e.target.files[0];
+ 	var storageRef1 = firebase.storage().ref("Workers Details");
+	var secondref1 = storageRef1.child(document.getElementById("textbox9").value);
+	var imagesRef1 = secondref1.child(file1.name);
+ 	imagesRef1.put(file1);
  }); 
  
  
  
   var fileButton2 = document.getElementById("fileButton2");
- fileButton2.addEventListener('change', function(f){
- var file2 = f.target.files[0];
- 
- var storageRef = firebase.storage().ref("Workers Details");
- var secondref = storageRef.child(document.getElementById("textbox9").value);
- var imagesRef = secondref.child(file2.name);
- imagesRef.put(file2);
+fileButton2.addEventListener('change', function(f)
+{
+ 	var file2 = f.target.files[0];
+ 	var storageRef = firebase.storage().ref("Workers Details");
+ 	var secondref = storageRef.child(document.getElementById("textbox9").value);
+ 	var imagesRef = secondref.child(file2.name);
+ 	imagesRef.put(file2);
  }); 
  
  
   var fileButton3 = document.getElementById("fileButton3");
- fileButton3.addEventListener('change', function(g){
- var file3 = g.target.files[0];
- 
- var storageRef3 = firebase.storage().ref("Workers Details");
- var secondref3 = storageRef3.child(document.getElementById("textbox9").value);
- var imagesRef3 = secondref3.child(file3.name);
- imagesRef3.put(file3);
+fileButton3.addEventListener('change', function(g)
+{
+ 	var file3 = g.target.files[0];
+	var storageRef3 = firebase.storage().ref("Workers Details");
+ 	var secondref3 = storageRef3.child(document.getElementById("textbox9").value);
+ 	var imagesRef3 = secondref3.child(file3.name);
+ 	imagesRef3.put(file3);
  }); 
   
   
 function genPlumberID()
  {
-        var text = "24";
+  	var text = "24";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
            for(var i = 0; i < 8; i++) 
-          {
-             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           {
+            	text += possible.charAt(Math.floor(Math.random() * possible.length));
            }
         document.getElementById("textbox9").value = text;
           
@@ -270,7 +271,7 @@ function genPlumberID()
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&*";
           for(var i = 0; i < 8; i++) 
           {
-             text += possible.charAt(Math.floor(Math.random() * possible.length));
+          	text += possible.charAt(Math.floor(Math.random() * possible.length));
           }
         document.getElementById("textbox10").value = text;
           
@@ -279,137 +280,132 @@ function genPlumberID()
   // gets the birth date only
  function idNumber()
 {
-  var id = document.getElementById("textbox6").value;
-  
-  var date = id.slice(0,6);
-  var finalDate = date[0]+date[1]+"/"+date[2]+date[3]+"/"+date[4]+date[5];
-  return finalDate;
+  	var id = document.getElementById("textbox6").value;
+  	var date = id.slice(0,6);
+  	var finalDate = date[0]+date[1]+"/"+date[2]+date[3]+"/"+date[4]+date[5];
+  	return finalDate;
 
 } 
  
-  function send()
-  {
-            var emptyArray = []; // create an empty array
+function send()
+{
+	var emptyArray = []; // create an empty array
+        var lines = $('#comment').val().split('\n');
+        for(var i = 0;i < lines.length;i++)
+        {
+        	var str = lines[i]; 
+         	var index = str.search(":");
+                var res = str.slice(index+1, str.length);
+                emptyArray[i] = res;
+        }
            
-            
-            var lines = $('#comment').val().split('\n');
-            for(var i = 0;i < lines.length;i++)
-            {
-                  var str = lines[i]; 
-                  var index = str.search(":");
-                   var res = str.slice(index+1, str.length);
-                  emptyArray[i] = res
-      }
-           
-            document.getElementById("textbox3").value = emptyArray[0];
-      document.getElementById("textbox6").value = emptyArray[1];
-            document.getElementById("textbox7").value = emptyArray[2];
-      document.getElementById("textbox8").value = emptyArray[3];
+        document.getElementById("textbox3").value = emptyArray[0];
+        document.getElementById("textbox6").value = emptyArray[1];
+        document.getElementById("textbox7").value = emptyArray[2];
+        document.getElementById("textbox8").value = emptyArray[3];
       
-  }
+}
 
-  function idGender()
+function idGender()
 {
   
-  var x = document.getElementById("textbox6").value;
-  
-  var str = x.slice(6,10);
-  
-  
-  var gender= "";
-  if(str > 0000 && str < 4999) 
-  {
-      gender = "female";
-  }
-  else
-  {
-    gender = "male";
-  
-  }
-  
- 
-return gender;
+	var x = document.getElementById("textbox6").value;
+  	var str = x.slice(6,10);
+  	var gender= "";
+ 	if(str > 0000 && str < 4999) 
+  	{
+      		gender = "female";
+  	}
+  	else
+  	{
+   		 gender = "male";
+  	}
+  	return gender;
 
 
 }
   
  function storeData()
 {
-  var id=getCookie("Identifier");
-
- // alert(id);
-var name1 = document.getElementById('textbox3').value;
-var DateOfBirth1 = idNumber();
-var gender1 = idGender();
-var idNumber1 = document.getElementById('textbox6').value;
-var cellNumber1 = document.getElementById('textbox7').value;
-var address1 = document.getElementById('textbox8').value;
-var plumberID1 = document.getElementById('textbox9').value;
-
-var plumberPassword = document.getElementById('textbox10').value;
+	var id=getCookie("Identifier");
+	var name1 = document.getElementById('textbox3').value;
+	var DateOfBirth1 = idNumber();
+	var gender1 = idGender();
+	var idNumber1 = document.getElementById('textbox6').value;
+	var cellNumber1 = document.getElementById('textbox7').value;
+	var address1 = document.getElementById('textbox8').value;
+	var plumberID1 = document.getElementById('textbox9').value;
+	var plumberPassword = document.getElementById('textbox10').value;
 
 
 
-  $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-   identifier:id,
+  $.ajax
+  ({
+   	 url: "https://workflow-io.herokuapp.com/",
+    	type: "POST",
+    	contentType: "application/json; charset=utf-8",
+    	dataType: "json",
+    	data: JSON.stringify({
+   	identifier:id,
         type: "addEmployee",
-      fullName: name1,
-    DateOfBirth :DateOfBirth1,
-    gender:gender1,
-    idNumber:idNumber1,
-    cellNumber:cellNumber1,
-    address : address1,
-    plumberID : plumberID1,
-
-      userType:"plumber"
+      	fullName: name1,
+        DateOfBirth :DateOfBirth1,
+   	gender:gender1,
+    	idNumber:idNumber1,
+    	cellNumber:cellNumber1,
+    	address : address1,
+    	plumberID : plumberID1,
+	userType:"plumber"
 
         
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      alert("Plumber added Successfully");
-         $.ajax({
-                  url: "https://workflow-io.herokuapp.com/",
-                  type: "POST",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  data: JSON.stringify({
-                 identifier:id,
-                      type: "addUser",
+ }),
+      success:function(res)
+      {
+      	console.log("Success: "+res) ;
+      	alert("Plumber added Successfully");
+      	$.ajax
+      	({
+        	url: "https://workflow-io.herokuapp.com/",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({
+                identifier:id,
+                type: "addUser",
                 user: plumberID1,
                 pass: plumberPassword,
                 userType:"plumber"
 
                       
-                  }),
-                  success:function(res){
-                    console.log("Success: "+res) ;
-                    alert("Plumber added Successfully");
-                    },
-                  fail:function(data){
-                    console.log("Fail: "+data);
-                  },
-                  error: function (jqXHR, textStatus, errorThrown) { 
-                    console.log(jqXHR)
-                    console.log(textStatus)
-                    console.log(errorThrown)
-                  }
-              });
+     	 }),
+      	success:function(res)
+      	{
+          	console.log("Success: "+res) ;
+                alert("Plumber added Successfully");
+      	},
+     	fail:function(data)
+     	{
+          	console.log("Fail: "+data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) 
+        { 
+          	console.log(jqXHR)
+      	  	console.log(textStatus)
+      	  	console.log(errorThrown)
+      	}
+      });
 
       },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
+      fail:function(data)
+      {
+      	      console.log("Fail: "+data);
+      },
+     error: function (jqXHR, textStatus, errorThrown) 
+     { 
+      	     console.log(jqXHR)
+      	     console.log(textStatus)
+      	     console.log(errorThrown)
+     }
 });
 
 
