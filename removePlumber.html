@@ -81,41 +81,44 @@
         </section>
 <script src="functions.js"></script>
 <script>
-	function remove()
-	{
-    var ids=getCookie("Identifier");
-		var user = document.getElementById("plumberID").value;
-		confirm("Are you sure you want to remove the Plumber?");
-    $.ajax({
-          url: "https://workflow-io.herokuapp.com/",
-          type: "POST",
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          data: JSON.stringify({
-              type: "removeEmployee",
-              id: user,
-              identifier:ids
-          }),
-          success:function(res){
-            console.log("Success: "+res) ;
-            alert("Plumber removed");
+function remove()
+{
+    	var ids=getCookie("Identifier");
+	var user = document.getElementById("plumberID").value;
+	confirm("Are you sure you want to remove the Plumber?");
+    	$.ajax
+	({
+		  url: "https://workflow-io.herokuapp.com/",
+		  type: "POST",
+		  contentType: "application/json; charset=utf-8",
+		  dataType: "json",
+		  data: JSON.stringify
+		  ({
+			      type: "removeEmployee",
+			      id: user,
+			      identifier:ids
+		  }),
+		  success:function(res)
+		  {
+			      console.log("Success: "+res) ;
+			      alert("Plumber removed");
 
-          },
-          fail:function(data){
-            console.log("Fail: "+data);
-          },
-          error: function (jqXHR, textStatus, errorThrown) { 
-            console.log(jqXHR)
-            console.log(textStatus)
-            console.log(errorThrown)
-          }
-    }); 
+		  },
+		  fail:function(data)
+		  {
+		   	   console.log("Fail: "+data);
+		  },
+		  error: function (jqXHR, textStatus, errorThrown) 
+		  { 
+			    console.log(jqXHR)
+			    console.log(textStatus)
+			    console.log(errorThrown)
+		  }
+       }); 
 
 
-		// database.collection("employeesDetails").doc(user).delete();
-		// database.collection("users").doc(user).delete();
    
-	}
+}
 	
 </script>
 <!-- Sidebar -->
