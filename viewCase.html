@@ -164,6 +164,8 @@
   var date = genDate();
   var u= "unknown";
   var com = "completed";
+
+  
   db.collection("caseDetails").get().then(function(querySnapshot)
   {
     querySnapshot.forEach(function(doc)
