@@ -210,10 +210,10 @@ function cases()
 			for(var i =0; i<m.length; i++)
 			{
 			     if(m[i] == search)
-				 {
+			     {
 				   start = i;
 				   break;
-				 }
+			     }
 			
 			}
 			for(var j =0; j<m.length; j++)
@@ -280,21 +280,25 @@ function cases()
 			    
 			
 	   });
-	   var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "Number Of Cases per month"
-	},
-	axisY: {
-		title: "Number of cases"
-	},
-	data: [{        
+	   var chart = new CanvasJS.Chart("chartContainer", 
+	   {
+		animationEnabled: true,
+		theme: "light2", // "light1", "light2", "dark1", "dark2"
+		title:
+		{
+			text: "Number Of Cases per month"
+		},
+		axisY: 
+		{
+			title: "Number of cases"
+		},
+		data: [{        
 		type: "column",  
 		showInLegend: true, 
 		legendMarkerColor: "grey",
 		legendText: "Month",
-		dataPoints: [      
+		dataPoints: 
+		[      
 			{ y: one, label: "Jan" },
 			{ y: two,  label: "Feb" },
 			{ y: three,  label: "Mar" },
@@ -311,9 +315,7 @@ function cases()
 	}]
 });
 chart.render();
-
-	   //alert(seven);
-	    
+    
 	});
 
 
@@ -323,26 +325,23 @@ chart.render();
 function capacity()
 {
 
-var one1 = "50L";
-var two1 = "100L";
-var three1 = "150L";
-var four1 = "200L";
-var five1 = "250L";
+	var one1 = "50L";
+	var two1 = "100L";
+	var three1 = "150L";
+	var four1 = "200L";
+	var five1 = "250L";
 
-var c1 = 0;
-var c2 = 0;
-var c3 = 0;
-var c4 = 0;
-var c5 = 0;
+	var c1 = 0;
+	var c2 = 0;
+	var c3 = 0;
+	var c4 = 0;
+	var c5 = 0;
 
 db.collection("geyser").get().then(function(querySnapshot)
 	{
 		querySnapshot.forEach(function(doc)
 		{
 			var m = doc.data().capacity;
-			
-			
-			 
 			
 			 if(m == one1)
 			 {
@@ -369,33 +368,36 @@ db.collection("geyser").get().then(function(querySnapshot)
 			    
 			
 	   });
-	   var chart = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "Capacity of the geyser mostly preferred"
-	},
-	axisY: {
-		title: "Number of Geysers"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "Liters",
-		dataPoints: [      
-			{ y: c1, label: "50" },
-			{ y: c2,  label: "100" },
-			{ y: c3,  label: "150" },
-			{ y: c4,  label: "200" },
-			{ y: c5,  label: "250" }
+	   var chart = new CanvasJS.Chart("chartContainer2", 
+	  {
+		animationEnabled: true,
+		theme: "light2", 
+		title:
+		{
+			text: "Capacity of the geyser mostly preferred"
+		},
+		axisY:
+		{
+			title: "Number of Geysers"
+		},
+		data:
+		[{        
+			type: "column",  
+			showInLegend: true, 
+			legendMarkerColor: "grey",
+			legendText: "Liters",
+			dataPoints: 
+			[      
+				{ y: c1, label: "50" },
+				{ y: c2,  label: "100" },
+				{ y: c3,  label: "150" },
+				{ y: c4,  label: "200" },
+				{ y: c5,  label: "250" }
 			
-		]
-	}]
+			]
+		}]
 });
 chart.render();
-
-	   //alert(seven);
 	    
 	});
 }
