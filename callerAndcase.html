@@ -29,92 +29,88 @@
   /*
         * @author : Janaki Patil
         *@purpose of [genDate] is to generate the current date to log
-        */
-   function genDate()
+  */
+  function genDate()
   {
-     var today = new Date();
-      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      document.getElementById("textbox12").value = date; 
+     	var today = new Date();
+      	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      	document.getElementById("textbox12").value = date; 
   }
+	
   /*
         * @author : Janaki Patil
         *@purpose of [send] is to autofill ll required fields
-        */
+  */
   function send()
   {
-            var emptyArray = []; // create an empty array
-           
-            
+            var emptyArray = []; 
             var lines = $('#comment').val().split('\n');
             for(var i = 0;i < lines.length;i++)
             {
                   var str = lines[i]; 
- 				          var index = str.search("=");
-  				         var res = str.slice(index+1, str.length);
+ 		  var index = str.search("=");
+  		  var res = str.slice(index+1, str.length);
                   emptyArray[i] = res
-			}
+	    }
             document.getElementById("textbox2").value = emptyArray[0];
             document.getElementById("textbox3").value = emptyArray[1];
-			document.getElementById("textbox4").value = emptyArray[2];
+	    document.getElementById("textbox4").value = emptyArray[2];
             document.getElementById("textbox5").value = emptyArray[3];
-			document.getElementById("textbox6").value = emptyArray[4];
+	    document.getElementById("textbox6").value = emptyArray[4];
             document.getElementById("textbox7").value = emptyArray[5];
-			document.getElementById("textbox8").value = emptyArray[6];
+	    document.getElementById("textbox8").value = emptyArray[6];
             document.getElementById("textbox9").value = emptyArray[7];
   }
   
   function verifyFormat()
   {
 	
-	var emptyArray = []; // create an empty array
-           
-            
+	    var emptyArray = []; 
             var lines = $('#comment').val().split('\n');
             for(var i = 0;i < lines.length;i++)
             {
-                  var str = lines[i]; 
- 				  var index = str.search("=");
-  				  var res = str.slice(0, index-1);
-                  emptyArray[i] = res;
-			}
+            		var str = lines[i]; 
+ 		        var index = str.search("=");
+  		        var res = str.slice(0, index-1);
+                        emptyArray[i] = res;
+	    }
             
-			if(emptyArray[0] == "Name"&& emptyArray[1] == "Surname" && emptyArray[2] == "Address" && emptyArray[3] == "Cell number" && emptyArray[4] == "Call back number" && emptyArray[5] == "Client type" && emptyArray[6] == "Service type" && emptyArray[7] == "Reason" )
-			{
-			   document.getElementById("myBtn").disabled = false;
-			}
-			else
-			{
-			   document.getElementById("myBtn").disabled = true;
-			   alert("The format is incorrect." );
-			}
+	    if(emptyArray[0] == "Name"&& emptyArray[1] == "Surname" && emptyArray[2] == "Address" && emptyArray[3] == "Cell number" && emptyArray[4] == "Call back number" && emptyArray[5] == "Client type" && emptyArray[6] == "Service type" && emptyArray[7] == "Reason" )
+	    {
+			document.getElementById("myBtn").disabled = false;
+	    }
+	    else
+	    {
+			document.getElementById("myBtn").disabled = true;
+			alert("The format is incorrect." );
+	    }
   
   
   
   }
   
   function genCase()
-      {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-           for(var i = 0; i < 8; i++) 
-          {
-             text += possible.charAt(Math.floor(Math.random() * possible.length));
-           }
-        document.getElementById("textbox10").value = text;
-          
-      }
+ {
+ 	    var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for(var i = 0; i < 8; i++) 
+            {
+            		 text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            document.getElementById("textbox10").value = text;         
+ }
       
-  function genCallerID()
-      {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+function genCallerID()
+{
+           var text = "";
+           var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
            for(var i = 0; i < 8; i++) 
-          {
-             text += possible.charAt(Math.floor(Math.random() * possible.length));
+           {
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
            }
-        document.getElementById("textbox11").value = text;
+           document.getElementById("textbox11").value = text;
           
-      }
+}
 </script>
 </head>
 
@@ -360,119 +356,128 @@
  
 function storeData()
 {
-  var id = getCookie("Identifier");
-var name1 = document.getElementById('textbox2').value;
-var surname1 = document.getElementById('textbox3').value;
-var address1 = document.getElementById('textbox4').value;
-var cellNumber1 = document.getElementById('textbox5').value;
-var callBackNumber1 = document.getElementById('textbox6').value;
-var clientType1 = document.getElementById('textbox7').value;
-var serviceType1 = document.getElementById('textbox8').value;
-var reason1= document.getElementById('textbox9').value;
-//generating report
-var caseID1 = document.getElementById('textbox10').value;
-var callerID1 = document.getElementById('textbox11').value;
-var incidentDate1 = document.getElementById('textbox12').value;
-var caseDescription1 = document.getElementById('textbox16').value;
-var caseStatus1 = document.getElementById('textbox17').value;
+  	var id = getCookie("Identifier");
+	var name1 = document.getElementById('textbox2').value;
+	var surname1 = document.getElementById('textbox3').value;
+	var address1 = document.getElementById('textbox4').value;
+	var cellNumber1 = document.getElementById('textbox5').value;
+	var callBackNumber1 = document.getElementById('textbox6').value;
+	var clientType1 = document.getElementById('textbox7').value;
+	var serviceType1 = document.getElementById('textbox8').value;
+	var reason1= document.getElementById('textbox9').value;
+	var caseID1 = document.getElementById('textbox10').value;
+	var callerID1 = document.getElementById('textbox11').value;
+	var incidentDate1 = document.getElementById('textbox12').value;
+	var caseDescription1 = document.getElementById('textbox16').value;
+	var caseStatus1 = document.getElementById('textbox17').value;
 
-var temp = document.getElementById('textbox18').value;
-//spliting the name and id of the plumber 
-var index = temp.search("-");
-var plumberID1 = temp.slice(index+1, temp.length);
-var caseOpenedBy1 = document.getElementById('textbox19').value;
+	var temp = document.getElementById('textbox18').value;
+	var index = temp.search("-");
+	var plumberID1 = temp.slice(index+1, temp.length);
+	var caseOpenedBy1 = document.getElementById('textbox19').value;
 
 
 
- $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "addCaller",
-        callerID : callerID1,
-        name: name1,
-        surname:surname1,
-        address:address1,
-        cellNumber:cellNumber1,
-        callBackNumber:callBackNumber1,
-        clientType:clientType1,
-        serviceType:serviceType1,
-        reason:reason1,
-        identifier:id
-    }),
-    success:function(res)
-  {
-      console.log("success");
-       $.ajax({
-                url: "https://workflow-io.herokuapp.com/",
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({
-                    type: "addCase",
-                    caseID: caseID1,
-                    callerID : callerID1,
-                    incidentDate:incidentDate1,
-                    addressOfIncident :address1,
-                    caseDescription : caseDescription1,
-                    caseStatus : caseStatus1,
-                    plumberID : plumberID1,
-                    caseOpenedBy :caseOpenedBy1,
-                    caseClosedBy : "unknown",
-                    caseClosedDate : "unknown",
-                    identifier:id
-                }),
-                success:function(res)
-              {
-                  console.log("success");
-                   $.ajax({
-                              url: "https://workflow-io.herokuapp.com/",
-                              type: "POST",
-                              contentType: "application/json; charset=utf-8",
-                              dataType: "json",
-                              data: JSON.stringify({
-                                  type: "updatePlumberCase",
-                                  plumberID : plumberID1,
-                                  caseID: caseID1,
-                                  identifier:id
-                              }),
-                              success:function(res)
-                            {
-                                console.log("success");
-                                
-                              },
-                              fail:function(data){
-                                console.log("Fail: "+data);
-                              },
-                              error: function (jqXHR, textStatus, errorThrown) { 
-                                console.log(jqXHR)
-                                console.log(textStatus)
-                                console.log(errorThrown)
-                              }
-                          }); 
+ 	$.ajax
+	({
+    		url: "https://workflow-io.herokuapp.com/",
+    		type: "POST",
+    		contentType: "application/json; charset=utf-8",
+    		dataType: "json",
+    		data: JSON.stringify
+		({
+       			type: "addCaller",
+        		callerID : callerID1,
+        		name: name1,
+        		surname:surname1,
+        		address:address1,
+        		cellNumber:cellNumber1,
+        		callBackNumber:callBackNumber1,
+        		clientType:clientType1,
+        		serviceType:serviceType1,
+        		reason:reason1,
+        		identifier:id
+    		}),
+    		success:function(res)
+  		{
+      			console.log("success");
+       			$.ajax
+			({
+               			 url: "https://workflow-io.herokuapp.com/",
+               			 type: "POST",
+                		 contentType: "application/json; charset=utf-8",
+                		 dataType: "json",
+               			 data: JSON.stringify
+				({
+                    			type: "addCase",
+                    			caseID: caseID1,
+                    			callerID : callerID1,
+                   			incidentDate:incidentDate1,
+                    			addressOfIncident :address1,
+                    			caseDescription : caseDescription1,
+                    			caseStatus : caseStatus1,
+                    			plumberID : plumberID1,
+                    			caseOpenedBy :caseOpenedBy1,
+                    			caseClosedBy : "unknown",
+					caseClosedDate : "unknown",
+					identifier:id
+                		}),
+                		success:function(res)
+              			{
+                  			console.log("success");
+					 $.ajax
+					 ({
+						 url: "https://workflow-io.herokuapp.com/",
+						 type: "POST",
+						 contentType: "application/json; charset=utf-8",
+						 dataType: "json",
+						 data: JSON.stringify
+						 ({
+							  type: "updatePlumberCase",
+							  plumberID : plumberID1,
+							  caseID: caseID1,
+							  identifier:id
+						  }),
+                             			 success:function(res)
+                            			  {
+                               				 console.log("success");
+                              			  },
+					         fail:function(data)
+						 {
+						 	console.log("Fail: "+data);
+                              			  },
+                                    		error: function (jqXHR, textStatus, errorThrown) 
+						 { 
+                                			console.log(jqXHR)
+                                			console.log(textStatus)
+                                			console.log(errorThrown)
+                              			 }
+                         		 }); 
 
                   
-                },
-                fail:function(data){
-                  console.log("Fail: "+data);
-                },
-                error: function (jqXHR, textStatus, errorThrown) { 
-                  console.log(jqXHR)
-                  console.log(textStatus)
-                  console.log(errorThrown)
-                }
-            }); 
+                		},
+                		fail:function(data)
+				{
+                  			console.log("Fail: "+data);
+                		},
+               		        error: function (jqXHR, textStatus, errorThrown) 
+				{ 
+                  			console.log(jqXHR)
+                  			console.log(textStatus)
+                  			console.log(errorThrown)
+                		}
+            	}); 
       
     },
-    fail:function(data){
-      console.log("Fail: "+data);
+    fail:function(data)
+    {
+      	   console.log("Fail: "+data);
     },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
+    error: function (jqXHR, textStatus, errorThrown) 
+    { 
+      	    console.log(jqXHR)
+            console.log(textStatus)
+            console.log(errorThrown)
     }
 }); 
 
