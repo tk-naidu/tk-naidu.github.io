@@ -30,14 +30,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
 
-</head>
 
-<body class="is-preload">
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
 
 <body class="is-preload">
@@ -160,19 +153,25 @@
 {
 
 
+  
+  var casea = document.getElementById("test").value;
   const display=document.querySelector("#testing");
-  var date = genDate();
+ 
   var u= "unknown";
   var com = "completed";
 
-  
+
   db.collection("caseDetails").get().then(function(querySnapshot)
   {
     querySnapshot.forEach(function(doc)
     {
-      if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
+      if(casea==doc.data().caseID)
       {
-        display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
+        //check risk factors at end
+        //if plumber. take id and go through all case with his id and compare to all reviews with case id to get summary of plumber risk
+        //count times address appears in case and give risk level
+        //
+         display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
       }
      });
     
