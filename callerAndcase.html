@@ -498,48 +498,48 @@ var caseOpenedBy1 = document.getElementById('textbox19').value;
 ////////////////////////////////
 
 
- $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "updatePlumberCase",
-        plumberID : plumberID1,
-        caseID: caseID1,
-        identifier:id
-    }),
-    success:function(res)
-  {
-      console.log("success");
+//  $.ajax({
+//     url: "https://workflow-io.herokuapp.com/",
+//     type: "POST",
+//     contentType: "application/json; charset=utf-8",
+//     dataType: "json",
+//     data: JSON.stringify({
+//         type: "updatePlumberCase",
+//         plumberID : plumberID1,
+//         caseID: caseID1,
+//         identifier:id
+//     }),
+//     success:function(res)
+//   {
+//       console.log("success");
       
-    },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-}); 
+//     },
+//     fail:function(data){
+//       console.log("Fail: "+data);
+//     },
+//     error: function (jqXHR, textStatus, errorThrown) { 
+//       console.log(jqXHR)
+//       console.log(textStatus)
+//       console.log(errorThrown)
+//     }
+// }); 
 
-                        // db.collection("users").get().then(function(querySnapshot)
-                        //   {
-                        //     querySnapshot.forEach(function(doc)
-                        //     {
+                        db.collection("users").get().then(function(querySnapshot)
+                          {
+                            querySnapshot.forEach(function(doc)
+                            {
                             
-                        //         //console.log(doc.id[0]);
-                        //       //i++;
-                        //       if(doc.id==plumberID1)
-                        //       {
-                        //          db.collection("users").doc(doc.id).update({caseToWorkOn: caseID1  });
-                        //       }
+                                //console.log(doc.id[0]);
+                              //i++;
+                              if(doc.id==plumberID1)
+                              {
+                                 db.collection("users").doc(doc.id).update({caseToWorkOn: caseID1  });
+                              }
                               
                               
-                        //      });
+                             });
                             
-                        //   });
+                          });
   
   
 
