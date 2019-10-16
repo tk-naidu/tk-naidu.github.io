@@ -48,7 +48,7 @@
       <!-- Main -->
         <div id="main">
           <div class="inner">
-          	<!-- Header -->
+            <!-- Header -->
             <header id="header">
               <div class="logo">
                 <a href="home.html">WorkFlow-IO</a>
@@ -70,36 +70,36 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
-                  	<h2>Choose an agent</h2>
-                  	<br>
+                    <h2>Choose an agent</h2>
+                    <br>
                   </div>
                 </div>
               </div>
             </div>
-	
-	 <section class="forms">
-	 	<div class="container-fluid">
+  
+   <section class="forms">
+    <div class="container-fluid">
                   <div class="row">
-                  	<div class="col-md-12">
-						<button onclick= search()>View cases that needs to be closed </button>
-						<p id = "testing"></p>
-					</div>
-				  </div>
-				  <div class="row">
-					<div class="col-md-6">
-						
-				
-						<label>Enter Case ID to Close</label>
-						<input type="text" name="textbox19" list="exampleList" id = "test" required>
-							
-					</div>
-				<button onclick= closeCase()>Close the case </button>
-			</div>
+                    <div class="col-md-12">
+            <button onclick= search()>View cases that needs to be closed </button>
+            <p id = "testing"></p>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6">
+            
+        
+            <label>Enter Case ID to Close</label>
+            <input type="text" name="textbox19" list="exampleList" id = "test" required>
+              
+          </div>
+        <button onclick= closeCase()>Close the case </button>
+      </div>
 </section>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
    
   
@@ -133,7 +133,7 @@
                   <ul>
                     <li><a href="graph.html">Graph stats</a></li>
                     <li><a href="closecase.html">Search enquiries</a></li>
-			  <li><a href="graph2.html">Risk Analysis</a></li>
+        <li><a href="graph2.html">Risk Analysis</a></li>
                   </ul>
                 </li>
                
@@ -171,88 +171,88 @@
 
 function genDate()
 {
-	var today = new Date();
-     	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         return date;
 }
 
 function closeCase() 
 {
-	const display=document.querySelector("#display");
-	var date1 = genDate();
-	var casea = document.getElementById("test").value;
-	var id=getCookie("Identifier");
-  	console.log("closing "+casea);
-  	$.ajax
-	({
-  		  url: "https://workflow-io.herokuapp.com/",
-    		  type: "POST",
-   		  contentType: "application/json; charset=utf-8",
-    		  dataType: "json",
-    		  data: JSON.stringify
-		  ({
-   			identifier:id,
-       		        type: "closeCases",
-       		        case1:casea,
-       		        date:date1
- 		  }),
-    		success:function(res)
-		{
-      			console.log("Success: "+res) ;
-      			window.location.href='closeCase.html';
-      		},
-    		fail:function(data)
-		{
-      			console.log("Fail: "+data);
-    		},
-    		error: function (jqXHR, textStatus, errorThrown) 
-		{ 
-      			console.log(jqXHR)
-      			console.log(textStatus)
-      			console.log(errorThrown)
-    		}
-	});
+  const display=document.querySelector("#display");
+  var date1 = genDate();
+  var casea = document.getElementById("test").value;
+  var id=getCookie("Identifier");
+    console.log("closing "+casea);
+    $.ajax
+  ({
+        url: "https://workflow-io.herokuapp.com/",
+          type: "POST",
+        contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          data: JSON.stringify
+      ({
+        identifier:id,
+                  type: "closeCases",
+                  case1:casea,
+                  date:date1
+      }),
+        success:function(res)
+    {
+            console.log("Success: "+res) ;
+            window.location.href='closeCase.html';
+          },
+        fail:function(data)
+    {
+            console.log("Fail: "+data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) 
+    { 
+            console.log(jqXHR)
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+  });
 }
 
 function search()
 {
 
-	var id=getCookie("Identifier");
-	const display=document.querySelector("#testing");
-	var date = genDate();
-	var u= "unknown";
-	var com = "completed";
- 	$.ajax
-	({
-    		url: "https://workflow-io.herokuapp.com/",
-   	        type: "POST",
-    		contentType: "application/json; charset=utf-8",
-    		dataType: "json",
-    		data: JSON.stringify
-		({
-   			identifier:id,
-      			type: "closeCasesSearch",
-        	}),
-   		success:function(res)
-		{
-      			console.log("Success: "+res) ;
-      			var convertedObj= JSON.parse(res);
-      			console.log(convertedObj.userType);  
-        		for(var co=0;co<convertedObj.data.length;co++)
-			{
-  				display.innerHTML+=  "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
-      			 }
-      		},
-   		 fail:function(data)
-		{
-      			console.log("Fail: "+data);
-    		},
-    		error: function (jqXHR, textStatus, errorThrown) 
-		{ 
-     		      console.log(jqXHR)
-		      console.log(textStatus)
-		      console.log(errorThrown)
-   	        }
+  var id=getCookie("Identifier");
+  const display=document.querySelector("#testing");
+  var date = genDate();
+  var u= "unknown";
+  var com = "completed";
+  $.ajax
+  ({
+        url: "https://workflow-io.herokuapp.com/",
+            type: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify
+    ({
+        identifier:id,
+            type: "closeCasesSearch",
+          }),
+      success:function(res)
+    {
+            console.log("Success: "+res) ;
+            var convertedObj= JSON.parse(res);
+            console.log(convertedObj.userType);  
+            for(var co=0;co<convertedObj.data.length;co++)
+      {
+          display.innerHTML+=  "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
+             }
+          },
+       fail:function(data)
+    {
+            console.log("Fail: "+data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) 
+    { 
+              console.log(jqXHR)
+          console.log(textStatus)
+          console.log(errorThrown)
+            }
        });
 
 }
