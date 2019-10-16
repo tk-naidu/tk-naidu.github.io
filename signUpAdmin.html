@@ -137,10 +137,10 @@
  {
         var text = " ";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&*";
-          for(var i = 0; i < 8; i++) 
-          {
+         for(var i = 0; i < 8; i++) 
+         {
              text += possible.charAt(Math.floor(Math.random() * possible.length));
-          }
+         }
         document.getElementById("textbox2").value = text;
           
  }
@@ -148,91 +148,109 @@
  // this function confirms the password 
  function send()
  {
- var name1 = document.getElementById('textbox4').value;
-   var id1 = document.getElementById('textbox1').value;
-   id1=id1.toLowerCase();
-   var pass1 = document.getElementById('textbox2').value;
-	var confirm1 = document.getElementById('textbox3').value;
- var check=0;
- var ids=getCookie("Identifier");
-  if(pass1 == confirm1)
-  { 
-    check++;
-    $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-      type: "addAgent",
-         identifier:'admin',
-            agentName : name1,
-            agentID: id1
+	 var name1 = document.getElementById('textbox4').value;
+	 var id1 = document.getElementById('textbox1').value;
+	 id1=id1.toLowerCase();
+	 var pass1 = document.getElementById('textbox2').value;
+	 var confirm1 = document.getElementById('textbox3').value;
+	 var check=0;
+	 var ids=getCookie("Identifier");
+ 	 if(pass1 == confirm1)
+  	{ 
+    		check++;
+    		$.ajax
+		({
+    			url: "https://workflow-io.herokuapp.com/",
+		    	type: "POST",
+		    	contentType: "application/json; charset=utf-8",
+		    	dataType: "json",
+		    	data: JSON.stringify
+			({
+				type: "addAgent",
+				 identifier:'admin',
+				 agentName : name1,
+				  agentID: id1
             
         
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      alert("Agent added Successfully");
-      },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-  });
+   			 }),
+			 success:function(res)
+			 {
+				 console.log("Success: "+res) ;
+				 alert("Agent added Successfully");
+			 },
+			 fail:function(data)
+			 {
+			         console.log("Fail: "+data);
+			  },
+			  error: function (jqXHR, textStatus, errorThrown) 
+			  { 
+			      console.log(jqXHR)
+			      console.log(textStatus)
+			      console.log(errorThrown)
+			  }
+                 });
 
 
-        $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-      type: "addUser",
-         identifier:'admin',
-          user:id1,
-            pass:pass1,
-          userType:"agent"
+        	$.ajax
+		({
+    			url: "https://workflow-io.herokuapp.com/",
+		       type: "POST",
+		       contentType: "application/json; charset=utf-8",
+		       dataType: "json",
+		    	data: JSON.stringify
+			({
+		     	 	type: "addUser",
+			 	identifier:'admin',
+			  	user:id1,
+			    	pass:pass1,
+			  	userType:"agent"
             
         
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      alert("User added Successfully");
-      window.location.href='signUpUser.html';
-      },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-});
+   			 }),
+			  success:function(res)
+			  {
+				      console.log("Success: "+res) ;
+				      alert("User added Successfully");
+				      window.location.href='signUpUser.html';
+			   },
+			   fail:function(data)
+			   {
+				      console.log("Fail: "+data);
+			   },
+			    error: function (jqXHR, textStatus, errorThrown) 
+			   { 
+				      console.log(jqXHR)
+				      console.log(textStatus)
+				      console.log(errorThrown)
+			   }
+		});
 	}
 	else
 	{
 			alert("Your password doesn't match. Please enter the password again.");
 	}
-  if(check!=0){
+  if(check!=0)
+  {
    
   }
  }
- function log(){
-   window.location.href='login.html';
- }
- function myFunction() {
-  var x = document.getElementById("textbox2");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
+ 
+function log()
+{
+   	window.location.href='login.html';
+}
+ 
+function myFunction() 
+{
+	  var x = document.getElementById("textbox2");
+	  if (x.type === "password") 
+	  {
+	    	x.type = "text";
+	  } 
+	  else 
+	  {
+	    	x.type = "password";
+	  }
 }
  
  
