@@ -93,7 +93,7 @@
 						<input type="text" name="textbox19" list="exampleList" id = "test" required>
 							
 					</div>
-				<button onclick= close()>Close the case </button>
+				<button onclick= closeCase()>Close the case </button>
 			</div>
 </section>
 				</div>
@@ -189,12 +189,13 @@ function genDate()
 	  return date;
 }
 
-function close() 
+function closeCase() 
 {
 	const display=document.querySelector("#display");
 	var date1 = genDate();
 	var casea = document.getElementById("test").value;
 	var id=getCookie("Identifier");
+  console.log("closing "+casea);
   $.ajax({
     url: "https://workflow-io.herokuapp.com/",
     type: "POST",
