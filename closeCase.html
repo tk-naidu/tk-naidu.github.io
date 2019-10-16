@@ -136,8 +136,7 @@
 			  <li><a href="graph2.html">Risk Analysis</a></li>
                   </ul>
                 </li>
-                <li><a href="AddEmployee.html">Add Plumber</a></li>
-                  <li><a href="removePlumber.html">Remove Plumber</a></li>
+               
                 <li><a href="https://www.google.com">External Link</a></li>
                 <li><a href="index.html">Logout</a></li>
               </ul>
@@ -166,18 +165,7 @@
 <script src="functions.js"></script>
 <script>
 
-// var firebaseConfig = {
-//     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
-//     authDomain: "geyser-74ddf.firebaseapp.com",
-//     databaseURL: "https://geyser-74ddf.firebaseio.com",
-//     projectId: "geyser-74ddf",
-//     storageBucket: "geyser-74ddf.appspot.com",
-//     messagingSenderId: "1001903322970",
-//     appId: "1:1001903322970:web:a904b91e99d67b22"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
-//   var db = firebase.firestore();
+
   
 
 
@@ -226,20 +214,6 @@ function closeCase()
 });
 
 
-	// var com = "completed";
- //  var u="unknown";
-	// db.collection("caseDetails").get().then(function(querySnapshot)
-	// {
-	// 	querySnapshot.forEach(function(doc)
-	// 	{
-	// 		if(com==doc.data().caseStatus&& u==doc.data().caseClosedBy )
-	// 		{
-			   
-	// 			db.collection("caseDetails").doc(doc.id).update({caseClosedBy: agent, caseClosedDate :date, caseStatus : "closed"  });
-	// 		}
-	//    });
-		
-	// });
 
 }
 
@@ -288,23 +262,6 @@ var id=getCookie("Identifier");
 });
 
 
-	// db.collection("caseDetails").get().then(function(querySnapshot)
-	// {
- //    var count=0;
-	// 	querySnapshot.forEach(function(doc)
-	// 	{
-	// 		if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
-	// 		{
- //        count++;
-	// 		  display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
-	// 		}
-	//    });
- //    if(count==0)
- //    {
- //      alert("No pending cases to close");
- //    }
-		
-	// });
 
 
 }
