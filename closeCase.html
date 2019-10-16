@@ -171,10 +171,9 @@
 
 function genDate()
 {
-     var today = new Date();
-     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-       
-	  return date;
+	var today = new Date();
+     	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        return date;
 }
 
 function closeCase() 
@@ -183,102 +182,80 @@ function closeCase()
 	var date1 = genDate();
 	var casea = document.getElementById("test").value;
 	var id=getCookie("Identifier");
-  console.log("closing "+casea);
-  $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-   identifier:id,
-        type: "closeCases",
-        case1:casea,
-        date:date1
-
-
-        
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      window.location.href='closeCase.html';
-      //alert("Plumber added Successfully");
-      },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-});
-
-
-
+  	console.log("closing "+casea);
+  	$.ajax
+	({
+  		  url: "https://workflow-io.herokuapp.com/",
+    		  type: "POST",
+   		  contentType: "application/json; charset=utf-8",
+    		  dataType: "json",
+    		  data: JSON.stringify
+		  ({
+   			identifier:id,
+       		        type: "closeCases",
+       		        case1:casea,
+       		        date:date1
+ 		  }),
+    		success:function(res)
+		{
+      			console.log("Success: "+res) ;
+      			window.location.href='closeCase.html';
+      		},
+    		fail:function(data)
+		{
+      			console.log("Fail: "+data);
+    		},
+    		error: function (jqXHR, textStatus, errorThrown) 
+		{ 
+      			console.log(jqXHR)
+      			console.log(textStatus)
+      			console.log(errorThrown)
+    		}
+	});
 }
 
 function search()
 {
 
-var id=getCookie("Identifier");
+	var id=getCookie("Identifier");
 	const display=document.querySelector("#testing");
 	var date = genDate();
 	var u= "unknown";
 	var com = "completed";
- $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-   identifier:id,
-      type: "closeCasesSearch",
-        
-
-
-        
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      //alert("Plumber added Successfully");
-      var convertedObj= JSON.parse(res);
-      console.log(convertedObj.userType);  
-       //alert("Correct");
-        for(var co=0;co<convertedObj.data.length;co++){
-     // var rows = "";
-      // rows += "<tr><td>" +...++"</td></tr>";
-          display.innerHTML+=  "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
-      // $( rows ).appendTo( "#itemList tbody" );
-    }
-      },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-});
-
-
-
+ 	$.ajax
+	({
+    		url: "https://workflow-io.herokuapp.com/",
+   	        type: "POST",
+    		contentType: "application/json; charset=utf-8",
+    		dataType: "json",
+    		data: JSON.stringify
+		({
+   			identifier:id,
+      			type: "closeCasesSearch",
+        	}),
+   		success:function(res)
+		{
+      			console.log("Success: "+res) ;
+      			var convertedObj= JSON.parse(res);
+      			console.log(convertedObj.userType);  
+        		for(var co=0;co<convertedObj.data.length;co++)
+			{
+  				display.innerHTML+=  "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
+      			 }
+      		},
+   		 fail:function(data)
+		{
+      			console.log("Fail: "+data);
+    		},
+    		error: function (jqXHR, textStatus, errorThrown) 
+		{ 
+     		      console.log(jqXHR)
+		      console.log(textStatus)
+		      console.log(errorThrown)
+   	        }
+       });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
 </script>
 
 </body>
