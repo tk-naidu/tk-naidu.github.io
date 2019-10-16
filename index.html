@@ -100,73 +100,80 @@
  -->	<script >
  	
 
- 	var count =3;
-  function Login() {
-  	
-  
-  var use=document.getElementById("un").value;
-  console.log(use);
-  var ps=document.getElementById("pw").value;
-  console.log(ps);
-// http://127.0.0.1:4000/
- $.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "login",
-        userName: use,
-        password: ps
-    }),
-    success:function(res){
-    	console.log("Success: "+res) ;
-    	var convertedObj= JSON.parse(res);
-	    //////////////////////
-	    setCookie("Identifier",convertedObj.identifier,1);
-	    /////////////////////
-    	console.log(convertedObj.userType);  
-    	 //alert("Correct");
-    	 if(convertedObj.userType=="agent")
-    	 {
-		location.replace("home.html");
-	}
-	else if(convertedObj.userType=="guest")
-	{
-		location.replace("home2.html");
-	}
-	else if(convertedObj.userType=="admin")
-	{
-		location.replace("adminhome.html");
-	}
-	else
-	{
-		count--;
-    	if(count>0){alert("incorrect "+count+" attemps remaining");}
-    	 else
-   		 {location.replace("https://www.google.com");}
-	}
-    },
-    fail:function(data){
-    	console.log("Fail: "+data);
-    	
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-    	console.log(jqXHR)
-    	console.log(textStatus)
-    	console.log(errorThrown)
-    }
-}); 
+var count =3;
+function Login() 
+{
+  	var use=document.getElementById("un").value;
+  	console.log(use);
+  	var ps=document.getElementById("pw").value;
+  	console.log(ps);
+
+	 $.ajax
+	 ({
+   		 url: "https://workflow-io.herokuapp.com/",
+		 type: "POST",
+		 contentType: "application/json; charset=utf-8",
+		 dataType: "json",
+   		 data: JSON.stringify
+		 ({
+			type: "login",
+			userName: use,
+			password: ps
+   		 }),
+	    	success:function(res)
+		{
+			console.log("Success: "+res) ;
+			var convertedObj= JSON.parse(res);
+		        setCookie("Identifier",convertedObj.identifier,1);  
+			console.log(convertedObj.userType);  
+		        if(convertedObj.userType=="agent")
+		 	{
+				location.replace("home.html");
+			}
+			else if(convertedObj.userType=="guest")
+			{
+				location.replace("home2.html");
+			}
+			else if(convertedObj.userType=="admin")
+			{
+				location.replace("adminhome.html");
+			}
+			else
+			{
+				count--;
+				if(count>0)
+				{
+					alert("incorrect "+count+" attemps remaining");
+				}
+				else
+				 {
+					 location.replace("https://www.google.com");
+				 }
+			}
+	    	},
+	    	fail:function(data)
+		{
+			console.log("Fail: "+data);
+
+	    	},
+	    	error: function (jqXHR, textStatus, errorThrown) 
+		{ 
+			console.log(jqXHR)
+			console.log(textStatus)
+			console.log(errorThrown)
+	   	 }
+	}); 
   
 		
 }
-	function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+function setCookie(cname, cvalue, exdays) 
+{
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	  var expires = "expires="+d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-	</script>
+</script>
 
 </body>
 </html>
