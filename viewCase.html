@@ -96,6 +96,7 @@
                             <th>Case ID</th>
                             <th>Incidente Date</th>
                             <th>PlumberID</th>
+                            <th>Case Closed By</th>
                             <th>Number of cases for caller</th>
                             <th>Review</th>
                             <th>Review Score</th>
@@ -128,11 +129,32 @@
                     </div>
                     <div class="default-table">
                       <table id="itemList">
-                        <img id="geyser" src="geyser" alt="Geyser" height="125px" width="200px"/> 
-                        <img id="pressure"src="pressureControlValve" alt="Pressure Control Valve" height="125px" width="200px"/>
-                        <img id="vacuum"src="vacuumBreaker" alt="Vacuum Breaker" height="125px" width="200px"/>
-                        <img id="drip"src="dripTray" alt="Drip Tray" height="125px" width="200px"/>
-                        <img id="safe"src="saftey" alt="Safety" height="125px" width="200px"/>
+                        <div class="row">
+                           <div class="col-md-6">
+                        <img id="geyser" src="geyser" alt="Geyser" height="400px" width="200px"/> 
+                        <p>Geyser</p>
+                      </div>
+                       <div class="col-md-6">
+                        <img id="pressure"src="pressureControlValve" alt="Pressure Control Valve" height="400px" width="200px"/>
+                         <p>Pressure Control Valve</p>
+                       </div>
+                     </div>
+                       <div class="row">
+                           <div class="col-md-6">
+                        <img id="vacuum"src="vacuumBreaker" alt="Vacuum Breaker" height="400px" width="200px"/>
+                         <p>Vacuum Breaker</p>
+                       </div>
+                           <div class="col-md-6">
+                        <img id="drip"src="dripTray" alt="Drip Tray" height="400px" width="200px"/>
+                         <p>Drip Tray</p>
+                       </div>
+                     </div>
+                       <div class="row">
+                           <div class="col-md-6">
+                        <img id="safe"src="saftey" alt="Safety" height="400px" width="200px"/>
+                         <p>Safety</p>
+                       </div>
+                     </div>
                       </table>
                     </div>
                   </div>
@@ -173,6 +195,7 @@
                     <li><a href="graph.html">Graph stats</a></li>
                     <li><a href="closecase.html">Search enquiries</a></li>
 			             <li><a href="graph2.html">Risk Analysis</a></li>
+                   <li><a href="viewCase.html">Inpect Case</a></li>
                   </ul>
                 </li>
                 <li><a href="AddEmployee.html">Add Plumber</a></li>
@@ -221,6 +244,7 @@ var count;
 var add;
 var ins;
 var tem;
+var CA;
    $.ajax({
               url: "https://workflow-io.herokuapp.com/",
               type: "POST",
@@ -233,11 +257,13 @@ var tem;
               }),
               success:function(res)
             {
-                console.log("Success: "+res) ;
+                console.log("Success: "+res);
                 var convertedObj= JSON.parse(res);
                     cid=convertedObj.data[0].caseID;
-                    date=convertedObj.data[0].incidenteDate;
+                    date=convertedObj.data[0].incidentDate;
                     add=convertedObj.data[0].address;
+                    pid=convertedObj.data[0].plumberID;
+                    CA=convertedObj.data[0].CaseAgent;
                      $.ajax({
                               url: "https://workflow-io.herokuapp.com/",
                               type: "POST",
@@ -288,7 +314,7 @@ var tem;
                                                                       var convertedObj= JSON.parse(res);
                                                                            cout=convertedObj.data[0].countTimes;
                                                                           var rows = "";
-                                                                          rows= "<tr><td>"+cid+"</td><td>"+date+"</td><td>"+pid+"</td><td>"+count+"</td><td>"+review+"</td><td>"+rs+"</td><td>"+ins+"</td><td>"+tem+"</td><td>"+"</td></tr>";
+                                                                          rows= "<tr><td>"+cid+"</td><td>"+date+"</td><td>"+pid+"</td><td>"+CA+"</td><td>"+count+"</td><td>"+review+"</td><td>"+rs+"</td><td>"+ins+"</td><td>"+tem+"</td><td>"+"</td></tr>";
                                                                           $( rows ).appendTo( "#itemList tbody" );
                                                                        $.ajax({
                                                                                 url: "https://workflow-io.herokuapp.com/",
