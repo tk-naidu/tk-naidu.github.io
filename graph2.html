@@ -261,69 +261,72 @@ function geyserTemp()
 			    
 			
 	   });
-	   var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "Geyser Temperature"
-	},
-	axisY: {
-		title: "Number of geysers"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "Temperature in degrees celcius",
-		dataPoints: [      
-			{ y: lowest, label: "below 55 degrees" },
-			{ y: perfect,  label: "Between 55 and 65" },
-			{ y: highest,  label: "above 65" }
+	   var chart = new CanvasJS.Chart("chartContainer", 
+	   {
+		animationEnabled: true,
+		theme: "light2", 
+		title:
+		{
+			text: "Geyser Temperature"
+	        },
+		axisY: 
+		{
+			title: "Number of geysers"
+		},
+		data: 
+		[{        
+			type: "column",  
+			showInLegend: true, 
+			legendMarkerColor: "grey",
+			legendText: "Temperature in degrees celcius",
+			dataPoints: 
+			[      
+				{ y: lowest, label: "below 55 degrees" },
+				{ y: perfect,  label: "Between 55 and 65" },
+				{ y: highest,  label: "above 65" }
 			
-		]
-	}]
-});
-chart.render();
-	   //alert(seven);
-	    
+			]
+		}]
+	});
+	chart.render();   
 	});
 	
 	
 }
 function capacity()
 {
-var one = 1;
-var two=2;
-var three=3;
-var four = 4;
-var five = 5;
+	var one = 1;
+	var two=2;
+	var three=3;
+	var four = 4;
+	var five = 5;
 
-var bad =0;
-var good = 0;
-var i =0;
-var j =0;
-var plumberCount=0;
-var total = [];
-var plumber1Count=0;
-var plumber2Count=0;
-var one = 1;
-var two = 2;
-var rating = 0;
-var plum1 = [];
-var q = 0;
-var caseWorked1 = [];
-var caseWorked2 = [];
-var whenCaseOpened1 = [];
-var whenCaseOpened2 = [];
-var plum2 = [];
-var r =0;
-var whichPlumber = 0;
-var whichPlumberCount = 0;
-var caseNum2=[];
-var caseNum1 =[];
+	var bad =0;
+	var good = 0;
+	var i =0;
+	var j =0;
+	var plumberCount=0;
+	var total = [];
+	var plumber1Count=0;
+	var plumber2Count=0;
+	var one = 1;
+	var two = 2;
+	var rating = 0;
+	var plum1 = [];
+	var q = 0;
+	var caseWorked1 = [];
+	var caseWorked2 = [];
+	var whenCaseOpened1 = [];
+	var whenCaseOpened2 = [];
+	var plum2 = [];
+	var r =0;
+	var whichPlumber = 0;
+	var whichPlumberCount = 0;
+	var caseNum2=[];
+	var caseNum1 =[];
 
 
-db.collection("feedback").get().then(function(querySnapshot)
+	db.collection("feedback").get().then(function(querySnapshot)
 	{
 		querySnapshot.forEach(function(doc)
 		{
@@ -354,21 +357,21 @@ db.collection("feedback").get().then(function(querySnapshot)
 				db.collection("caseDetails").get().then(function(querySnapshot)
 				{
 				    
-							querySnapshot.forEach(function(doc)
-							{
-								var g = doc.data().caseID;
-								if(p == g)
-								{
-								   plum1[q] = doc.data().plumberID;
-								   caseWorked1[q] = doc.data().caseID;
-								   whenCaseOpened1[q] = doc.data().incidentDate;
-								   var rows = "";
-								   rows= "<tr><td>"+plum1[q]+"</td><td>"+caseWorked1[q]
-								   +"</td><td>"+whenCaseOpened1[q]+"</td></tr>";
-								   $( rows ).appendTo( "#itemList tbody" );
-								   q++;
-								}
-							});
+					querySnapshot.forEach(function(doc)
+					{
+						var g = doc.data().caseID;
+						if(p == g)
+						{
+							 plum1[q] = doc.data().plumberID;
+							 caseWorked1[q] = doc.data().caseID;
+							 whenCaseOpened1[q] = doc.data().incidentDate;
+							 var rows = "";
+							 rows= "<tr><td>"+plum1[q]+"</td><td>"+caseWorked1[q]
+							 +"</td><td>"+whenCaseOpened1[q]+"</td></tr>";
+							 $( rows ).appendTo( "#itemList tbody" );
+							 q++;
+						}
+					});
 						
 				});
 				
@@ -383,24 +386,23 @@ db.collection("feedback").get().then(function(querySnapshot)
 				db.collection("caseDetails").get().then(function(querySnapshot)
 				{
 				    
-							querySnapshot.forEach(function(doc)
-							{
-								var g = doc.data().caseID;
-								if(p == g)
-								{
-								   plum2[r] = doc.data().plumberID;
-								   caseWorked2[r] = doc.data().caseID;
-								   whenCaseOpened2[r] = doc.data().incidentDate;
-								   var rows = "";
-  	    
-									rows= "<tr><td>"+plum2[r]+"</td><td>"+caseWorked2[r]
-									+"</td><td>"+whenCaseOpened2[r]+"</td></tr>";
-									$( rows ).appendTo( "#itemList tbody" );
-								   r++;
-								}
+					querySnapshot.forEach(function(doc)
+					{
+						var g = doc.data().caseID;
+						if(p == g)
+						{
+							plum2[r] = doc.data().plumberID;
+							caseWorked2[r] = doc.data().caseID;
+							whenCaseOpened2[r] = doc.data().incidentDate;
+							var rows = "";
+  	    						rows= "<tr><td>"+plum2[r]+"</td><td>"+caseWorked2[r]
+						        +"</td><td>"+whenCaseOpened2[r]+"</td></tr>";
+							$( rows ).appendTo( "#itemList tbody" );
+						         r++;
+						}
 			
 			
-							});
+					});
 	  
 				});
 				
@@ -409,44 +411,36 @@ db.collection("feedback").get().then(function(querySnapshot)
 			
 			    
 			
-	   });
+	   }); 
 	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   var chart = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: "User feedback"
-	},
-	axisY: {
-		title: "Number of response"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "Response",
-		dataPoints: [      
-			{ y: bad, label: "Negative" },
-			{ y: good,  label: "Positive" }
+	var chart = new CanvasJS.Chart("chartContainer2", 
+	{
+		animationEnabled: true,
+		theme: "light2", // "light1", "light2", "dark1", "dark2"
+		title:
+		{
+			text: "User feedback"
+		},
+		axisY: 
+		{
+			title: "Number of response"
+		},
+		data: 
+		[{        
+			type: "column",  
+			showInLegend: true, 
+			legendMarkerColor: "grey",
+			legendText: "Response",
+			dataPoints: 
+			[      
+				{ y: bad, label: "Negative" },
+				{ y: good,  label: "Positive" }
 			
-		]
-	}]
-});
-chart.render();
-	  //alert(good);
+			]
+		}]
+	});
+	chart.render();
+	  
 	    
 	});
 	
