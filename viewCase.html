@@ -65,7 +65,7 @@
 	 	<div class="container-fluid">
                   <div class="row">
                   	<div class="col-md-12">
-						<button onclick= search()>View cases that needs to be closed </button>
+						
 						<p id = "testing"></p>
 					</div>
 				  </div>
@@ -75,15 +75,70 @@
 				
 						<label>Enter Case ID to view</label>
 						<input type="text" name="textbox19" list="exampleList" id = "test" required>
-							
+							<button onclick= search()>View a case </button>
 					</div>
-				<button onclick= close()>View a case </button>
+				
 			</div>
 </section>
+
+<!-- Tables -->
+            <section class="tables">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="section-heading">
+                      <h2>Case Details</h2>
+                    </div>
+                    <div class="default-table">
+                      <table id="itemList">
+                        <thead>
+                          <tr>
+                            <th>Case ID</th>
+                            <th>Incidente Date</th>
+                            <th>PlumberID</th>
+                            <th>Number of cases for caller</th>
+                            <th>Review</th>
+                            <th>Review Score</th>
+                            <th>Insurance status</th>
+                            <th>Geyser Tempture</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+         </div>
+  </div>
+</div>
+</div>
+</section>
+
+
 				</div>
 			</div>
 		</div>
 	</div>
+<section class="tables">
+   <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+             <div class="section-heading">
+                      <h2>Images</h2>
+                    </div>
+                    <div class="default-table">
+                      <table id="itemList">
+                        <img id="geyser" src="geyser" alt="Geyser" height="125px" width="200px"/> 
+                        <img id="pressure"src="pressureControlValve" alt="Pressure Control Valve" height="125px" width="200px"/>
+                        <img id="vacuum"src="vacuumBreaker" alt="Vacuum Breaker" height="125px" width="200px"/>
+                        <img id="drip"src="dripTray" alt="Drip Tray" height="125px" width="200px"/>
+                        <img id="safe"src="saftey" alt="Safety" height="125px" width="200px"/>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
    
   
@@ -149,33 +204,188 @@
     <script src="assets/js/custom.js"></script>
 <script src="functions.js"></script>
 <script type="text/javascript">
+
+
   function search()
 {
+var casea = document.getElementById("test").value;
+console.log(casea);
+var ids='admin';
+//getCookie("Identifier");
+var date;
+var cid;
+var pid;
+var review;
+var rs;
+var count;
+var add;
+var ins;
+var tem;
+   $.ajax({
+              url: "https://workflow-io.herokuapp.com/",
+              type: "POST",
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              data: JSON.stringify({
+                  type: "specificCase",
+                  caseID: casea,
+                  identifier:ids
+              }),
+              success:function(res)
+            {
+                console.log("Success: "+res) ;
+                var convertedObj= JSON.parse(res);
+                    cid=convertedObj.data[0].caseID;
+                    date=convertedObj.data[0].incidenteDate;
+                    add=convertedObj.data[0].address;
+                     $.ajax({
+                              url: "https://workflow-io.herokuapp.com/",
+                              type: "POST",
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              data: JSON.stringify({
+                                  type: "specificCaseGeyser",
+                                  caseID: casea,
+                                  identifier:ids
+                              }),
+                              success:function(res)
+                            {
+                                console.log("Success: "+res) ;
+                                var convertedObj= JSON.parse(res);
+                                     tem=convertedObj.data[0].geyserTemp;
+                                    ins=convertedObj.data[0].insurance;
+
+                                     $.ajax({
+                                            url: "https://workflow-io.herokuapp.com/",
+                                            type: "POST",
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: "json",
+                                            data: JSON.stringify({
+                                                type: "specificCaseReview",
+                                                caseID: casea,
+                                                identifier:ids
+                                            }),
+                                            success:function(res)
+                                          {
+                                              console.log("Success: "+res) ;
+                                              var convertedObj= JSON.parse(res);
+                                                   review=convertedObj.data[0].feedback;
+                                                  rs=convertedObj.data[0].rating;
+
+                                                      $.ajax({
+                                                                    url: "https://workflow-io.herokuapp.com/",
+                                                                    type: "POST",
+                                                                    contentType: "application/json; charset=utf-8",
+                                                                    dataType: "json",
+                                                                    data: JSON.stringify({
+                                                                        type: "addressCount",
+                                                                        adress: add,
+                                                                        identifier:ids
+                                                                    }),
+                                                                    success:function(res)
+                                                                  {
+                                                                      console.log("Success: "+res) ;
+                                                                      var convertedObj= JSON.parse(res);
+                                                                           cout=convertedObj.data[0].countTimes;
+                                                                          var rows = "";
+                                                                          rows= "<tr><td>"+cid+"</td><td>"+date+"</td><td>"+pid+"</td><td>"+count+"</td><td>"+review+"</td><td>"+rs+"</td><td>"+ins+"</td><td>"+tem+"</td><td>"+"</td></tr>";
+                                                                          $( rows ).appendTo( "#itemList tbody" );
+                                                                       $.ajax({
+                                                                                url: "https://workflow-io.herokuapp.com/",
+                                                                                type: "POST",
+                                                                                contentType: "application/json; charset=utf-8",
+                                                                                dataType: "json",
+                                                                                data: JSON.stringify({
+                                                                                    type: "retrieveImages",
+                                                                                    caseID: casea,
+                                                                                    identifier:ids
+                                                                                }),
+                                                                                success:function(res)
+                                                                              {
+                                                                                  console.log("Success: "+res) ;
+                                                                                  var convertedObj= JSON.parse(res);
+                                                                                 console.log(convertedObj.geyser);
+                                                                                 console.log(convertedObj.pressure);  
+                                                                                 console.log(convertedObj.vacuum);  
+                                                                                 console.log(convertedObj.drip);  
+                                                                                 console.log(convertedObj.safety);    
+
+                                                                                     document.getElementById("geyser").src ="data:image/gif;base64,"+convertedObj.geyser;
+                                                                                     document.getElementById("pressure").src ="data:image/gif;base64,"+convertedObj.pressure;
+                                                                                     document.getElementById("vacuum").src ="data:image/gif;base64,"+convertedObj.vacuum;
+                                                                                     document.getElementById("drip").src ="data:image/gif;base64,"+convertedObj.drip;
+                                                                                     document.getElementById("safe").src ="data:image/gif;base64,"+convertedObj.safety;
+                                                                                        
+                                                                                    
+                                                                                //to calculate the average, plz double check 
+                                                                                
+
+                                                                                },
+                                                                                fail:function(data){
+                                                                                  console.log("Fail: "+data);
+                                                                                },
+                                                                                error: function (jqXHR, textStatus, errorThrown) { 
+                                                                                  console.log(jqXHR)
+                                                                                  console.log(textStatus)
+                                                                                  console.log(errorThrown)
+                                                                                }
+                                                                            }); 
+                                                                      
+                                                                    },
+                                                                    fail:function(data){
+                                                                      console.log("Fail: "+data);
+                                                                    },
+                                                                    error: function (jqXHR, textStatus, errorThrown) { 
+                                                                      console.log(jqXHR)
+                                                                      console.log(textStatus)
+                                                                      console.log(errorThrown)
+                                                                    }
+                                                                });
+
+                                              
+                                            },
+                                            fail:function(data){
+                                              console.log("Fail: "+data);
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) { 
+                                              console.log(jqXHR)
+                                              console.log(textStatus)
+                                              console.log(errorThrown)
+                                            }
+                                        });
+                                
+                              },
+                              fail:function(data){
+                                console.log("Fail: "+data);
+                              },
+                              error: function (jqXHR, textStatus, errorThrown) { 
+                                console.log(jqXHR)
+                                console.log(textStatus)
+                                console.log(errorThrown)
+                              }
+                          }); 
+              },
+              fail:function(data){
+                console.log("Fail: "+data);
+              },
+              error: function (jqXHR, textStatus, errorThrown) { 
+                console.log(jqXHR)
+                console.log(textStatus)
+                console.log(errorThrown)
+              }
+          }); 
 
 
-  
-  var casea = document.getElementById("test").value;
-  const display=document.querySelector("#testing");
+
+
+
+   
+             
+            
  
-  var u= "unknown";
-  var com = "completed";
+ 
 
 
-  db.collection("caseDetails").get().then(function(querySnapshot)
-  {
-    querySnapshot.forEach(function(doc)
-    {
-      if(casea==doc.data().caseID)
-      {
-        //check risk factors at end
-        //if plumber. take id and go through all case with his id and compare to all reviews with case id to get summary of plumber risk
-        //count times address appears in case and give risk level
-        //
-         display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
-      }
-     });
-    
-  });
 
 
 }

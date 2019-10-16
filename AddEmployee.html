@@ -350,53 +350,6 @@ var plumberPassword = document.getElementById('textbox10').value;
 
 
 
-//   $.ajax({
-//     url: "https://workflow-io.herokuapp.com/",
-//     type: "POST",
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     data: JSON.stringify({
-//    identifier:"admin",
-//         type: "addEmployee",
-//       fullName: name1,
-//     DateOfBirth :DateOfBirth1,
-//     gender:gender1,
-//     idNumber:idNumber1,
-//     cellNumber:cellNumber1,
-//     address : address1,
-//     plumberID : plumberID1,
-
-//       userType:"plumber"
-
-        
-//     }),
-//     success:function(res){
-//       console.log("Success: "+res) ;
-//       alert("Plumber added Successfully");
-//       },
-//     fail:function(data){
-//       console.log("Fail: "+data);
-//     },
-//     error: function (jqXHR, textStatus, errorThrown) { 
-//       console.log(jqXHR)
-//       console.log(textStatus)
-//       console.log(errorThrown)
-//     }
-// });
-db.collection("employeesDetails").doc(plumberID1).set(
-{
-  fullName: name1,
-  DateOfBirth :DateOfBirth1,
-  gender:gender1,
-  idNumber:idNumber1,
-  cellNumber:cellNumber1,
-  address : address1,
-  plumberID : plumberID1
-
-}
-)
-
-
   $.ajax({
     url: "https://workflow-io.herokuapp.com/",
     type: "POST",
@@ -404,16 +357,50 @@ db.collection("employeesDetails").doc(plumberID1).set(
     dataType: "json",
     data: JSON.stringify({
    identifier:id,
-        type: "addUser",
-  user: plumberID1,
-  pass: plumberPassword,
-  userType:"plumber"
+        type: "addEmployee",
+      fullName: name1,
+    DateOfBirth :DateOfBirth1,
+    gender:gender1,
+    idNumber:idNumber1,
+    cellNumber:cellNumber1,
+    address : address1,
+    plumberID : plumberID1,
+
+      userType:"plumber"
 
         
     }),
     success:function(res){
       console.log("Success: "+res) ;
       alert("Plumber added Successfully");
+         $.ajax({
+                  url: "https://workflow-io.herokuapp.com/",
+                  type: "POST",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  data: JSON.stringify({
+                 identifier:id,
+                      type: "addUser",
+                user: plumberID1,
+                pass: plumberPassword,
+                userType:"plumber"
+
+                      
+                  }),
+                  success:function(res){
+                    console.log("Success: "+res) ;
+                    alert("Plumber added Successfully");
+                    },
+                  fail:function(data){
+                    console.log("Fail: "+data);
+                  },
+                  error: function (jqXHR, textStatus, errorThrown) { 
+                    console.log(jqXHR)
+                    console.log(textStatus)
+                    console.log(errorThrown)
+                  }
+              });
+
       },
     fail:function(data){
       console.log("Fail: "+data);
@@ -424,6 +411,10 @@ db.collection("employeesDetails").doc(plumberID1).set(
       console.log(errorThrown)
     }
 });
+
+
+
+ 
 
 
 }
