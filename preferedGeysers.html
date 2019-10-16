@@ -146,48 +146,54 @@
 
   
 
-	function geyser() {
-// clear();
-var brand=document.getElementById("plumber").value;
-console.log(brand);
-const display=document.querySelector("#display");
-var c=0;
-var ids=getCookie("Identifier");
+function geyser()
+{
+
+	var brand=document.getElementById("plumber").value;
+	console.log(brand);
+	const display=document.querySelector("#display");
+	var c=0;
+	var ids=getCookie("Identifier");
 
 
 
-$.ajax({
-    url: "https://workflow-io.herokuapp.com/",
-    type: "POST",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    data: JSON.stringify({
-        type: "retrieveBrandSearch",
-        id: brand,
-        identifier:ids
-    }),
-    success:function(res){
-      console.log("Success: "+res) ;
-      var convertedObj= JSON.parse(res);
-      //console.log(convertedObj.userType);  
-       //alert("Correct");
-       for(var co=0;co<convertedObj.data.length;co++){
-      var rows = "";
-      rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[co].caseID
-      +"</td><td>"+convertedObj.data[co].insurance+"</td><td>"+convertedObj.data[co].manufacturer+"</td><td>"+convertedObj.data[co].model+"</td></tr>";
-      $( rows ).appendTo( "#itemList tbody" );
-    }
+	$.ajax
+	({
+		    url: "https://workflow-io.herokuapp.com/",
+		    type: "POST",
+		    contentType: "application/json; charset=utf-8",
+		    dataType: "json",
+		    data: JSON.stringify
+		   ({
+			type: "retrieveBrandSearch",
+			id: brand,
+			identifier:ids
+		    }),
+		    success:function(res)
+		    {
+			    console.log("Success: "+res) ;
+			    var convertedObj= JSON.parse(res);
 
-    },
-    fail:function(data){
-      console.log("Fail: "+data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) { 
-      console.log(jqXHR)
-      console.log(textStatus)
-      console.log(errorThrown)
-    }
-}); 
+			    for(var co=0;co<convertedObj.data.length;co++)
+			    {
+				var rows = "";
+				rows= "<tr><td>"+convertedObj.data[co].barcode+"</td><td>"+convertedObj.data[co].caseID
+				+"</td><td>"+convertedObj.data[co].insurance+"</td><td>"+convertedObj.data[co].manufacturer+"</td><td>"+convertedObj.data[co].model+"</td></tr>";
+				$( rows ).appendTo( "#itemList tbody" );
+			    }
+
+	            },
+	    	   fail:function(data)
+		   {
+	      		console.log("Fail: "+data);
+	    	   },
+	    	   error: function (jqXHR, textStatus, errorThrown) 
+		  { 
+		      console.log(jqXHR)
+		      console.log(textStatus)
+		      console.log(errorThrown)
+	          }
+	}); 
 
 
 
