@@ -144,7 +144,7 @@
 
 <script src="functions.js"></script>
 <script >
-	var firebaseConfig = {
+   var firebaseConfig = {
     apiKey: "AIzaSyDibg-oYRpVXU9HqCAOLdxIpYXcZUPpAGM",
     authDomain: "geyser-74ddf.firebaseapp.com",
     databaseURL: "https://geyser-74ddf.firebaseio.com",
@@ -157,71 +157,73 @@
   firebase.initializeApp(firebaseConfig);
   var database = firebase.firestore();
 
-  function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function myFunction()
+{
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
+
+window.onclick = function(event) 
+{
+    if (!event.target.matches('.dropbtn')) 
+    {
+    	var dropdowns = document.getElementsByClassName("dropdown-content");
+    	var i;
+    	for (i = 0; i < dropdowns.length; i++)
+	{
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show'))
+	      {
+		openDropdown.classList.remove('show');
+      	      }
+    	}
   }
 }
 
-	function monthSearch() {
-// clear();
-var month=document.getElementById("plumber").value;
-///console.log(bar);
-const display=document.querySelector("#display");
-var c=0;
-
-
-database.collection("caseDetails").get().then(function(querySnapshot)
+function monthSearch() 
 {
-  querySnapshot.forEach(function(doc){
-  	console.log(doc.data());
-    if(monthr==doc.data().plumberID){
-	      c++;
-	    console.log("entry foound"
-	      
-	      //can add.details to be specific
-	      );
-	    var rows = "";
-	    // rows += "<tr><td>" +...++"</td></tr>";
-	    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
-	    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
-	    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
-	    $( rows ).appendTo( "#itemList tbody" );
-	  }
-	}
-  );
+
+	var month=document.getElementById("plumber").value;
+	const display=document.querySelector("#display");
+	var c=0;
+	database.collection("caseDetails").get().then(function(querySnapshot)
+	{
+ 		 querySnapshot.forEach(function(doc)
+		{
+  			console.log(doc.data());
+    			if(monthr==doc.data().plumberID)
+			{
+	      			c++;
+	    			console.log("entry foound");
+			    var rows = "";
+			    // rows += "<tr><td>" +...++"</td></tr>";
+			    rows= "<tr><td>"+doc.data().caseID+"</td><td>"+doc.data().incidentDate
+			    +"</td><td>"+doc.data().addressOfIncident+"</td><td>"+doc.data().caseStatus+"</td><td>"+doc.data().caseDescription
+			    +"</td><td>"+doc.data().callerID+"</td><td>"+doc.data().caseOpenedBy +"</td><td>"+doc.data().caseClosedBy+"</td></tr>";
+			    $( rows ).appendTo( "#itemList tbody" );
+	  		}
+		});
 
   
-});
-if(c==0)
+	});
+	if(c==0)
+	{
+	}
+}
+
+
+
+
+function sleep(milliseconds) 
 {
-	
-
-}
-}
-
-
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
+ 	var start = new Date().getTime();
+  	for (var i = 0; i < 1e7; i++) 
+	{
+    		if ((new Date().getTime() - start) > milliseconds)
+		{
+      		break;
+    		}
+  	}
 };
 </script>
 
@@ -236,16 +238,18 @@ function sleep(milliseconds) {
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
     <script>
-    	function clear(){
+function clear()
+{
 	//$("#itemList tr").remove();
 	var elmtTable = document.getElementById('itemList');
-var tableRows = elmtTable.getElementsByTagName('tr');
-var rowCount = tableRows.length;
+	var tableRows = elmtTable.getElementsByTagName('tr');
+	var rowCount = tableRows.length;
 
-for (var x=rowCount-1; x>0; x--) {
-   elmtTable.removeChild(tableRows[x]);
-}
-location.reload();
+	for (var x=rowCount-1; x>0; x--) 
+	{
+   		elmtTable.removeChild(tableRows[x]);
+	}
+	location.reload();
 }
 </script>
 	
