@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+ <title>View a case</title>
+<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   
+ 
+ 
+
+</head>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+</head>
+
+<body class="is-preload">
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+          	<!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a href="home.html">WorkFlow-IO</a>
+              </div>
+            </header>
+            <!-- Page Heading -->
+            <div class="page-heading">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <br>
+                    <h2>Select case to View</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page Heading -->
+           
+	
+	 <section class="forms">
+	 	<div class="container-fluid">
+                  <div class="row">
+                  	<div class="col-md-12">
+						<button onclick= search()>View cases that needs to be closed </button>
+						<p id = "testing"></p>
+					</div>
+				  </div>
+				  <div class="row">
+					<div class="col-md-6">
+						
+				
+						<label>Enter Case ID to view</label>
+						<input type="text" name="textbox19" list="exampleList" id = "test" required>
+							
+					</div>
+				<button onclick= close()>View a case </button>
+			</div>
+</section>
+				</div>
+			</div>
+		</div>
+	</div>
+
+   
+  
+<!-- Sidebar -->
+        <div id="sidebar">
+
+          <div class="inner">
+
+            <!-- Search Box -->
+            <!-- <section id="search" class="alt">
+              <form method="get" action="#">
+                <input type="text" name="search" id="search" placeholder="Search..." />
+              </form>
+            </section> -->
+              
+            <!-- Menu -->
+           <nav id="menu">
+              <ul>
+                <li><a href="home.html">Homepage</a></li>
+            
+                <li>
+                  <span class="opener">Cases</span>
+                  <ul>
+                    <li><a href="callerAndcase.html">New Case</a></li>
+                    <li><a href="search.html">Close case</a></li>
+                
+                  </ul>
+                </li>
+                <li>
+                  <span class="opener">Statistics</span>
+                  <ul>
+                    <li><a href="graph.html">Graph stats</a></li>
+                    <li><a href="closecase.html">Search enquiries</a></li>
+			             <li><a href="graph2.html">Risk Analysis</a></li>
+                  </ul>
+                </li>
+                <li><a href="AddEmployee.html">Add Plumber</a></li>
+                  <li><a href="removePlumber.html">Remove Plumber</a></li>
+                <li><a href="https://www.google.com">External Link</a></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </nav>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">Copyright &copy; 2019 COS 301 HighTech
+              <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>
+            </footer>
+            
+          </div>
+        </div>
+
+    </div>
+    <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
+<script src="functions.js"></script>
+<script type="text/javascript">
+  function search()
+{
+
+
+  const display=document.querySelector("#testing");
+  var date = genDate();
+  var u= "unknown";
+  var com = "completed";
+  db.collection("caseDetails").get().then(function(querySnapshot)
+  {
+    querySnapshot.forEach(function(doc)
+    {
+      if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
+      {
+        display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
+      }
+     });
+    
+  });
+
+
+}
+</script>
+
+
+</body>
+
+</html>

@@ -244,22 +244,59 @@ function close()
 function search()
 {
 
-
+var id=getCookie("Identifier");
 	const display=document.querySelector("#testing");
 	var date = genDate();
 	var u= "unknown";
 	var com = "completed";
-	db.collection("caseDetails").get().then(function(querySnapshot)
-	{
-		querySnapshot.forEach(function(doc)
-		{
-			if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
-			{
-			  display.innerHTML += "<table width='200' border='1' ><tr><td>"+doc.data().caseID+"</td><td>"+doc.data().caseStatus +"</td><td> " + doc.data().incidentDate+"</td></tr></table><br/>";
-			}
-	   });
+ $.ajax({
+    url: "https://workflow-io.herokuapp.com/",
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: JSON.stringify({
+   identifier:id,
+      type: "closeCasesSearch",
+        
+
+
+        
+    }),
+    success:function(res){
+      console.log("Success: "+res) ;
+      //alert("Plumber added Successfully");
+      var convertedObj= JSON.parse(res);
+      console.log(convertedObj.userType);  
+       //alert("Correct");
+        for(var co=0;co<convertedObj.data.length;co++){
+     // var rows = "";
+      // rows += "<tr><td>" +...++"</td></tr>";
+          display.innerHTML+=  "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
+      // $( rows ).appendTo( "#itemList tbody" );
+    }
+      },
+    fail:function(data){
+      console.log("Fail: "+data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) { 
+      console.log(jqXHR)
+      console.log(textStatus)
+      console.log(errorThrown)
+    }
+});
+
+
+	// db.collection("caseDetails").get().then(function(querySnapshot)
+	// {
+	// 	querySnapshot.forEach(function(doc)
+	// 	{
+	// 		if(com==doc.data().caseStatus &&u==doc.data().caseClosedBy)
+	// 		{
+	// 		  display.innerHTML += "<table width='200' border='1' ><tr><td>"+convertedObj.data[co].caseID+"</td><td>"+convertedObj.data[co].caseStatus +"</td><td> " + convertedObj.data[co].incidentDate+"</td></tr></table><br/>";
+	// 		}
+	//    });
 		
-	});
+	// });
 
 
 }
